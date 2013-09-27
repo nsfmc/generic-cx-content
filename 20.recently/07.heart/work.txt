@@ -1,0 +1,12 @@
+title: where the heart is
+-
+content:  
+
+"Where The Heart is" is a project that combines two separate technologies, Google Maps and Facebook, to examine the social diasporas that are formed in modern day social networks.
+
+The project asks a user to log into facebook, and identify their three top locales. The user's top three networks in facebook are identified and each friend is then mapped on the globe.
+
+While the most recent of networks will usually be clustered geographically, the project allows you to visualize the dispersal of less dominant networks. Over time, they settle in different regions of the country, at times overlapping.
+
+Website: HTML, Javascript, CSS. Typeface Fedra Sans Display Light via typotheque web font service.  
+6x9" Saddle Stitched Booklet, Laser Printed. 2009

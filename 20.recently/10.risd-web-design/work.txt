@@ -1,0 +1,11 @@
+title: Risd Web Design
+-
+content:  
+
+In the winter of 2008 and 2010, I taught risd's winter web design course.
+
+The curriculum was focused around the use of emerging web technologies such as @font-face and css transitions, as well as using jquery for minor interaction details.
+
+The final project was an interactive mixtape that was accomplished by using a html5 (degradable to flash) plugin.
+
+Links: [course](http://risd.generic.cx/), [curriculum](http://risd.generic.cx/curriculum.html), & [courseware](http://risd.generic.cx/review.html)

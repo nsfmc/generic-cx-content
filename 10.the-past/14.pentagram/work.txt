@@ -1,0 +1,10 @@
+title: work at pentagram
+-
+content:
+For cyberhomes, i developed a single page interactive web application that used a variety of data from Placebase's Pushpin API & ESRI to generate neighborhood attribute breakdowns in a highly typographic manner.
+
+With takaaki okada & lisa strausfeld, html/js/css 2008
+
+For litl, i developed various interaction sketches for home-screen animations on the litl home computer. In particular, this behavior of grid-rolodex-perspectival views for displaying various sorts of dynamic data on the litl
+
+with christian marc schmidt and lisa strausfeld. actionscript 3 w/ papervision 3d. 2008

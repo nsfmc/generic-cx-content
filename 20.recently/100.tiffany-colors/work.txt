@@ -1,0 +1,13 @@
+title: tiffany colors
+-
+content: 
+
+I designed and developed the website for [Tiffany Colors](http://tiffany-colors.com/) (née Tiffany Lowry) in collaboration with Kate Harmer of [hum creative](http://humcreative.com) who designed Tif's identity.
+
+Tiffany Colors is a style and creative consultant based in Seattle, WA. She works with fantastic photographers who document her incredibly talented visual aesthetic. Tiffany's vision photographs amazingly so I really wanted to let that come through on the website to give her work an immersive and engaging feel.
+
+In classic editorial style, the site is *all about typography* pairing with gorgeous photography which is aided by Typotheque's History family. Paired with a modular 3/4 column grid, everything really looks solid.
+
+The goal in architecture was to make the site feel expansive while not feeling too large, too complex too confusing, so the site is relatively shallow so as to not be to confusing, but it packs in lots of content. In the back, the site uses stacey, the html5 boilerplate and masonry.js as well as tumblr api integration for the blog. 
+
+PHP, HTML, Javascript, CSS 2011.

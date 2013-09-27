@@ -1,0 +1,6 @@
+title: an html quine
+-
+content:
+A quine is described as a program which produces a copy of its own source.
+
+My previous homepage did just that. The page is an html+javascript+css quine.

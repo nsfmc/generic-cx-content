@@ -1,0 +1,6 @@
+sitetitle: This Is Generic Dot Cx
+-
+header: This Is <br> Generic <br>Dot CX.
+-
+content:  
+this is the portfolio of marcos andr&eacute;s ojeda.

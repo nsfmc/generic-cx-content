@@ -1,0 +1,14 @@
+title: access-ibility study
+-
+content:
+This accessibility study began with me spending time with apple's Voice Over feature for MacOS. Having read countless papers on accessibility and standards based web design, i decided to try my hand at browsing the web using VoiceOver and Safari.
+
+The results are somewhat unsurprising:
+a: it's frustrating
+b: it works pretty well, though.
+
+The nature, however, of my frustration, was with the way i was forced to navigate webpages. Instead of scanning pages, i was forced to listen through them serially. I loved the bbc's "skip to content" (super 508 compliant!) and came to use navigation lists as my only way of understanding the content of a website.
+
+The other part of this project was actually looking at the webpages themselves and piecing out how content rich they were. Some sites have so many extraneous elements that you have to wade through a mess of short tags, images and so forth until you arrive at an oasis of a paragraph.
+
+The thing is that it's hard, until you experience VoiceOver (not to say anything of Jaws or other applications), you have no idea how refreshing a single uninterrupted paragraph is. It is at that moment that the interface falls away and you can focus on the content. The following images are a way of visually representing this relationship in some webpages that i browsed and scraped over a ten minute period.
