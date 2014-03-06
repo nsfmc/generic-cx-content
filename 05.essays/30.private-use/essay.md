@@ -27,11 +27,13 @@ At the time i had two goals: add extra glyphs to the font and change fontawesome
 The secondary benefit, which i hadn't considered at first, but which now seems quite legitimate, is reducing the glyph count. Of my earliest experiments when beginning this process, was seeing how many font-awesome glyphs we used. Here's some handy shell incantation you can use to figure this out for yourself
 
 
-```bash
-ack -ho "(?:[\" ])(icon-[a-z\-]+)" --html | \
-sed 's/.\(.*\)/\1/' | \
-sort | \
-uniq
+```
+
+    ack -ho "(?:[\" ])(icon-[a-z\-]+)" --html | \
+    sed 's/.\(.*\)/\1/' | \
+    sort | \
+    uniq
+
 ```
 
 if you have looked at fontawesome recently, you will find upwards of 350 glyphs in use. do you need all those? clearly services like the (mostly) disemvoweled [icnfnt](http://icnfnt.com/) are aware of this disconnect, but naturally a question is how to generate a version of the font with the above information without having to bother with clickity clicking a website.
@@ -42,13 +44,15 @@ by far the easiest way of going about this is by running the Generate Font actio
 
 for example, if you're using a .ufo-based workflow, then you have at your disposal the afdko which now (natively) generates opentype fonts. If you're building one in release mode, the incantation goes something, for font awesome, like this:
 
-```bash
-$ makeotf -f FontAwesome.ufo \
--o FontAwesome.otf
--ff fdk/features \
--gf fdk/glyphOrder \
--mf fdk/menuname \
--r
+```
+
+    $ makeotf -f FontAwesome.ufo \
+    -o FontAwesome.otf
+    -ff fdk/features \
+    -gf fdk/glyphOrder \
+    -mf fdk/menuname \
+    -r
+
 ```
 
 which assumes you have a folder sitting around called fdk which contains opentype-specific features/glyphorder/etc. for reference, adobe publishes a [reference implementation](http://download.macromedia.com/pub/developer/opentype/Example-Font-Sources.zip) for Minion. Miguel Sousa wrote a small thing about how to generate this in a [typophile GlyphOrderAndAliasDB thread](http://typophile.com/node/42076).
@@ -57,27 +61,29 @@ Robofont generates this folder when you run the Generate Font command
 
 if you are using robofont, then the app adds an entry to the font's `lib` called `public.glyphOrder` so you could, for example, do something like this:
 
-```python
-import robofab.world
+```
 
-def glyphorder(font_path='/path/to/font.ufo', dest='glyphOrder'):
-    MAX_POINTS = 1114113
-    font = robofab.world.OpenFont(font_path)
+    import robofab.world
 
-    if font.lib.get('public.glyphOrder', None):
-        # for a robofont font, you can get
-        order = font.lib.get('public.glyphOrder')
-    else:
-        # otherwise, you can do
-        order = font.keys()
-        sorted(order, key=lambda g: font[g].unicode or MAX_POINTS)
+    def glyphorder(font_path='/path/to/font.ufo', dest='glyphOrder'):
+        MAX_POINTS = 1114113
+        font = robofab.world.OpenFont(font_path)
 
-    with open(dest, 'w') as out:
-        for g in order:
-            outstr = "%s  %s" % (g, g)
-            if font[g].unicode:
-                outstr += "  uni%04X" % font[g].unicode
-            out.write(outstr+"\n")
+        if font.lib.get('public.glyphOrder', None):
+            # for a robofont font, you can get
+            order = font.lib.get('public.glyphOrder')
+        else:
+            # otherwise, you can do
+            order = font.keys()
+            sorted(order, key=lambda g: font[g].unicode or MAX_POINTS)
+
+        with open(dest, 'w') as out:
+            for g in order:
+                outstr = "%s  %s" % (g, g)
+                if font[g].unicode:
+                    outstr += "  uni%04X" % font[g].unicode
+                out.write(outstr+"\n")
+
 ```
 
 Removing glyphs from the glyphOrder file doesn't *really* change anything and won't remove any of the glyphs from the font. to do that you need the `tx` tool or you would need to build a new version of the font from the source ufo.
@@ -88,8 +94,10 @@ For whatever reason, `makeotf` will generate an obtuse version string. It would 
 
 To do this, you need `ttx` from the fonttools package. you can `pip install fonttools` for that. Having it, you can then run:
 
-```shell
+```
+
     $ ttx myfont.otf
+
 ```
 
 this will generate a file called myfont.ttx which is, semi-conveniently, an xml file.
@@ -97,6 +105,7 @@ this will generate a file called myfont.ttx which is, semi-conveniently, an xml 
 You can then modify it by running a python script like this
 
 ```python
+
     """versionit.py - call like `python versionit.py font.ttx vcs_hash'
 
     it will make a file called font-vcs_hash.ttx
@@ -120,6 +129,7 @@ You can then modify it by running a python script like this
         filename = sys.argv[1]
         vcs_hash = sys.argv[2]
         versionit(filename, vcs_hash)
+
 ```
 
 this is super-basic, but you could extend this however you like, presumably by having it call ttx again on the resultant file and the

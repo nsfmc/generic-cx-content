@@ -196,6 +196,15 @@ primary_style:
     font-size: 16px;
     line-height: 20px;
   }
+  #essaypage img {
+    max-width: 100%;
+  }
+  #essaypage h2 {
+    font-size: 50px;
+  }
+  #essaypage h3 {
+    font-size: 30px;
+  }
 
   #prettystuff{
     width:900px;
