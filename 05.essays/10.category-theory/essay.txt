@@ -16,7 +16,7 @@ Design is an opinionated field, informed by concepts like "systems" and "visual 
 
 Folks, myself included, like to make the distinction between "design aesthetic" and "design function" as if they're different things, but from a fundamental standpoint they're both a *kind of vernacular*; each a style and method for making a point. Sometimes 'how you say it' *is* as important as 'what you say.'
 
-![Turn off, then on](printer.jpg)
+![Turn off, then on](@path/printer.jpg)
 
 Let's go back to tv receivers & software. When it comes to things like software and hardware, there's this Jakob Nielsen/Don Norman-esque belief that objects should be obvious, clear, reuse metaphors, etc. These are not bad goals at all. Interaction and interface design are important *because* they aim to create intelligible and reusable mental models for what are often complex ideas.
 
@@ -42,7 +42,7 @@ To say that Design, as a field, is conflicted about its place in the Art world i
 
 ***
 
-![2012 headline - by gareth hague](klute.jpg)
+![2012 headline - by gareth hague](@path/klute.jpg)
 
 The comedy of iOS7 was chiefly the '[designer reaction](http://designerscomplaining.tumblr.com/),' mostly for their bare-fisted prescriptivism (at quantities unseen since the reveal of wolff olins' london 2012 logo[^london2012]). iOS7 was all *wrong* they said. Helvetica as system font was [wrong][spiekermann]. The grid was "OK", but its [application was wrong][mrgan]. Even the gracious crits toed the party line vis-a-vis type, color, icon design, etc[^chimero].
 
