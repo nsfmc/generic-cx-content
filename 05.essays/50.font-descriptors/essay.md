@@ -1,0 +1,193 @@
+title: chaining font descriptors in uikit
+-
+content:
+
+A  [few months ago](http://healthyhackathon.khanacademy.org) i decided to try my hand at doing some work in swift but i ended up yak shaving my way into finally understanding what's going on in textkit. One of the neat things i came across was this idea of chaining font descriptors to progressively activate opentype features on a font. Now that we're in [full blown hack week](http://hackweek.khanacademy.org) at khan academy, i'm taking the time to use this code for a project i'm working on.
+
+This isn't a particularly new idea, but inspired by [alamofire's neat post about chaining](http://nshipster.com/alamofire/) vis-a-vis http requests and the current '[uproar](http://ilovetypography.com/2014/10/25/why-a-better-opentype-user-interface-matters/)' about opentype features, i thought i'd write up what i learned then. Plus it's cute because swift™ and also because chaining!
+
+
+<!-- more -->
+
+One of the things i was hoping to do was exploit as much of the power of Proxima Nova in an iOS app. Like most modern fonts, proxima includes a bevy of opentype features including true small caps, old style figures, stylistic sets and so forth. You can learn [more about proxima](http://www.marksimonson.com/fonts/view/proxima-nova) or [read its overview (pdf)](http://www.marksimonson.com/assets/content/fonts/ProximaNovaOverview.pdf) which explains most everything you might want to turn on and off.
+
+The neat thing about chaining font descriptors is that it gives you a very handy way to grab a `UIFont` that has the opentype features you want available. For instance, a font which has small caps and forced uppercase->small caps (i.e. `SMCP` & `C2SC`), you can do something like:
+
+    var styledFont: UIFont = UIFont(
+            name: "ProximaNova-Regular",
+            size: 14.0)!
+            ._moFontWithSMCP()
+            ._moFontWithC2SC()
+
+but how? and what does this mean? Let's find out!
+
+## how fonts in ios work
+
+<iframe src="https://www.flickr.com/photos/subliminal/1520000234/in/photolist-3jjp7A-3jeZ8R-3jjnrS-3jjq2j-5JUqiw-5JQ9RX-5JUqaW-3p6Ymm-3p6TXw-3vq5H6-3vq2MR-3p6ULU-3vq3WM-3p6Un7-3p6VbY/player/" width="640" height="480" frameborder="0" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
+
+in iOS, there's this idea of a font as a specific instance of a typeface at a specific size. Actually, the photo up above sort of explains the idea perfectly. A font in that case would be "10pt Garamond." If you were instantiating it, you might say
+
+    var oldFont: UIFont = UIFont(name:"Garamond", size:10.0)
+
+and for any run of text in iOS, you are allowed to set this UIFont property however you like. If you want to have a run of text with lining figures followed by a run of text with [old style figures](http://en.wikipedia.org/wiki/Text_figures), you need to do the equivalent of
+
+    let liningFont: UIFont = UIFont(name:"Garamond", size:10.0)
+    let osfFont: UIFont = UIFont(name:"Garamond-scOSF", size:10.0)
+
+and whenever you need to use both of them, what you do is create and [attributed string](https://developer.apple.com/library/ios/documentation/Cocoa/Reference/Foundation/Classes/NSAttributedString_Class/Reference/Reference.html#//apple_ref/doc/uid/TP40003622) that contains a run of text whose font may be `liningFont` and then append a second run of text whose font is `osfFont`. In the abstract, i think this doesn't sounds *totally* crazy, but it is a bit verbose. the above example reads like this:
+
+    var liningRun = NSMutableAttributedString(string: "01234", 
+        attributes: [NSFontAttributeName: liningFont!])
+    var osfRun = NSAttributedString(string: "567890",
+        attributes: [NSFontAttributeName: osfFont!])
+    liningRun.appendAttributedString(osfRun)
+
+which results in something like
+
+![](http://dl.dropboxusercontent.com/u/406291/Screenshots/1b9X.png)
+
+Attributed strings can set a bunch of *attributes*: its font (which we've just seen), the kerning or tracking for a region of text, its use of ligatures, its color, [or any number of other attributes](https://developer.apple.com/library/ios/documentation/uikit/reference/NSAttributedString_UIKit_Additions/Reference/Reference.html). The key is that these attributes are settings that you can apply to areas of text. But important to keep in mind is that these settings, while similar to a Font's settings, are different.
+
+In contrast, switching a font's size, small caps, oldstyle figures, stylistic alternates and other opentype features require creating a new [font object](https://developer.apple.com/library/ios/documentation/uikit/reference/UIFont_Class/Reference/Reference.html#//apple_ref/occ/cl/UIFont) with those features enabled rather than specifying that feature as an attribute of a region inside an attributed string.
+
+As an aside, i personally think it's weird that something like kerning or use of ligatures is assumed to apply equally to multiple fonts in the same attributed string but something like an opentype feature like old stlyle figures is assumed to be a feature on a font, but that's just the world we live in.
+
+In core text and by proxy, text kit, there are two ways to create a font. The first is by creating a new [`UIFont`](https://developer.apple.com/library/prerelease/ios/documentation/UIKit/Reference/UIFont_Class/index.html#//apple_ref/occ/clm/UIFont/fontWithName:size:) with a font name and a font size. The second is by using a [UIFontDescriptor](https://developer.apple.com/library/prerelease/ios/documentation/UIKit/Reference/UIFontDescriptor_Class/index.html#//apple_ref/occ/cl/UIFontDescriptor).
+
+Font descriptors are an oddly optimistic technology. You basically say something like "i want a font on this device that matches, as closely as possible these properties" and the system is responsible for returning a font which has as many of those attributes as possible. I'll talk later about why i think font descriptors are overly optimistic, but let's get to the codey parts.
+
+### futzing with descriptors
+
+the typical approach to muddling around with fonts, in particular, activating opentype features, is something like what you see in the fantastic 2013 wwdc session "[using fonts with text kit](http://devstreaming.apple.com/videos/wwdc/2013/223xex5xsgdfh1ergtjrqwoghbj/223/223-SD.mov?dl=1)" session by ned holbrook:
+
+    func fontWithONUM(baseFont: UIFont) -> UIFont {
+        let oDesc = baseFont.fontDescriptor()
+        let features: [NSObject: AnyObject] = [
+            UIFontDescriptorFeatureSettingsAttribute: [
+                [
+                    UIFontFeatureTypeIdentifierKey: 
+                        kNumberCaseType,
+                    UIFontFeatureSelectorIdentifierKey: 
+                        kLowerCaseNumbersSelector
+                ]
+            ]
+        ]
+        let newDesc = oDesc.fontDescriptorByAddingAttributes(features)
+        return UIFont(descriptor: newDesc, size: 0.0)
+    }
+
+The idea is that you serialize your UIFont instance into a font descriptor, mutate that by adding new features and finally create a brand new Font seeded by that modified descriptor (using `0.0` as the font size preserves the descriptor's font size) Here is how you might make use of this code:
+
+    let myFont:UIFont = UIFont(name:"ProximaNova-Regular", size:14.0)!
+    let myFancyFont:UIFont = fontWithONUM(myFont)
+
+And that's not wrong, per sé, but it's not exactly the nicest syntax for this sorta thing and you can imagine the dreaded lisp-style fingernailcuttings for a partucilurly extravagant font with many features. The point of this blog post, though, is to suggest that PERHAPS there is a nicer looking way of doing this. Let's see it!
+
+### chaining like a boss
+
+Instead of passing in a font and getting back another font, why not actually just start by extending UIFont? We can do this by writing basically the EXACT same sort of code
+
+    extension UIFont {
+        func _moFontWithFeature(key: AnyObject, value:AnyObject) -> UIFont {
+            let originalDesc = self.fontDescriptor()
+            let features:[NSObject: AnyObject] = [
+                UIFontDescriptorFeatureSettingsAttribute: [
+                    [
+                        UIFontFeatureTypeIdentifierKey: key,
+                        UIFontFeatureSelectorIdentifierKey: value
+                    ]
+                ]
+            ]
+            let newDesc = originalDesc.fontDescriptorByAddingAttributes(features)
+            return UIFont(descriptor: newDesc, size: 0.0)
+        }
+    }
+
+Two changes here: first, i'm extending `UIFont` with this method. This means that any `UIFont` instance can now call this method to its heart content.
+
+But also notice that the substantive change that's happened here is that rather than hard-coding the values for `UIFontFeatureTypeIdentifierKey` and `UIFontFeatureSelectorIdentifierKey` i instead pass them directly into the method as its only arguments (i no longer have to pass in the font because it's available as `self`.) So for any `UIFont` instance, you can now imbue it with any set of features easily.
+
+But instead of dealing with features abstractly, we'd like to at least have a way of talking about them without having to resort to actual key values like savages.
+
+So we do something like this:
+
+    extension UIFont {
+        
+        // repeated from above
+        func _moFontWithFeature(...) -> UIFont { ... }
+        
+        func _moFontWithSMCP() -> UIFont {
+            return self._moFontWithFeature(
+                kLowerCaseType, 
+                value: kLowerCaseSmallCapsSelector)
+        }
+        
+        func _moFontWithC2SC() -> UIFont {
+            return self._moFontWithFeature(
+                kUpperCaseType, 
+                value: kLowerCaseSmallCapsSelector)
+        }
+        
+        func _moFontWithONUM() -> UIFont {
+            return self._moFontWithFeature(
+                kNumberCaseType, 
+                value: kLowerCaseNumbersSelector)
+        }
+    }
+
+These are three of the most basic (and popular) kinds of opentype features on fonts, namely: Small Caps (`SMCP`), Caps to Small Caps (`C2SC`), and Oldstyle Figures (`ONUM`). I added the `_mo` prefix so that i won't accidentally clobber some extant or hidden UIFont method. The rest of the features you can find by looking at the `<ATS/SFNTLayoutTypes.h>` header in xcode. 
+
+With these three methods, you can do something along the lines of writing code like:
+
+    
+    let styledFont: UIFont = UIFont(
+            name: "ProximaNova-Regular",
+            size: 14.0)! // explicitly unwrap since init -> UIFont?
+            ._moFontWithSMCP()
+            ._moFontWithC2SC()
+            ._moFontWithONUM()
+
+and that would give you a font that would turn "A small caps font with 1234567890" into:
+
+![](http://dl.dropboxusercontent.com/u/406291/Screenshots/JqQO.png)
+
+### gripes
+
+I obliquely mentioned that i have 'mixed' feelings about font descriptors and it's mostly because they're explicitly unreliable and because they assume the existence of exhaustive font families, such that you'd be able to query for a font with some properties like number types or special characters and so forth. 
+
+The system is designed to let you ask, but makes no assurances you'll get what you're looking for which can make it difficult to distinguish errors in your own code and errors in the font provided. Case in point [rdar://17624040](rdar://17624040) (closed as dupe of [rdar://17624040](rdar://17624040)), a bug in iOS' bundled version of Avenir Next that prevents SMCP and C2SC from activating even though the features are present in the font (or if queried via [`CTFontCopyFeatures`](https://developer.apple.com/library/ios/documentation/carbon/reference/CTFontRef/index.html#//apple_ref/c/func/CTFontCopyFeatures))
+
+Which is sort of disappointing because those sorts of silent errors make it harder to trust that the more ambitious family-querying and filtering qualities of Font Descriptors work *at all*. That said, this is what you've got to work with.
+
+Since this was mostly an exploration of activating features, i thought i'd add in another method for selectively activating stylistic sets as a bonus for anyone that made it all the way to the end. Enjoy!
+
+    /** 
+    pass in a positive integer to activate that stylistic set
+    or pass a negative integer to deactivate that set.
+    0 deactivates all features.
+     */
+    func _moFontWithSS(stylistic_set:Int) -> UIFont {
+        // this cheats a bit, assuming the enum values for the
+        // stylistic sets stay numbered the same, but... oh well...
+        switch stylistic_set {
+        case 0:
+            let ss = 0
+            return self._moFontWithFeature(
+                kStylisticAlternativesType, 
+                value: ss)
+        case 1...20:
+            let ss = stylistic_set * 2
+            return self._moFontWithFeature(
+                kStylisticAlternativesType, 
+                value: ss)
+        case (-20)...(-1):
+            let ss = (stylistic_set * -2) + 1
+            return self._moFontWithFeature(
+                kStylisticAlternativesType, 
+                value: ss)
+        default:
+            // in the worst case, return the font
+            return self
+        }
+    }
+
