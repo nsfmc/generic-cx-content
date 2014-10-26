@@ -23,7 +23,7 @@ but how? and what does this mean? Let's find out!
 
 ## how fonts in ios work
 
-<iframe src="https://www.flickr.com/photos/subliminal/1520000234/in/photolist-3jjp7A-3jeZ8R-3jjnrS-3jjq2j-5JUqiw-5JQ9RX-5JUqaW-3p6Ymm-3p6TXw-3vq5H6-3vq2MR-3p6ULU-3vq3WM-3p6Un7-3p6VbY/player/" width="640" height="480" frameborder="0" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
+![](@path/1520000234_46b91b992e_b.jpg)
 
 in iOS, there's this idea of a font as a specific instance of a typeface at a specific size. Actually, the photo up above sort of explains the idea perfectly. A font in that case would be "10pt Garamond." If you were instantiating it, you might say
 

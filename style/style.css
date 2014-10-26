@@ -206,6 +206,24 @@ primary_style:
     font-size: 30px;
   }
 
+  #essaypage pre {
+    padding: 0;
+    margin-top: -10px;
+    margin-bottom: 30px;
+  }
+
+  #essaypage code {
+    font-family: "andale mono", monospace;
+    white-space: pre;
+    font-size: 85%
+  }
+
+  #essaypage pre code {
+    font-size: 100%;
+    line-height: 130%;
+  }
+
+
   #prettystuff{
     width:900px;
     position:absolute;
@@ -227,3 +245,4 @@ primary_style:
     box-shadow: -15px 15px 0px #ccc;
     max-width:1024px;
   }
+
