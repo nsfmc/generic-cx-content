@@ -1,5 +1,11 @@
 title: chaining font descriptors in uikit
 -
+codelang: swift
+-
+metadesc: As part of khan academy's last healthy hackathon, i had a chance to learn about UIFont and UIFontdescriptors. Here's how you can use them to activate opentype features in your iOS app with swift.
+-
+metaphoto: @pathJqQO.png
+-
 content:
 
 A  [few months ago](http://healthyhackathon.khanacademy.org) i decided to try my hand at doing some work in swift but i ended up yak shaving my way into finally understanding what's going on in textkit. One of the neat things i came across was this idea of chaining font descriptors to progressively activate opentype features on a font. Now that we're in [full blown hack week](http://hackweek.khanacademy.org) at khan academy, i'm taking the time to use this code for a project i'm working on.
@@ -44,7 +50,7 @@ and whenever you need to use both of them, what you do is create and [attributed
 
 which results in something like
 
-![](http://dl.dropboxusercontent.com/u/406291/Screenshots/1b9X.png)
+![](@path/1b9X.png)
 
 Attributed strings can set a bunch of *attributes*: its font (which we've just seen), the kerning or tracking for a region of text, its use of ligatures, its color, [or any number of other attributes](https://developer.apple.com/library/ios/documentation/uikit/reference/NSAttributedString_UIKit_Additions/Reference/Reference.html). The key is that these attributes are settings that you can apply to areas of text. But important to keep in mind is that these settings, while similar to a Font's settings, are different.
 
@@ -149,7 +155,7 @@ With these three methods, you can do something along the lines of writing code l
 
 and that would give you a font that would turn "A small caps font with 1234567890" into:
 
-![](http://dl.dropboxusercontent.com/u/406291/Screenshots/JqQO.png)
+![](@path/JqQO.png)
 
 ### gripes
 
@@ -191,3 +197,6 @@ Since this was mostly an exploration of activating features, i thought i'd add i
         }
     }
 
+### epilogue
+
+i'm totally open to the very likely idea that i have gotten something wrong here. Let me know if i've gotten anything wrong via twitter [@nsfmc](http://twitter.com/nsfmc) or via email, which you should be able to find over to the left. hit me up with your feedback, please!

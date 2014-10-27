@@ -213,7 +213,9 @@ primary_style:
   }
 
   #essaypage code {
-    font-family: "andale mono", monospace;
+    font-family: inputmonocondensed-regular, "Input Mono Cond", "andale mono", monospace;
+    font-weight: normal;
+    font-style: normal;
     white-space: pre;
     font-size: 85%
   }
