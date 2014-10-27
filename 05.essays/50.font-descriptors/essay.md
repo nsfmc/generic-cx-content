@@ -155,7 +155,7 @@ With these three methods, you can do something along the lines of writing code l
 
 and that would give you a font that would turn "A small caps font with 1234567890" into:
 
-![](@path/JqQO.png)
+![](@path/B3Xl.png)
 
 ### gripes
 
