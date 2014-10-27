@@ -141,9 +141,11 @@ So we do something like this:
         }
     }
 
-These are three of the most basic (and popular) kinds of opentype features on fonts, namely: Small Caps (`SMCP`), Caps to Small Caps (`C2SC`), and Oldstyle Figures (`ONUM`). I added the `_mo` prefix so that i won't accidentally clobber some extant or hidden UIFont method. The rest of the features you can find by looking at the `<ATS/SFNTLayoutTypes.h>` header in xcode. 
+These are three of the most basic (and popular) kinds of [opentype features](https://www.microsoft.com/typography/otspec/features_ae.htm) on fonts, namely: Small Caps (`SMCP`), Caps to Small Caps (`C2SC`), and Oldstyle Figures (`ONUM`). I used these 4-letter feature abbreviations because they most closely map onto the features you end up seeing in font brochures and are the exact same features that type designers implement when they're writing up opentype code.
 
-With these three methods, you can do something along the lines of writing code like:
+I added the `_mo` prefix so that i won't accidentally clobber some extant or hidden UIFont method. The rest of the features you can find by looking at the `<ATS/SFNTLayoutTypes.h>` header in xcode. In particular, this wacky naming convention i've chosen for my methods is due to me rationalizing the abstractions (which presumably are a result of the churn of font technologies GX/AAT/TTF/OTF tech during the late 90s and early aughts) that ATS' SFNTLayoutTypes chooses in terms of OpentType tags.
+
+Anyhow, with these three methods, you can do something along the lines of writing code like:
 
     
     let styledFont: UIFont = UIFont(
