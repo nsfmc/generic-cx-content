@@ -24,8 +24,11 @@ The neat thing about chaining font descriptors is that it gives you a very handy
             size: 14.0)!
             .fontWithSMCP()
             .fontWithC2SC()
+            .fontWithONUM()
 
-but how? and what does this mean? Let's find out!
+These are three of the most basic (and popular) kinds of [opentype features](https://www.microsoft.com/typography/otspec/features_ae.htm) on fonts, namely: Small Caps (`SMCP`), Caps to Small Caps (`C2SC`), and Oldstyle Figures (`ONUM`). I used these 4-letter feature abbreviations because they most closely map onto the features you end up seeing in font brochures and are the exact same features that type designers implement when they're writing up opentype code.
+
+but... how? and what does this mean? Let's find out!
 
 ## how fonts in ios work
 
@@ -109,7 +112,7 @@ Instead of passing in a font and getting back another font, why not actually jus
         }
     }
 
-Two changes here: first, i'm extending `UIFont` with this method. This means that any `UIFont` instance can now call this method to its heart content.
+Two changes here: first, i'm extending `UIFont` with this method. This means that any `UIFont` instance can now call this method to its heart's content.
 
 But also notice that the substantive change that's happened here is that rather than hard-coding the values for `UIFontFeatureTypeIdentifierKey` and `UIFontFeatureSelectorIdentifierKey` i instead pass them directly into the method as its only arguments (i no longer have to pass in the font because it's available as `self`.) So for any `UIFont` instance, you can now imbue it with any set of features easily.
 
@@ -140,8 +143,6 @@ So we do something like this:
                 value: kLowerCaseNumbersSelector)
         }
     }
-
-These are three of the most basic (and popular) kinds of [opentype features](https://www.microsoft.com/typography/otspec/features_ae.htm) on fonts, namely: Small Caps (`SMCP`), Caps to Small Caps (`C2SC`), and Oldstyle Figures (`ONUM`). I used these 4-letter feature abbreviations because they most closely map onto the features you end up seeing in font brochures and are the exact same features that type designers implement when they're writing up opentype code.
 
 If you're wondering what other options exist other than `kNumberCaseType`, you can find other available features by looking at the `<ATS/SFNTLayoutTypes.h>` header in xcode. In particular, this wacky naming convention i've chosen for my methods is due to me ignoring the ATS abstractions (which *presumably* are a result of the churn of font technologies GX/AAT/TTF/OTF tech during the late 90s and early aughts) in SFNTLayoutTypes in favor of OpentType tags.
 
