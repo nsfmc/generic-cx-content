@@ -22,8 +22,8 @@ The neat thing about chaining font descriptors is that it gives you a very handy
     var styledFont: UIFont = UIFont(
             name: "ProximaNova-Regular",
             size: 14.0)!
-            ._moFontWithSMCP()
-            ._moFontWithC2SC()
+            .fontWithSMCP()
+            .fontWithC2SC()
 
 but how? and what does this mean? Let's find out!
 
@@ -94,7 +94,7 @@ And that's not wrong, per sé, but it's not exactly the nicest syntax for this s
 Instead of passing in a font and getting back another font, why not actually just start by extending UIFont? We can do this by writing basically the EXACT same sort of code
 
     extension UIFont {
-        func _moFontWithFeature(key: AnyObject, value:AnyObject) -> UIFont {
+        func fontWithFeature(key: AnyObject, value:AnyObject) -> UIFont {
             let originalDesc = self.fontDescriptor()
             let features:[NSObject: AnyObject] = [
                 UIFontDescriptorFeatureSettingsAttribute: [
@@ -120,22 +120,22 @@ So we do something like this:
     extension UIFont {
         
         // repeated from above
-        func _moFontWithFeature(...) -> UIFont { ... }
+        func fontWithFeature(...) -> UIFont { ... }
         
-        func _moFontWithSMCP() -> UIFont {
-            return self._moFontWithFeature(
+        func fontWithSMCP() -> UIFont {
+            return self.fontWithFeature(
                 kLowerCaseType, 
                 value: kLowerCaseSmallCapsSelector)
         }
         
-        func _moFontWithC2SC() -> UIFont {
-            return self._moFontWithFeature(
+        func fontWithC2SC() -> UIFont {
+            return self.fontWithFeature(
                 kUpperCaseType, 
                 value: kLowerCaseSmallCapsSelector)
         }
         
-        func _moFontWithONUM() -> UIFont {
-            return self._moFontWithFeature(
+        func fontWithONUM() -> UIFont {
+            return self.fontWithFeature(
                 kNumberCaseType, 
                 value: kLowerCaseNumbersSelector)
         }
@@ -143,7 +143,7 @@ So we do something like this:
 
 These are three of the most basic (and popular) kinds of [opentype features](https://www.microsoft.com/typography/otspec/features_ae.htm) on fonts, namely: Small Caps (`SMCP`), Caps to Small Caps (`C2SC`), and Oldstyle Figures (`ONUM`). I used these 4-letter feature abbreviations because they most closely map onto the features you end up seeing in font brochures and are the exact same features that type designers implement when they're writing up opentype code.
 
-I added the `_mo` prefix so that i won't accidentally clobber some extant or hidden UIFont method. The rest of the features you can find by looking at the `<ATS/SFNTLayoutTypes.h>` header in xcode. In particular, this wacky naming convention i've chosen for my methods is due to me rationalizing the abstractions (which presumably are a result of the churn of font technologies GX/AAT/TTF/OTF tech during the late 90s and early aughts) that ATS' SFNTLayoutTypes chooses in terms of OpentType tags.
+If you're wondering what other options exist other than `kNumberCaseType`, you can find other available features by looking at the `<ATS/SFNTLayoutTypes.h>` header in xcode. In particular, this wacky naming convention i've chosen for my methods is due to me ignoring the ATS abstractions (which *presumably* are a result of the churn of font technologies GX/AAT/TTF/OTF tech during the late 90s and early aughts) in SFNTLayoutTypes in favor of OpentType tags.
 
 Anyhow, with these three methods, you can do something along the lines of writing code like:
 
@@ -151,9 +151,9 @@ Anyhow, with these three methods, you can do something along the lines of writin
     let styledFont: UIFont = UIFont(
             name: "ProximaNova-Regular",
             size: 14.0)! // explicitly unwrap since init -> UIFont?
-            ._moFontWithSMCP()
-            ._moFontWithC2SC()
-            ._moFontWithONUM()
+            .fontWithSMCP()
+            .fontWithC2SC()
+            .fontWithONUM()
 
 and that would give you a font that would turn "A small caps font with 1234567890" into:
 
@@ -174,23 +174,23 @@ Since this was mostly an exploration of activating features, i thought i'd add i
     or pass a negative integer to deactivate that set.
     0 deactivates all features.
      */
-    func _moFontWithSS(stylistic_set:Int) -> UIFont {
+    func fontWithSS(stylistic_set:Int) -> UIFont {
         // this cheats a bit, assuming the enum values for the
         // stylistic sets stay numbered the same, but... oh well...
         switch stylistic_set {
         case 0:
             let ss = 0
-            return self._moFontWithFeature(
+            return self.fontWithFeature(
                 kStylisticAlternativesType, 
                 value: ss)
         case 1...20:
             let ss = stylistic_set * 2
-            return self._moFontWithFeature(
+            return self.fontWithFeature(
                 kStylisticAlternativesType, 
                 value: ss)
         case (-20)...(-1):
             let ss = (stylistic_set * -2) + 1
-            return self._moFontWithFeature(
+            return self.fontWithFeature(
                 kStylisticAlternativesType, 
                 value: ss)
         default:
@@ -201,4 +201,6 @@ Since this was mostly an exploration of activating features, i thought i'd add i
 
 ### epilogue
 
-i'm totally open to the very likely idea that i have gotten something wrong here. Let me know if i've gotten anything wrong via twitter [@nsfmc](http://twitter.com/nsfmc) or via email, which you should be able to find over to the left. hit me up with your feedback, please!
+If you're actually going this route, it might not be totally crazy to actually create your own shell around UIFont rather than extending it. In particular, you'll end up doing *something* like this if you do end up supporting Dynamic Type with non-helvetica in your app.
+
+Also, i'm totally open to the very likely idea that i have gotten something wrong here. Let me know if i've gotten anything wrong via twitter [@nsfmc](http://twitter.com/nsfmc) or via email, which you should be able to find over to the left. hit me up with your feedback, please! thanks for reading!
