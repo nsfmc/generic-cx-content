@@ -144,7 +144,7 @@ So we do something like this:
         }
     }
 
-If you're wondering what other options exist other than `kNumberCaseType`, you can find other available features by looking at the `<ATS/SFNTLayoutTypes.h>` header in xcode. In particular, this wacky naming convention i've chosen for my methods is due to me ignoring the ATS abstractions (which *presumably* are a result of the churn of font technologies GX/AAT/TTF/OTF tech during the late 90s and early aughts) in SFNTLayoutTypes in favor of OpentType tags.
+If you're wondering what other options exist other than `kNumberCaseType`, you can find other available features by looking at the `<ATS/SFNTLayoutTypes.h>` header in xcode or, more legibly and with comments, the newly [redesigned truetype reference manual](https://developer.apple.com/fonts/TrueType-Reference-Manual/RM09/AppendixF.html#Type37). In particular, this wacky naming convention i've chosen for my methods is due to me consciously ignoring the ATS/[AAT](http://en.wikipedia.org/wiki/Apple_Advanced_Typography) abstractions (which *presumably* exist as a result of the churn of font and type layout technologies GX/AAT/TTF/OTF tech during the late 90s and early aughts) in favor of OpentType tags.
 
 Anyhow, with these three methods, you can do something along the lines of writing code like:
 
