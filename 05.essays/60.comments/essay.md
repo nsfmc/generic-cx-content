@@ -31,7 +31,7 @@ there are two `TODO(marcos)` comments here and they map to things that i should,
 
 [^yakshaving]: ![](@pathmalcolm-in-the-middle.gif), [which see](http://raganwald.com/2014/02/28/a-programmers-story.html)
 
-or more recently, this past week, while i playing with Framer:
+or more recently, this past week, while playing with Framer:
 
 <pre><code class="language-javascript">// TODO(marcos): use cycle here
 var collapsed = true
@@ -52,7 +52,9 @@ These todos, in the context of both projects, were basically the software develo
 
 The novelty here, the point where this ties back to the quote, is that this is actually *the opposite* of the problem outlined in the wikipedia article. In my vim to get towards a working solution, i'm actually leaving important implementation and polish related comments for myself (and others) so that i can address it better... but only once i have something that actually merits fixing.
 
-Again, i want to repeat the central idea here which is that *comments don't have to take a backseat to getting things done*. In fact, i hope i've shown that, comments can provide a relatively easy way to get you from "zero to working" while providing a legitimate roadmap for you to get to something sustainably developed in the future. this isn't about minimal viable products
+Again, i want to repeat the central idea here which is that *comments don't have to take a backseat to getting things done*. In fact, i hope i've shown that, comments can provide a relatively easy way to get you from "zero to working" while providing a legitimate roadmap for you to get to something sustainably developed in the future[^mvp].
+
+[^mvp]: although philosophically aligned, this is not going to devolve into an essay about minimal/maximal viable products. phew.
 
 A nice 'workflow' side effect of this approach, btw, is that i can still do the git-ish thing of one-commit-per-idea and further i can usually then pick off future single tasks by grep'ing for `TODO(marcos)`.
 
