@@ -20,13 +20,12 @@ At [work](http://www.khanacademy.org/careers), we have a slogan "[shipping beats
 
 The behavior we've adopted at work (and to be clear, khan academy is *not* unique in this practice) is to leave comments for the things you aren't able to get to right now. let me show you a 'for instance' from my super hacky [tumblr editor](https://github.com/nsfmc/stumblr) package:
 
-```
-# TODO(marcos): what if this also fails?
-if more_info['meta']['status'] == 200:
-    post = more_info['response']['posts'][0]
-    # TODO(marcos): maybe check a pref for this
-    webbrowser.open(post['post_url'])
-```
+
+    # TODO(marcos): what if this also fails?
+    if more_info['meta']['status'] == 200:
+        post = more_info['response']['posts'][0]
+        # TODO(marcos): maybe check a pref for this
+        webbrowser.open(post['post_url'])
 
 there are two `TODO(marcos)` comments here and they map to things that i should, at some point get to eventually, but that aren't 'blocking' or 'stopships' or whatever. They're basically baby yaks that if i'm not careful, will develop into full grown yaks[^yakshaving] demanding my attention and shears.
 
@@ -34,15 +33,13 @@ there are two `TODO(marcos)` comments here and they map to things that i should,
 
 or more recently, this past week, while i playing with Framer:
 
-```
-// TODO(marcos): use cycle here
-var collapsed = true
-scrubBG.on(Events.Click, function(){
+    // TODO(marcos): use cycle here
+    var collapsed = true
+    scrubBG.on(Events.Click, function(){
 
-    if (collapsed) {
-        // TODO(marcos): instead of just unclipping the layer
-        // animate the text in separately
-```
+        if (collapsed) {
+            // TODO(marcos): instead of just unclipping the layer
+            // animate the text in separately
 
 And, to be clear, the code works! Right now! it's just that *if* i ever want it to work better, i have already outlined a roadmap for myself on how to do that. The framer code is *by definition* a prototype, so let's be honest, who cares if i'm using `cycle` correctly, but my intuition to Do The Right Thing™[^dtrt] is the sort of yak that could have wasted precious prototyping time.
 
