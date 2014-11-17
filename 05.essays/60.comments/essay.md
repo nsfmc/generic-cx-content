@@ -16,16 +16,17 @@ i want to focus on the first part of this statement because it's the most counte
 
 At [work](http://www.khanacademy.org/careers), we have a slogan "[shipping beats perfection](http://bjk5.com/post/60760280107/shipping-beats-perfection-explained)" whose background is this other phrase, *[bias towards action](https://dschool.stanford.edu/groups/k12/wiki/548fb/Bias_Toward_Action.html)*, which, to be honest, i don't think i'd heard until this past week. 
 
-## blah blah Worse is Better™[^wib]
+### blah blah Worse is Better™[^wib]
 
 The behavior we've adopted at work (and to be clear, khan academy is *not* unique in this practice) is to leave comments for the things you aren't able to get to right now. let me show you a 'for instance' from my super hacky [tumblr editor](https://github.com/nsfmc/stumblr) package:
 
-
-    # TODO(marcos): what if this also fails?
-    if more_info['meta']['status'] == 200:
-        post = more_info['response']['posts'][0]
-        # TODO(marcos): maybe check a pref for this
-        webbrowser.open(post['post_url'])
+<pre><code class="language-python">
+# TODO(marcos): what if this also fails?
+if more_info['meta']['status'] == 200:
+    post = more_info['response']['posts'][0]
+    # TODO(marcos): maybe check a pref for this
+    webbrowser.open(post['post_url'])
+</code></pre>
 
 there are two `TODO(marcos)` comments here and they map to things that i should, at some point get to eventually, but that aren't 'blocking' or 'stopships' or whatever. They're basically baby yaks that if i'm not careful, will develop into full grown yaks[^yakshaving] demanding my attention and shears.
 
@@ -33,13 +34,15 @@ there are two `TODO(marcos)` comments here and they map to things that i should,
 
 or more recently, this past week, while i playing with Framer:
 
-    // TODO(marcos): use cycle here
-    var collapsed = true
-    scrubBG.on(Events.Click, function(){
+<pre><code class="language-javascript">
+// TODO(marcos): use cycle here
+var collapsed = true
+scrubBG.on(Events.Click, function(){
 
-        if (collapsed) {
-            // TODO(marcos): instead of just unclipping the layer
-            // animate the text in separately
+    if (collapsed) {
+        // TODO(marcos): instead of just unclipping the layer
+        // animate the text in separately
+</code></pre>
 
 And, to be clear, the code works! Right now! it's just that *if* i ever want it to work better, i have already outlined a roadmap for myself on how to do that. The framer code is *by definition* a prototype, so let's be honest, who cares if i'm using `cycle` correctly, but my intuition to Do The Right Thing™[^dtrt] is the sort of yak that could have wasted precious prototyping time.
 
@@ -55,7 +58,7 @@ Again, i want to repeat the central idea here which is that *comments don't have
 
 A nice 'workflow' side effect of this approach, btw, is that i can still do the git-ish thing of one-commit-per-idea and further i can usually then pick off future single tasks by grep'ing for `TODO(marcos)`.
 
-## a slight caveat (emptor)
+### a slight caveat (emptor)
 
 So this sounds great, right? but when do you add a TODO and when do you add actual code? I'm sorry to say that i don't know. I have a spider sense for some species of yaks that i have shorn before, but there are countless others that i haven't encountered yet.
 
