@@ -20,8 +20,7 @@ At [work](http://www.khanacademy.org/careers), we have a slogan "[shipping beats
 
 The behavior we've adopted at work (and to be clear, khan academy is *not* unique in this practice) is to leave comments for the things you aren't able to get to right now. let me show you a 'for instance' from my super hacky [tumblr editor](https://github.com/nsfmc/stumblr) package:
 
-<pre><code class="language-python">
-# TODO(marcos): what if this also fails?
+<pre><code class="language-python"># TODO(marcos): what if this also fails?
 if more_info['meta']['status'] == 200:
     post = more_info['response']['posts'][0]
     # TODO(marcos): maybe check a pref for this
@@ -30,12 +29,11 @@ if more_info['meta']['status'] == 200:
 
 there are two `TODO(marcos)` comments here and they map to things that i should, at some point get to eventually, but that aren't 'blocking' or 'stopships' or whatever. They're basically baby yaks that if i'm not careful, will develop into full grown yaks[^yakshaving] demanding my attention and shears.
 
-[^yakshaving]: ![](@pathmalcolm-in-the-middle.gif)
+[^yakshaving]: ![](@pathmalcolm-in-the-middle.gif), [which see](http://raganwald.com/2014/02/28/a-programmers-story.html)
 
 or more recently, this past week, while i playing with Framer:
 
-<pre><code class="language-javascript">
-// TODO(marcos): use cycle here
+<pre><code class="language-javascript">// TODO(marcos): use cycle here
 var collapsed = true
 scrubBG.on(Events.Click, function(){
 
