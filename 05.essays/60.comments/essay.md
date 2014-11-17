@@ -16,7 +16,9 @@ At [work](http://www.khanacademy.org/careers), we have a slogan "[shipping beats
 
 ### the unblocking comment
 
-The behavior we've adopted at work (and to be clear, khan academy is *not* unique in this practice) is to leave comments for the things you aren't able to get to right now so that you can unblock yourself. let me show you a 'for instance' from my super hacky [tumblr editor](https://github.com/nsfmc/stumblr) package:
+The practice we've adopted (and to be clear, khan academy is *not* unique here) is to leave comments for the things you recognize are probably out of immediate scope and that you aren't able to get to right now so that you can *get on with your original commit* (i.e. unblocking yourself). 
+
+let me show you a 'for instance' from my super hacky [tumblr editor](https://github.com/nsfmc/stumblr) package:
 
 <pre><code class="language-python"># TODO(marcos): what if this also fails?
 if more_info['meta']['status'] == 200:
@@ -25,7 +27,7 @@ if more_info['meta']['status'] == 200:
     webbrowser.open(post['post_url'])
 </code></pre>
 
-there are two `TODO(marcos)` comments here and they map to things that i should, at some point get to eventually, but that aren't 'blocking' or 'stopships' or whatever. They're basically baby yaks that if i'm not careful, will develop into full grown yaks[^yakshaving] demanding my attention and shears.
+the two `TODO(marcos)` comments map to things that i should, at some point get to eventually, but that aren't 'blocking' or 'stopships' or whatever. They're basically baby yaks that if i'm not careful, might develop into full grown yaks[^yakshaving] demanding my attention and shears.
 
 [^yakshaving]: ![](@pathmalcolm-in-the-middle.gif), [which see](http://raganwald.com/2014/02/28/a-programmers-story.html)
 
@@ -40,11 +42,11 @@ scrubBG.on(Events.Click, function(){
         // animate the text in separately
 </code></pre>
 
-And, to be clear, the code works! Right now! it's just that *if* i ever want it to work better, i have already outlined a roadmap for myself on how to do that. The framer code is *by definition* a prototype, so let's be honest, who cares if i'm using `cycle` correctly, but my intuition to Do The Right Thing™[^dtrt] is the sort of yak that might have wasted precious prototyping time.
+And, to be clear, the code works! Right now! it's just that *if* i ever want it to work better or if i return to it, i have already outlined a roadmap for myself (or others) on how to do that. The framer code is *by definition* a prototype, so let's be honest, who cares if i'm using `cycle` correctly, but my intuition to Do The Right Thing™[^dtrt] is the sort of yak that might have wasted precious prototyping time.
 
 [^dtrt]: i'm pretty sure spike lee never thought [his movie](http://en.wikipedia.org/wiki/Do_the_Right_Thing) would ever be referenced so often in terms of software engineering discussions
 
-These todos, in the context of both projects, were basically the software development equivalent of a "[sweep](http://www.43folders.com/2006/07/24/b2gtd-mind-sweep)" in gtd[^gtd]. In writing them, i've explained what i need to do (but i can't do right now), but i've absolved myself of the angst of doing it this very minute. 
+These todos, in the context of both projects, were basically the software development equivalent of a "[sweep](http://www.43folders.com/2006/07/24/b2gtd-mind-sweep)" in gtd[^gtd]. Which is to say, that in writing the todos, i've explained what i need to do (but i can't do right now), and by doing so, i've absolved myself of the guilt of doing it *this very minute.*
 
 By leaving the `todo()`, i communicate to others my intent to work out the problem at some later point rather than investing time in writing possibly unneccessary code. In the present day, though, it gets me unstuck and moves me forward towards a working implementation that i can nit-pick.
 
@@ -65,6 +67,7 @@ For the ones i haven't seen before, if i'm at a loss to write code to solve the 
 So often, the methods i write are so trivial, so easy to parse, that often i can get away with the whole faux literate programming approach. i can write out a set of comments outright of what i expect to happen, what i need to do in broad strokes, i can add stub functions and stub properties and so forth and begin populating them until i have fleshed out my tiny slice of a program. When i have trouble doing that, it is often a sign i haven't thought through the problem well enough.
 
 Naturally, your mileage will vary.[^workflow]
+
 
 [^workflow]: A nice 'workflow' side effect of this approach, for me, is that i can still do the git-ish thing of one-commit-per-idea and further i can usually then pick off future single tasks by grep'ing for `TODO(marcos)`. I can also see if i stray too far at a given moment if i seem to be removing too many todos at a time (unless i'm deleting a file).
 
