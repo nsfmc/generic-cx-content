@@ -52,7 +52,9 @@ These todos, in the context of both projects, are the software development equiv
 
 Allow me to repeat: by leaving the `todo()`, i communicate to others (or future-marcos) my understanding that the problem exists but that rather than investing time in writing possibly unneccessary code, *i am moving on.* In the present day, it gets me unstuck and moves me forward towards a working implementation that i can nit-pick later. 
 
-Again, i'm not promising work on the femtoyak (as my tumblr comments have borne out), i'm not even committing to it—i'm doing two things: publicly acknowledging the issue and giving myself permission to punt it so that i can get on with my day. Most of you are shouting at your monitor saying that this is like time-management 101, but it took my subconsciously creating these `todo()` comments to get me to *truly* internalize their [real ultimate power](http://en.wikipedia.org/wiki/Real_Ultimate_Power).
+Again, i'm *not* promising work on the femtoyak right now, i'm not even committing to it in the future (as my tumblr comments have borne out)—i'm doing two things: publicly acknowledging the issue *exists* and punting it so that i can get on with my day. Why even put my name on it, you ask? If somebody does get around to it, they know exactly who to ask for more detail! I'm happy to help them!
+
+Most of you are shouting at your monitor saying that this is like time-management 101, but it took my subconsciously creating these `todo()` comments to get me to *truly* internalize their [real ultimate power](http://en.wikipedia.org/wiki/Real_Ultimate_Power).
 
 [^gtd]: A sweep, briefly, is this nifty idea where in order to be able to prioritize all the task you possibly have, you put everything you can think that might be a task into a task list. By moving all those ideas out of your head and into a place you're likely to look at later, you allow your mind to only wander to tasks that are relevant *now.* gtd® is [copyright](http://www.5by5.tv/b2w) DavidCo 2001. 
 
