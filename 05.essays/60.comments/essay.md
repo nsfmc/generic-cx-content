@@ -4,19 +4,21 @@ metadesc: sure, you've seen good comments, bad comments, api comments, even some
 -
 content:
 
-This morning while listening to [edge cases](http://edgecasesshow.com/111-here-be-dragons-style-comments.html), i was delighted to hear [wolf](http://twitter.com/rentzsch) talk about comments and how, as he's aged, he prefers really only two flavors of comments, API Comments/Documentation and [here be dragrons](http://en.wikipedia.org/wiki/Here_be_dragons) comments. But sadly, he didn't mention the kind of comments i'm going to talk about here.
+This morning while listening to [edge cases](http://edgecasesshow.com/111-here-be-dragons-style-comments.html), i was tickled to hear [wolf](http://twitter.com/rentzsch) talk about comments and how, as he's aged, he prefers really only two flavors of comments, API Comments/Documentation and [here be dragons](http://en.wikipedia.org/wiki/Here_be_dragons) comments. But sadly, he didn't mention the kind of comments i'm going to talk about here.
 
 To begin, he cites [this gem](http://en.wikipedia.org/wiki/Best_coding_practices#Commenting) of a quote:
 
 >Due to time restrictions or enthusiastic programmers who want immediate results for their code, commenting of code often takes a back seat.
 
-At [work](http://www.khanacademy.org/careers), we have a slogan "[shipping beats perfection](http://bjk5.com/post/60760280107/shipping-beats-perfection-explained)"[^sbp] and it is much of the reason for this other kind of comment, which i will call *the unblocking comment.*
+At [work](http://www.khanacademy.org/careers), we have a slogan "[shipping beats perfection](http://bjk5.com/post/60760280107/shipping-beats-perfection-explained)"[^sbp] and it is much of the rationale for this other kind of comment, which i will call *the unblocking comment.*
 
 [^sbp]: its background is this other phrase, *[bias towards action](https://dschool.stanford.edu/groups/k12/wiki/548fb/Bias_Toward_Action.html)*, which, to be honest, i don't think i'd heard until this past week. It is, however, an interesting cousin of the more contentious Worse is Better™[^wib]
 
 ### the unblocking comment
 
-The practice we've adopted (and to be clear, khan academy is *not* unique here) is to leave comments for the things you recognize are probably out of immediate scope and that you aren't able to get to right now so that you can *get on with your original commit* (i.e. unblocking yourself). 
+The practice, introduced to us via craig silverstein[^csilvers], (and to be clear, khan academy is *not* unique here) is to leave comments for the things you recognize are *probably* out of immediate scope and that you aren't able to get to right now so that you can *get on with your original commit* (i.e. unblocking yourself).
+
+[^csilvers]: craig has been responsible for many fantastic process gems, so i feel very lucky to be able to crib this one from him almost entirely wholesale for my own [internet fame](https://www.youtube.com/watch?v=xdhLQCYQ-nQ) and glory.
 
 let me show you a 'for instance' from my super hacky [tumblr editor](https://github.com/nsfmc/stumblr) package:
 
@@ -27,7 +29,7 @@ if more_info['meta']['status'] == 200:
     webbrowser.open(post['post_url'])
 </code></pre>
 
-the two `TODO(marcos)` comments map to things that i should, at some point get to eventually, but that aren't 'blocking' or 'stopships' or whatever. They're basically baby yaks that if i'm not careful, might develop into full grown yaks[^yakshaving] demanding my attention and shears.
+the two `TODO(marcos)` comments map to things that i might, at some point get to eventually, but that aren't truly 'blocking' or 'stopships' or whatever. They're basically baby yaks that if i'm not careful, might develop into full grown yaks[^yakshaving] demanding my attention and shears.
 
 [^yakshaving]: ![](@pathmalcolm-in-the-middle.gif), [which see](http://raganwald.com/2014/02/28/a-programmers-story.html)
 
@@ -46,15 +48,17 @@ And, to be clear, the code works! Right now! it's just that *if* i ever want it 
 
 [^dtrt]: i'm pretty sure spike lee never thought [his movie](http://en.wikipedia.org/wiki/Do_the_Right_Thing) would ever be referenced so often in terms of software engineering discussions
 
-These todos, in the context of both projects, were basically the software development equivalent of a "[sweep](http://www.43folders.com/2006/07/24/b2gtd-mind-sweep)" in gtd[^gtd]. Which is to say, that in writing the todos, i've explained what i need to do (but i can't do right now), and by doing so, i've absolved myself of the guilt of doing it *this very minute.*
+These todos, in the context of both projects, are the software development equivalent of a "[sweep](http://www.43folders.com/2006/07/24/b2gtd-mind-sweep)" in gtd[^gtd]. Which is to say, that in writing the todos, i've explained what i need to do (but i can't do right now), and by doing so, i've absolved myself of the guilt of doing it *this very minute.*
 
-By leaving the `todo()`, i communicate to others my intent to work out the problem at some later point rather than investing time in writing possibly unneccessary code. In the present day, though, it gets me unstuck and moves me forward towards a working implementation that i can nit-pick.
+Allow me to repeat: by leaving the `todo()`, i communicate to others (or future-marcos) my understanding that the problem exists but that rather than investing time in writing possibly unneccessary code, *i am moving on.* In the present day, it gets me unstuck and moves me forward towards a working implementation that i can nit-pick later. 
+
+Again, i'm not promising work on the femtoyak (as my tumblr comments have borne out), i'm not even committing to it—i'm doing two things: publicly acknowledging the issue and giving myself permission to punt it so that i can get on with my day. Most of you are shouting at your monitor saying that this is like time-management 101, but it took my subconsciously creating these `todo()` comments to get me to *truly* internalize their [real ultimate power](http://en.wikipedia.org/wiki/Real_Ultimate_Power).
 
 [^gtd]: A sweep, briefly, is this nifty idea where in order to be able to prioritize all the task you possibly have, you put everything you can think that might be a task into a task list. By moving all those ideas out of your head and into a place you're likely to look at later, you allow your mind to only wander to tasks that are relevant *now.* gtd® is [copyright](http://www.5by5.tv/b2w) DavidCo 2001. 
 
-The novelty here, the point where this ties back to the quote, is that this is actually *the opposite* of the problem outlined in the wikipedia article. In my vim to get towards a working solution, i'm actually leaving important implementation and polish related comments for myself (and others) so that i can address it better... but only once i have something that actually merits fixing.
+The novelty here, the point where this ties back to the quote, is that this is actually *the opposite* of the problem outlined in the wikipedia article. In my vim to get towards a working solution, i'm leaving important implementation and polish related comments for myself (and others) so that i can address it better... but only once i have something that merits fixing.
 
-Again, i want to repeat the central idea here which is that *comments don't have to take a backseat to getting things done*. In fact, i hope i've shown that, comments can provide a relatively easy way to get you from "zero to working"[^mvp] while providing a legitimate roadmap for you to get to something sustainably developed in the future.
+Again, i want to repeat the central 'thesis' here which is that *comments don't have to take a backseat to getting things done*. In fact, i hope i've shown that, comments can provide a relatively easy way to get you from "zero to working"[^mvp] while providing a legitimate roadmap for you to get to something sustainably developed in the future.
 
 [^mvp]: although philosophically aligned, this is *not* going to devolve into an essay about minimal/[maximal](http://www.allenpike.com/2013/maximum-viable-products/) viable products. phew.
 
