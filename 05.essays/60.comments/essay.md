@@ -1,12 +1,12 @@
-title: the fifth kind of comment
+title: comments of the fifth kind
 -
 metadesc: sure, you've seen good comments, bad comments, api comments, even some other mysterious fourth comment, but have you seen comments of the fifth kind?
 -
 content:
 
-This morning while listening to [edge cases](http://edgecasesshow.com/111-here-be-dragons-style-comments.html), i was tickled to hear [wolf](http://twitter.com/rentzsch) talk about comments and how, as he's aged, he prefers really only two flavors of comments, API Comments/Documentation and [here be dragons](http://en.wikipedia.org/wiki/Here_be_dragons) comments. But sadly, he didn't mention the kind of comments i'm going to talk about here.
+The other day while listening to [edge cases](http://edgecasesshow.com/111-here-be-dragons-style-comments.html), i was tickled to hear [wolf](http://twitter.com/rentzsch) talk about comments and how, as he's aged, he prefers really only two flavors of comments, API Comments/Documentation and [here be dragons](http://en.wikipedia.org/wiki/Here_be_dragons) comments. But sadly, he didn't mention the kind of comments i'm going to talk about here.
 
-To begin, he cites [this gem](http://en.wikipedia.org/wiki/Best_coding_practices#Commenting) of a quote:
+To begin, he cites [this gem](http://en.wikipedia.org/wiki/Best_coding_practices#Commenting) from wikipedia:
 
 >Due to time restrictions or enthusiastic programmers who want immediate results for their code, commenting of code often takes a back seat.
 
@@ -63,18 +63,5 @@ The novelty here, the point where this ties back to the quote, is that this is a
 Again, i want to repeat the central 'thesis' here which is that *comments don't have to take a backseat to getting things done*. In fact, i hope i've shown that, comments can provide a relatively easy way to get you from "zero to working"[^mvp] while providing a legitimate roadmap for you to get to something sustainably developed in the future.
 
 [^mvp]: although philosophically aligned, this is *not* going to devolve into an essay about minimal/[maximal](http://www.allenpike.com/2013/maximum-viable-products/) viable products. phew.
-
-### a slight caveat (emptor)
-
-So this sounds great, right? But when do you add a TODO and when do you actually write some code? If you took my advice, you'd be writing some knuth-length literate tome of pseudo-todo-code before you got around to shipping anything. I'm sorry to say that aside from "does it run," i don't know any better than you. I have a spider sense for some species of yaks that i have shorn before, but there are countless others i haven't encountered yet.
-
-For the ones i haven't seen before, if i'm at a loss to write code to solve the problem, i google for a solution and if i can't turn up something easily, i'll stub out the data structure that i expect or create a conditional variable that i can toggle easily or something like that and leave a todo for myself. When i (often) don't even know what question i would ask google, i usually try to find human help, but i still leave a `TODO` in that spot until i have some solution or greater insight on my hands. 
-
-What i *do* know is that after littering my code with `TODO`s for two years now, i've gotten much better at spotting overly optimistic todos. I've also learned that oftentimes those `TODO`s are, in hindsight, superfluous feature creep. They're extravagant features for "audiences of one" or empty performance optimizations for conditions i end up throwing out after using my software. You get the unblocking, naturally, i mean, i don't know about, you, but i see those comments and i get this interesting peek into my psyche from back in the day which is interesting to learn from and poke fun at.
-
-Naturally, your mileage will vary.[^workflow]
-
-
-[^workflow]: A nice 'workflow' side effect of this approach, for me, is that i can still do the git-ish thing of one-commit-per-idea and further i can usually then pick off future single tasks by grep'ing for `TODO(marcos)`. I can also see if i stray too far at a given moment if i seem to be removing too many todos at a time (unless i'm deleting a file).
 
 [^wib]: If you avoided that link soup but want to explore a decades old religious war, the idea is effectively '[worse is better](http://www.jwz.org/doc/worse-is-better.html).' In our case, it's more problematic to indefinitely hold back a feature that can have a better effect now because "it's not totally polished." Most importantly, it's admitting that getting bogged down in details doesn't always get you closer to the end result, and at worst, gets you farther from it. This isn't a hard and fast truth, some things *do* deserve more time, more attention, more care and craft. It's up to you, the reader, to determine which things merit that in favor of shipping a benefit to others *now.* I don't know of a good way to explain when that's an appropriate choice to make because *it totally depends on your situation.*
