@@ -56,12 +56,19 @@ Again, i'm *not* promising work on the femtoyak right now, i'm not even committi
 
 Most of you are shouting at your monitor saying that this is like time-management 101, but it took my subconsciously creating these `todo()` comments to get me to *truly* internalize their [real ultimate power](http://en.wikipedia.org/wiki/Real_Ultimate_Power).
 
-[^gtd]: A sweep, briefly, is this nifty idea where in order to be able to prioritize all the task you possibly have, you put everything you can think that might be a task into a task list. By moving all those ideas out of your head and into a place you're likely to look at later, you allow your mind to only wander to tasks that are relevant *now.* gtd® is [copyright](http://www.5by5.tv/b2w) DavidCo 2001. 
+[^gtd]: A sweep, briefly, is this nifty idea where in order to be able to prioritize all the task you possibly have, you put everything you can think that *might* be a task into a task list. By moving all those ideas out of your head and into a place you're likely to look at later, you allow your mind to only wander to tasks that are relevant *now.* gtd® is [copyright](http://www.5by5.tv/b2w) DavidCo 2001. 
 
 The novelty here, the point where this ties back to the quote, is that this is actually *the opposite* of the problem outlined in the wikipedia article. In my vim to get towards a working solution, i'm leaving important implementation and polish related comments for myself (and others) so that i can address it better... but only once i have something that merits fixing.
 
-Again, i want to repeat the central 'thesis' here which is that *comments don't have to take a backseat to getting things done*. In fact, i hope i've shown that, comments can provide a relatively easy way to get you from "zero to working"[^mvp] while providing a legitimate roadmap for you to get to something sustainably developed in the future.
+Just to be clear, though, if you have actual bugs that merit tracking, you really should find a way to get to those in a way that's higher priority than these `TODO()`s which really are historic context-rich vignettes of the rabbit-holes you've avoided. By all means, continue logging assertions and running unit tests for your bits that need to remain stable!
+
+But... i want to repeat the central 'point' here which is that *comments don't have to take a backseat to getting things done*. In fact, i hope i've shown that, comments can provide a relatively easy way to get you from "zero to working"[^mvp] while providing a legitimate roadmap for you to get to something sustainably developed in the future.
+
 
 [^mvp]: although philosophically aligned, this is *not* going to devolve into an essay about minimal/[maximal](http://www.allenpike.com/2013/maximum-viable-products/) viable products. phew.
 
 [^wib]: If you avoided that link soup but want to explore a decades old religious war, the idea is effectively '[worse is better](http://www.jwz.org/doc/worse-is-better.html).' In our case, it's more problematic to indefinitely hold back a feature that can have a better effect now because "it's not totally polished." Most importantly, it's admitting that getting bogged down in details doesn't always get you closer to the end result, and at worst, gets you farther from it. This isn't a hard and fast truth, some things *do* deserve more time, more attention, more care and craft. It's up to you, the reader, to determine which things merit that in favor of shipping a benefit to others *now.* I don't know of a good way to explain when that's an appropriate choice to make because *it totally depends on your situation.*
+
+### thanks
+
+it wouldn't be a *real* thousand word internet blog post without an artisinal colophon, so thanks for the feedback and comments: [@marcia_lee](http://twitter.com/marcia_lee), [@andy_matuschak](http://twitter.com/andy_matuschak), [@kamens](http://twitter.com/kamens), [@pgbovine](http://twitter.com/pgbovine), [@dmnd_](http://twitter.com/dmnd_), and [chrisklaiber](https://github.com/chrisklaiber).
