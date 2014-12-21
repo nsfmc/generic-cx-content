@@ -1,4 +1,4 @@
-title: unblocking comments
+title: why write todo comments?
 -
 metadesc: sure, you've seen good comments, bad comments, api comments, even some other mysterious fourth comment, but have you seen unblocking comments? (probably)
 -
