@@ -75,7 +75,7 @@ I've been trying to find a good way to end this essay, some sort of meditation o
 The episode is interesting because it deals with deeper issues of obligation and guilt in software development and maintenance. It's a highly relatable episode for anyone that has participated in the open source ecosystem. In particular, it pairs well with this 100% insightful essay called [Emotional Programming in Open Source](http://lucumr.pocoo.org/2013/11/28/emotional-programming/) by Armin Ronacher. You should definitely read it, but I'm going to pull a whole chunk of it here:
 
 > I found it quite hard this year to work on my own projects because the bug trackers were full of things I personally did not really care about. The things I wrote over the last few years all work so well for me, that I don't need to fix problems or add things. When there is something that needs fixing, I will work on it, but otherwise I don't necessarily get the motivation to work on it.
-> ...
+
 > ... the whole porting to Python 3 thing has killed so much motivation for working on my project for me. I cannot use Python 3 in practice and having to deal with issues I don't have myself is one of the most frustrating things.
 
 He calls out an important distinction between bugs which are currently breaking a build and in-utero yaks which shouldn't be on your radar just yet. Todos, in contrast, aren't traditional 'bug' reports, they're *opportunities;* for refactoring, future architecture changes, performance optimizations, etc. Maybe they're nice to haves, maybe you discover they're actual bugs: time will tell.
