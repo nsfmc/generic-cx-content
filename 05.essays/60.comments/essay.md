@@ -90,4 +90,6 @@ But the problem that many of us have, is that *we know* what The Right Thing *is
 
 ### thanks
 
-it wouldn't be a *real* thousand word internet blog post without an artisinal colophon, so thanks for the feedback and comments: [@marcia_lee](http://twitter.com/marcia_lee), [@andy_matuschak](http://twitter.com/andy_matuschak), [@kamens](http://twitter.com/kamens), [@pgbovine](http://twitter.com/pgbovine), [@dmnd_](http://twitter.com/dmnd_), and [chrisklaiber](https://github.com/chrisklaiber) and [@dylanvee](https://twitter.com/dylanvee).
+it wouldn't be a *real* thousand word internet blog post without an artisinal colophon, so thanks for the feedback and comments: [@marcia_lee](http://twitter.com/marcia_lee), [@andy_matuschak](http://twitter.com/andy_matuschak), [@kamens](http://twitter.com/kamens), [@pgbovine](http://twitter.com/pgbovine), [@dmnd_](http://twitter.com/dmnd_), and [chrisklaiber](https://github.com/chrisklaiber) and [@dylanvee](https://twitter.com/dylanvee). 
+
+If you have any thoughts on this and have made it all this way, i'd love to hear from you. Feel free to send me an email.
