@@ -1,6 +1,6 @@
-title: comments of the fifth kind
+title: unblocking comments
 -
-metadesc: sure, you've seen good comments, bad comments, api comments, even some other mysterious fourth comment, but have you seen comments of the fifth kind?
+metadesc: sure, you've seen good comments, bad comments, api comments, even some other mysterious fourth comment, but have you seen unblocking comments? (probably)
 -
 content:
 
@@ -67,8 +67,27 @@ But... i want to repeat the central 'point' here which is that *comments don't h
 
 [^mvp]: although philosophically aligned, this is *not* going to devolve into an essay about minimal/[maximal](http://www.allenpike.com/2013/maximum-viable-products/) viable products. phew.
 
+
+### dealing with guilt
+
+I've been trying to find a good way to end this essay, some sort of meditation on why something as mundane as a todo comment would even be necessary to write about. It took the span of a few weeks for the podcast gods to answer my call in the form of an [episode of ATP](http://atp.fm/episodes/95), going full-circle.
+
+The episode is interesting because it deals with deeper issues of obligation and guilt in software development and maintenance. It's a highly relatable episode for anyone that has participated in the open source ecosystem. In particular, it pairs well with this 100% insightful essay called [Emotional Programming in Open Source](http://lucumr.pocoo.org/2013/11/28/emotional-programming/) by Armin Ronacher. You should definitely read it, but I'm going to pull a whole chunk of it here:
+
+> I found it quite hard this year to work on my own projects because the bug trackers were full of things I personally did not really care about. The things I wrote over the last few years all work so well for me, that I don't need to fix problems or add things. When there is something that needs fixing, I will work on it, but otherwise I don't necessarily get the motivation to work on it.
+> ...
+> ... the whole porting to Python 3 thing has killed so much motivation for working on my project for me. I cannot use Python 3 in practice and having to deal with issues I don't have myself is one of the most frustrating things.
+
+He calls out an important distinction between bugs which are currently breaking a build and in-utero yaks which shouldn't be on your radar just yet. Todos, in contrast, aren't traditional 'bug' reports, they're *opportunities;* for refactoring, future architecture changes, performance optimizations, etc. Maybe they're nice to haves, maybe you discover they're actual bugs: time will tell.
+
+The effect of writing and revisiting `TODO()`s is better understanding the dynamic between problems you have *right now* and issues that are actually non-issues. If a todo lingers for a while, it's probably *not* an issue you really have and certainly not one that's keeping your project from functioning in the short term. Maybe if you're bored you hit it up. Maybe a contributor decides to attack it.
+
+But the problem that many of us have, is that *we know* what The Right Thing *is* but our time and priorities are at odds with that. Does that choice make us worse programmers? Should it hold us up from [releasing a project](https://news.ycombinator.com/item?id=8132939)? Would it be better if we just pulled our project? No to all. It's a calculus of writing code, our time available, obligation to our code's users and our own guilt. Those are challenging things to balance!
+
+[Developing software in the open is complicated](https://www.youtube.com/watch?v=0SARbwvhupQ) *even* when when you're bootstrapping it in private. But it gets more difficult if making progress is fraught with guilt and obligation to some all-seeing [Van Hœt](https://twitter.com/karlvanhoet). So many of these issues, these problems in casual development are complex issues of time management, guilt and obligation. Leaving todos can free you from worry and push you towards fixing issues you care about right now so you can start enjoying the software you make. 
+
 [^wib]: If you avoided that link soup but want to explore a decades old religious war, the idea is effectively '[worse is better](http://www.jwz.org/doc/worse-is-better.html).' In our case, it's more problematic to indefinitely hold back a feature that can have a better effect now because "it's not totally polished." Most importantly, it's admitting that getting bogged down in details doesn't always get you closer to the end result, and at worst, gets you farther from it. This isn't a hard and fast truth, some things *do* deserve more time, more attention, more care and craft. It's up to you, the reader, to determine which things merit that in favor of shipping a benefit to others *now.* I don't know of a good way to explain when that's an appropriate choice to make because *it totally depends on your situation.*
 
 ### thanks
 
-it wouldn't be a *real* thousand word internet blog post without an artisinal colophon, so thanks for the feedback and comments: [@marcia_lee](http://twitter.com/marcia_lee), [@andy_matuschak](http://twitter.com/andy_matuschak), [@kamens](http://twitter.com/kamens), [@pgbovine](http://twitter.com/pgbovine), [@dmnd_](http://twitter.com/dmnd_), and [chrisklaiber](https://github.com/chrisklaiber).
+it wouldn't be a *real* thousand word internet blog post without an artisinal colophon, so thanks for the feedback and comments: [@marcia_lee](http://twitter.com/marcia_lee), [@andy_matuschak](http://twitter.com/andy_matuschak), [@kamens](http://twitter.com/kamens), [@pgbovine](http://twitter.com/pgbovine), [@dmnd_](http://twitter.com/dmnd_), and [chrisklaiber](https://github.com/chrisklaiber) and [@dylanvee](https://twitter.com/dylanvee).
