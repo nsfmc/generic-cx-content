@@ -15,7 +15,6 @@ primary_style:
     font-style: normal;
   }
 
-
   h1,h2,h3{
     font-family:"KnuckledusterRegular";
     font-weight:normal;
@@ -99,6 +98,7 @@ primary_style:
     top:200px;
   }
   #essaypage nav{
+    position: static;
     left: 50px;
     top: auto;
   }
@@ -153,10 +153,9 @@ primary_style:
     z-index:500;
     width:450px;
   }
-  #essaypage #main{
-    width: 550px;
-    left: 400px;
-    z-index: 0;
+
+  #essaypage .main-content{
+    max-width: 550px;
   }
 
   #workpage p{
@@ -182,7 +181,6 @@ primary_style:
 
   blockquote p {
     font-family: Times, serif;
-    font-size: 80%;
   }
 
   footer p{
@@ -234,11 +232,6 @@ primary_style:
     padding-bottom:150px;
   }
 
-  #images {
-/*    position:relative;*/
-/*    left:100px;*/
-  }
-
   #images img{
     margin-bottom:60px;
     border:1px solid #ccc;
@@ -247,4 +240,44 @@ primary_style:
     box-shadow: -15px 15px 0px #ccc;
     max-width:1024px;
   }
+
+/* pure xl and smaller */
+@media screen and (max-width: 1280px) {
+  h1 { font-size: 102px;}
+}
+
+/* pure lg and smaller */
+@media screen and (max-width: 1024px) {
+  h1 { font-size: 75px;}
+  .main-content { padding: 0 17%;}
+  footer {position: relative;}
+  #essaypage nav { margin: 2em 0; text-align: center;}
+  #essaypage nav li { display: inline; margin: 0 1em; font-size: 14px; }
+
+}
+
+/* pure md and smaller (single col here) */
+@media screen and (max-width: 768px) {
+  h1 { font-size: 55px;}
+  .main-content { padding: 0 4.1666666%;}
+  footer {
+    left: auto;
+    width: auto;
+    padding: 2.5em 4.1666666%;
+  }
+  #essaypage pre code {
+    font-size: 70%;
+    font-weight: bold;
+  }
+}
+
+/* pure sm */
+@media screen and (max-width: 568px) {
+  h1 { font-size: 28px;}
+  #essaypage .main-content h2, #essaypage .main-content h3 { font-size: 24px;}
+  #essaypage pre code {
+    font-size: 52%;
+    font-weight: bold;
+  }
+}
 
