@@ -154,6 +154,10 @@ primary_style:
     width:450px;
   }
 
+  #workpage footer {
+    position: static;
+  }
+
   #essaypage .main-content{
     max-width: 550px;
   }
@@ -226,7 +230,7 @@ primary_style:
 
   #prettystuff{
     width:900px;
-    position:absolute;
+    position: relative;
     z-index:-50;
     left:151px;
     padding-bottom:150px;
