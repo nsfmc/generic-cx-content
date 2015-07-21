@@ -8,11 +8,11 @@ metaphoto: @pathJqQO.png
 -
 content:
 
-A while ago, we needed to send out a notification to all our [LearnStorm](https://www.khanacademy.org/learnstorm) winners inviting them to the Finals event in Mountain View. It's a big deal! Only *200 Students* from all of the bay area got invited to the event and because most of them were under 13, we couldn't email them.
+A while ago, we needed to send out a notification to all our [LearnStorm](https://www.khanacademy.org/learnstorm) winners inviting them to the Finals event in Mountain View. It's a big deal! Only *200 Students* from all of the bay area got invited to the event and because most of them were under 13, we couldn't email them so instead, we needed to make something that would catch their eye the next time they visited the website.
 
 So instead, I dropped a big banner on the site the next time they visited.
 
-## what'll it look like?
+## step one: learnstorm?
 
 If you haven't seen it, you are about to discover that the [slope field](https://www.khanacademy.org/math/differential-equations/first-order-differential-equations/differential-equations-intro/v/slope-field-to-visualize-solutions) motif is the heart of learnstorm's identity.
 
@@ -22,7 +22,7 @@ But wait a second... math??? we can't even [center a div](http://howtocenterincs
 
 Actually, let's step back a second: what *is* a slope field?
 
-### a math detour
+### step yak: a math detour
 
 A slope field is basically what it claims to be: the slope of a differential equation calculated at periodic points on a plane. And differential equations only express *the feel* of an equation, not exactly what it looks like because they're missing several constant values.
 
@@ -36,7 +36,7 @@ Looking at the `atan2` implementation, you find that it does the kind of "intuit
 
 And you'll recall, we have a diff eq that is given by y' = -x/y, we can use atan2 to find the slope of each point on the plane. Ok, we know how we might this, now we just need to get started actually drawing it.
 
-## Prototyping
+## step two: prototyping
 
 The first step of prototyping this was a small script that i wrote using [PlotDevice](plotdevice.io), a python-based drawing application i'm real fond of. Take a look, you might like it!
 
@@ -64,7 +64,7 @@ but say you make a mistake (who does that?) and remove that super convenient `at
 
 because what's happening is that if you pick a row or a column, you find that the values are monotonically increasing but at a slightly different starting point and because the atan2 isn't around, the darts just continue rotating and rotating...
 
-Ok, so now we have a moderately intriguing slope field which, let's be honest, isn't a *true() slope field at all.
+Ok, so now we have a moderately intriguing slope field which, let's be honest, isn't a *true* slope field at all.
 
 So, back to our project: how do we animate it? Well, the neat thing again is that if you walk along the y axis (or x axis) every dart will rotate however much you moved. So if you start with the darts on a grid and tell they all moved just a little in one direction, they *all* rotate just a little bit more counterclockwise, like so:
 
@@ -78,11 +78,17 @@ My first instinct was animated gif: but the gifs ended up being multi-megabyte m
 
 So instead of actually rendering some background image and scaling it up, why not actually *animate* background elements using a little something you may have heard of called [Dynamic HTML](http://en.wikipedia.org/wiki/Dynamic_HTML).
 
-Here's how I would roughly do it: i would use a single dart image, lay out a bunch of them on a grid and then rotate them with css. And then i would use css to start each dart's animation at, say some radians value and rotate 2π radians over some fixed time scale.
+## staggering animations
 
-But because (please correct me on hn) there's no easy way to create a css animation with arbitrary start/end points and because it would be especially wasteful to specify a new animation starting at some radian value going a full 2π for all radian values, i instead opted for a more, shall we say, lo-fi approach.
+Here's how I would roughly do it: i would use a single dart image, lay out a bunch of them on a grid and then rotate them with css. At first i thought
 
-I would have each dart use the same 2π rotation animation, but I would set each dart's animation delay to achieve the same effect.
+> "then you can set each dart's from rotation and it's to rotation dynamically"
+
+I would use css to start each dart's animation at, say, some radians value, rotate 2π radians over some fixed time scale. Genius!
+
+But because (please feel free to correct me on hn) there's no easy way to create a parameterized css animation with arbitrary start/end points and because it *felt* wasteful to specify a new animation starting at some radian value going a full 2π for all radian values, i instead opted for a more, shall we say, lo-fi approach.
+
+I would have each dart use the exact-same 2π rotation animation, but I would set each dart's *animation delay* to achieve the same effect.
 
 Then, I would set this field of spinning darts on some z-index below the actual html notification.
 
@@ -101,29 +107,42 @@ My [first attempt](https://gist.github.com/nsfmc/fc241d6f97a4b3b5203d/95b38bcc97
     ...
 
 
-I iterated over all the values and then used that to set the animation delay. My goodness, how ridiculous! That's basically as bad as writing out all those css animations one-by-one.
+I iterated over *all the values* and then used that to set the animation delay. My goodness, how ridiculous! That's basically as bad as writing out all those css animations one-by-one.
 
 Instead, I took until the next morning to realize that i could do something less ridiculous:
 
     ...
-    var GRID_SCALING = 4.27;
     for (var x=0; x < dartCols; x += 1){
       for (var y=0; y < dartRows; y += 1){
-        style = { animationDelay: (x+y)/GRID_SCALING, ..., };
+        style = { animationDelay: (x+y), ..., };
         return <dart style={style} />;
       }
     }
     ...
 
+Here in this demo, the darts are all displayed `inline-block` just to avoid having to deal with position.
 
-And the nice thing here is that not only is the code less packed with magic arrays, it's also wayyyyyy more obvious what's going on here. Even setting the x/y positions (*not shown*) in the style object is more obvious and you end up having code that allow you to think in terms of a unit grid but render elements by twiddling the knobs of your various scale factors.
+<a class="jsbin-embed" href="http://jsbin.com/cemewot/embed?output">JS Bin on jsbin.com</a><script src="http://static.jsbin.com/js/embed.min.js?3.34.0"></script>
 
-And the (post-rationalized) cool thing about this is that the animation appears to stagger into being. Everything initially starts off pointing to one direction only to eventually fall in line at some point along the animation delay.
+And the nice thing here is that not only is the code *not* packed with magic arrays, it's also wayyyyyy more obvious what's going on. Even setting the x/y positions (*not shown*) in the style object is more obvious and the code you end up with allows you to think in terms of a unit grid but render elements by twiddling the knobs of your various scale factors. The cool thing about this is that the animation appears to stagger into being. Everything initially starts off pointing to one direction only to eventually fall in line at some point along the animation delay.
+
+
+if you decided that you wanted to change the virtual grid size, you could divide the *x + y* `animationDelay` by some `CONSTANT` value.
+
+At Khan Academy, we have a neat tool to let you prototype a react component in the context of the site called the React Sandbox. It works on the local dev server and lets you take something like that and easily get to something like this:
+
+![](https://dl.dropboxusercontent.com/u/406291/Screenshots/quV1.png)
 
 ## lessons learned
 
-Well, aside from the fact that it's fun to use math to make cool notifications, the main lesson (i think), is that by thinking in terms of parametrizing early on, you can easily come up with neat ways of procedurally generating animations later on.
+Well, aside from the fact that it's fun to use math to make cool notifications, the main lesson (i think), is that by thinking in terms of parametrizing early on, you can come up with interesting ways of procedurally generating animations later on even if your environment (like css) is constrained.
 
 Part of this was definitely embedded in the early prototyping and differential equation soul searching.
 
-In this case, although the animation was implemented using react , this is the sort of thing that you could do with anything else like d3 or even good ol' jQuery.
+In this case, although the animation was implemented using react, this is the sort of thing that you could do with anything else like d3 or even good ol' jQuery.
+
+In the end, somebody who had received the notification visiting the site would see this (except animating):
+
+![](https://dl.dropboxusercontent.com/u/406291/Screenshots/YQtk.png)
+
+If you saw the notification, congrats on participating in learnstorm! It was great fun making something for you :)
