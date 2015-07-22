@@ -15,7 +15,7 @@ But... because most of them were under 13, we couldn't email them so we needed t
 
 ## step one: learnstorm?
 
-If you haven't seen it, you are about to discover that a [slope field](https://www.khanacademy.org/math/differential-equations/first-order-differential-equations/differential-equations-intro/v/slope-field-to-visualize-solutions) motif is the heart of learnstorm's identity.[^sloperefresh]
+If you haven't seen it, you are about to discover that a [slope field](https://www.khanacademy.org/math/differential-equations/first-order-differential-equations/differential-equations-intro/v/slope-field-to-visualize-solutions) motif is the heart of learnstorm's identity.[^sloperefresh] In making this notification banner I knew that I wanted echo the identity, but from another angle or perspective. And in order to do that I needed to understand learnstorm's identity a little better.
 
 [^sloperefresh]: A refresher: a slope field (naturally) is the slope (and often magnitude) of a differential equation plotted along a grid. You can use slope fields to build intuition about the nature of first order differential equations, their tangent points, and so forth.
 
@@ -23,7 +23,7 @@ If you haven't seen it, you are about to discover that a [slope field](https://w
 
 But wait a second... math??? we can't even [center a div](http://howtocenterincss.com), how can we possibly do anything with slope fields?
 
-Actually, let's step back a second... differential equations? what's a slope field?
+Actually, let's step back even further... differential equations? what's a slope field again?
 
 ### step yak: a math detour
 
@@ -144,11 +144,11 @@ And the nice thing here is that not only is the code *not* packed with magic arr
 
 if you decided that you wanted to change the virtual grid size, you could divide the *x + y* `animationDelay` by some `CONSTANT` value. if you want to change grid spacing, you can easily do that too. the code practically writes itself.
 
-At Khan Academy, we have a neat tool to let you prototype a react component in the context of the site called the React Sandbox. It works on the local dev server and lets you take something like that and easily get to something like this:
+At Khan Academy, we have a neat tool to let you prototype a react component in the context of the site called the React Sandbox. It works on the local dev server and lets you get a quick jsbin/fiddle environment but with all the goodies you've come to expect on the site. Using it, you get something like this:
 
 ![](https://dl.dropboxusercontent.com/u/406291/Screenshots/quV1.png)
 
-After a few passes on the copy and button/form styling it was good to go!
+The design isn't super mind blowing: it's a variation on the regular learnstorm header, but it's... animating! And, more importantly, it transfers the gravity of the original learnstorm header towards celebrating the accomplishments of our regional winners and brings the identity to life.
 
 ## lessons learned
 
