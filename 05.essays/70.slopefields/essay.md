@@ -8,63 +8,74 @@ metaphoto: @pathJqQO.png
 -
 content:
 
-A while ago, we needed to send out a notification to all our [LearnStorm](https://www.khanacademy.org/learnstorm) winners inviting them to the Finals event in Mountain View. It's a big deal! Only *200 Students* from all of the bay area got invited to the event and because most of them were under 13, we couldn't email them so instead, we needed to make something that would catch their eye the next time they visited the website.
+A while ago, we needed to send out a notification to all our [LearnStorm](https://www.khanacademy.org/learnstorm) winners inviting them to the Finals event in Mountain View. It's a big deal! Only *200 Students* from all of the bay area got invited to the event.
 
-So instead, I dropped a big banner on the site the next time they visited.
+But... because most of them were under 13, we couldn't email them so we needed to make something that would catch their eye the next time they visited the website.
+
 
 ## step one: learnstorm?
 
-If you haven't seen it, you are about to discover that the [slope field](https://www.khanacademy.org/math/differential-equations/first-order-differential-equations/differential-equations-intro/v/slope-field-to-visualize-solutions) motif is the heart of learnstorm's identity.
+If you haven't seen it, you are about to discover that a [slope field](https://www.khanacademy.org/math/differential-equations/first-order-differential-equations/differential-equations-intro/v/slope-field-to-visualize-solutions) motif is the heart of learnstorm's identity.[^sloperefresh]
+
+[^sloperefresh]: A refresher: a slope field (naturally) is the slope (and often magnitude) of a differential equation plotted along a grid. You can use slope fields to build intuition about the nature of first order differential equations, their tangent points, and so forth.
 
 ![](http://dl.dropboxusercontent.com/u/406291/Screenshots/JGuX.png)
 
 But wait a second... math??? we can't even [center a div](http://howtocenterincss.com), how can we possibly do anything with slope fields?
 
-Actually, let's step back a second: what *is* a slope field?
+Actually, let's step back a second... differential equations? what's a slope field?
 
 ### step yak: a math detour
 
-A slope field is basically what it claims to be: the slope of a differential equation calculated at periodic points on a plane. And differential equations only express *the feel* of an equation, not exactly what it looks like because they're missing several constant values.
+My thinking went: if the identity of our contest is rooted in differential equations, maybe it'll help to revisit them.
 
-So for a plain ol' circle (y^2 + x^2 = 1), you have *y' = -x/y + c* (which you could find via implicit differentiation), but again' all that's saying is that the slope for this differential equation at *any point* is the x value divided by the y value times negative one plus some arbitrary c (which, for us, we'll just pretend is zero).
+And you find that a slope field is basically what it claims to be: the slope of a differential equation calculated at periodic points on a plane. And differential equations only express *the feel* of an equation, not exactly what it looks like because they're missing several constant values.
 
-And when we want to draw this, we don't actually want y', we really want whatever *direction* y' corresponds to so that we can figure out where a triangle is pointing. With a simple equation like y' = -x / y , we're going to run into this problem where for zeroey y values we have infinitely positive or negative y' and what do you do with that?
+So for a plain ol' circle (y^2 + x^2 = 1), you'd get *y' = -x/y + c* (which you could find via [implicit differentiation](https://www.khanacademy.org/math/differential-calculus/taking-derivatives/implicit_differentiation/v/implicit-differentiation-1)), but again' all that's saying is that the slope for this differential equation at *any point* is the x value divided by the y value times negative one plus some arbitrary c (which, for us, we'll just pretend is zero). Again, for whatever point, you just enter x and y into that equation and that's the slope. neat!
+
+But when we attempt to draw this (say on paper or digitally), we don't actually want y', we really want whatever *direction* y' corresponds to so that we can figure out where a triangle will point. With a simple equation like y' = -x / y , we're going to run into this problem where for zeroey y values we have infinitely positive or negative y' and what do you do with that?
 
 Well, `Math` to the rescue! Specifically the standard [atan2](https://en.wikipedia.org/wiki/Atan2) method which returns the angle in radians (from the origin) for the point at (x,y). It's a special function which calculates the arctangent *but* is smart enough to compensate for zero denominators in pretty much the same way you would (because it takes the denominator as an argument).
 
 Looking at the `atan2` implementation, you find that it does the kind of "intuitive limit-ey division" that you're often asked to do in the first weeks of a calc class. Instead of `NaN` you get ±π/2 and instead of 0 you get 0 or π. It's great! and it's *exactly* what we need because for a given x,y pair, you get exactly the corresponding radian value.
 
-And you'll recall, we have a diff eq that is given by y' = -x/y, we can use atan2 to find the slope of each point on the plane. Ok, we know how we might this, now we just need to get started actually drawing it.
+And you'll recall, we have a diff eq that is given by y' = -x/y, we can use `atan2` to find the slope of each point on the plane. Ok, we know how we might use this, now we just need to get started actually drawing it.
 
 ## step two: prototyping
 
-The first step of prototyping this was a small script that i wrote using [PlotDevice](plotdevice.io), a python-based drawing application i'm real fond of. Take a look, you might like it!
+The first step of prototyping this was a small python script that i wrote for [PlotDevice](plotdevice.io)[^plod]
 
-But first things first: I needed to be certain that I could fake out the learnstorm identity; at the very least, if I began to run out of time, i could, at the very least, use a static (but novel) image as the background for the banner.
+[^plod]: plotdevice is great! it's a python-based drawing application i'm real fond of. Take a look, you might like it! If you like the idea behind processing but you're whatever on java, then you'll probably enjoy it.
+
+Because i didn't have much time to work on this project, I needed to be certain that I could fake out the learnstorm identity so if I began to run out of time, i could, at the very least, use a static (but novel) image as the background for the banner.
 
 ![a first sketch with nodebox](http://dl.dropboxusercontent.com/u/406291/Screenshots/HB9P.png)
 
 Well, this is looking promising! But now i have a small problem: how do i animate this?
 
-Stepping back, let's do a small crit here: part of what makes the learnstorm identity cool is that you get this round vibe *even though* everything is stuck on a grid. Breaking the grid in this case would not only require me animating each dart but animating them along circular paths which, i mean, would look *awesome* but... umm... let's save that for LearnStorm 2016...
+Stepping back, let's do a small crit here: part of what makes the learnstorm identity cool is that you get this round vibe *even though* everything is stuck on a grid. Breaking the grid in this case would not only require me animating each dart but animating them along circular paths which, i mean, would look *awesome* but... umm... let's save that for LearnStorm 2016 when we have more time...
 
-And because we're already in the bay area, let's take advantage of this moment to visibly Pivot. We already have a sort of infrastructure for generating slope fields, but the problem is that i want something i can easily animate. Time for a new differential equation!
+Let's take this moment to visibly and vocally *Pivot*.[^lolsv] Because i spent all this time in the beginning trying to figure out how to procedurally draw these slope fields, i already have (a sort of) infrastructure for generating slope fields, but the problem is that i want something i can easily animate. Time for a new differential equation!
 
-Maybe we can just make something up, something real easy, like...
+[^lolsv]: I mean, we're *already* in the bay area, what sort of blog post about a startup doesn't enthusiastically talk about pivoting.
+
+Maybe we can just make something up, something... real easyish, like...
 
     y' = x + y
 
 and if you plot this out correctly, you end up seeing something like this:
 
-![](http://dl.dropboxusercontent.com/u/406291/Screenshots/sdKS.png)
+![swooooop!](http://dl.dropboxusercontent.com/u/406291/Screenshots/sdKS.png)
 
-but say you make a mistake (who does that?) and remove that super convenient `atan2` we just learned about, you get something... *interesting.*
+but say you make a mistake[^herpderp] and remove that super convenient `atan2` we just learned about, you get something... *interesting.*
 
-![](http://dl.dropboxusercontent.com/u/406291/Screenshots/4TcL.png)
+[^herpderp]: who does that? i wouldn't do that. who would do such a thing?
+
+![it's like a wave](http://dl.dropboxusercontent.com/u/406291/Screenshots/4TcL.png)
 
 because what's happening is that if you pick a row or a column, you find that the values are monotonically increasing but at a slightly different starting point and because the atan2 isn't around, the darts just continue rotating and rotating...
 
-Ok, so now we have a moderately intriguing slope field which, let's be honest, isn't a *true* slope field at all.
+Ok, so now we have a moderately intriguing slope field which, let's be honest, is something of an accidental slope field at the moment.
 
 So, back to our project: how do we animate it? Well, the neat thing again is that if you walk along the y axis (or x axis) every dart will rotate however much you moved. So if you start with the darts on a grid and tell they all moved just a little in one direction, they *all* rotate just a little bit more counterclockwise, like so:
 
@@ -72,33 +83,35 @@ So, back to our project: how do we animate it? Well, the neat thing again is tha
 
 Which is great and hypnotic. But how do we incorporate this into the announcement banner?
 
-My first instinct was animated gif: but the gifs ended up being multi-megabyte monstrosities and movies no better. Even the gyfcat embed up a few paragraphs ago is, at worst, 4M and, at best, a 400k webp movie. and the quality... let's just say, not the best. Let's be honest, this is not a very complicated thing! it's just a bunch of triangles rotating round and round and...
+My first instinct was animated gif: but the gifs ended up being multi-megabyte monstrosities and movies no better. Even the gyfcat embed up a few paragraphs ago is, at worst, 4M and, at best, a 400k webp movie. and the quality... let's just say, not the best. Ugh, this is not a very complicated thing! it's just a bunch of triangles rotating round and round and...
 
 ## wait a minute
 
-So instead of actually rendering some background image and scaling it up, why not actually *animate* background elements using a little something you may have heard of called [Dynamic HTML](http://en.wikipedia.org/wiki/Dynamic_HTML).
+Instead of actually rendering some background image and scaling it up, why not actually *animate* background elements using a technique you may have heard of called [Dynamic HTML](http://en.wikipedia.org/wiki/Dynamic_HTML).[^dhtml]
+
+[^dhtml]: "a more elegant weapon for a more civilized age"
 
 ## staggering animations
 
 Here's how I would roughly do it: i would use a single dart image, lay out a bunch of them on a grid and then rotate them with css. At first i thought
 
-> "then you can set each dart's from rotation and it's to rotation dynamically"
+> I can set each dart's from-rotation and it's to-rotation dynamically!
 
-I would use css to start each dart's animation at, say, some radians value, rotate 2π radians over some fixed time scale. Genius!
+I would use `css` to start each dart's animation at, say, some radians value, rotate 2π radians over some fixed time scale. Genius!
 
-But because (please feel free to correct me on hn) there's no easy way to create a parameterized css animation with arbitrary start/end points and because it *felt* wasteful to specify a new animation starting at some radian value going a full 2π for all radian values, i instead opted for a more, shall we say, lo-fi approach.
+But because[^emailmarco] there's no easy way to create a parameterized css animation with arbitrary start/end points and because it *felt* wasteful to specify a new animation starting at some radian value going a full 2π for all radian values, i instead opted for a more, shall we say, lo-fi approach.
 
-I would have each dart use the exact-same 2π rotation animation, but I would set each dart's *animation delay* to achieve the same effect.
+[^emailmarco]: please, feel free to correct me on hn
 
-Then, I would set this field of spinning darts on some z-index below the actual html notification.
+I would have each dart use the exact-same 2π rotation animation, but I would set each dart's *animation delay* to achieve the same effect. Then, I would set this field of spinning darts on a z-index below an actual html notification.
 
 ## implementing this
 
-My [first attempt](https://gist.github.com/nsfmc/fc241d6f97a4b3b5203d/95b38bcc9707128c2b1d0501d22f48d070eea036) did something comical: because i had already generated the animation above as part of my testing, i printed the starting rotation for each dart and saved that as a json array which i loaded directly into a small react template yielding something approximately like the
+My [first attempt](https://gist.github.com/nsfmc/fc241d6f97a4b3b5203d/95b38bcc9707128c2b1d0501d22f48d070eea036) did something comical: because i had already generated the animation above using plotdevice as part of my testing, i already had a series of timing offsets along with x/y positions so i printed the starting rotation for each dart and saved that as a json array which i loaded directly into a *very* small react template yielding something approximately like the
 
 
     ...
-    var dartRot = [0, 0.234, 0.469, ..., and lots more, ...]
+    var dartRot = [0, 0.234, 0.469, ..., a few megabytes more, ...]
     ...
     for (var i=0; i < dartRot.length; i += 1){
       style = { animationDelay: dartRot[i], ..., };
@@ -107,9 +120,9 @@ My [first attempt](https://gist.github.com/nsfmc/fc241d6f97a4b3b5203d/95b38bcc97
     ...
 
 
-I iterated over *all the values* and then used that to set the animation delay. My goodness, how ridiculous! That's basically as bad as writing out all those css animations one-by-one.
+I iterated over *all the values* and then used that to set the animation delay. My goodness! how ridiculous! That's basically as bad as writing out all those css animations one-by-one.
 
-Instead, I took until the next morning to realize that i could do something less ridiculous:
+Instead, I set down the project and took until the next morning to realize that i could do something *much* less ridiculous:
 
     ...
     for (var x=0; x < dartCols; x += 1){
@@ -120,18 +133,22 @@ Instead, I took until the next morning to realize that i could do something less
     }
     ...
 
-Here in this demo, the darts are all displayed `inline-block` just to avoid having to deal with position.
+This wasn't even that much more work, i had already done it in python!
+
+In this demo, the darts are all displayed `inline-block` just to avoid having to deal with position.
 
 <a class="jsbin-embed" href="http://jsbin.com/cemewot/embed?output">JS Bin on jsbin.com</a><script src="http://static.jsbin.com/js/embed.min.js?3.34.0"></script>
 
 And the nice thing here is that not only is the code *not* packed with magic arrays, it's also wayyyyyy more obvious what's going on. Even setting the x/y positions (*not shown*) in the style object is more obvious and the code you end up with allows you to think in terms of a unit grid but render elements by twiddling the knobs of your various scale factors. The cool thing about this is that the animation appears to stagger into being. Everything initially starts off pointing to one direction only to eventually fall in line at some point along the animation delay.
 
 
-if you decided that you wanted to change the virtual grid size, you could divide the *x + y* `animationDelay` by some `CONSTANT` value.
+if you decided that you wanted to change the virtual grid size, you could divide the *x + y* `animationDelay` by some `CONSTANT` value. if you want to change grid spacing, you can easily do that too. the code practically writes itself.
 
 At Khan Academy, we have a neat tool to let you prototype a react component in the context of the site called the React Sandbox. It works on the local dev server and lets you take something like that and easily get to something like this:
 
 ![](https://dl.dropboxusercontent.com/u/406291/Screenshots/quV1.png)
+
+After a few passes on the copy and button/form styling it was good to go!
 
 ## lessons learned
 
