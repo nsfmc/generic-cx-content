@@ -69,7 +69,7 @@ and if you plot this out correctly, you end up seeing something like this:
 
 but say you make a mistake[^herpderp] and remove that super convenient `atan2` we just learned about, you get something... *interesting.*
 
-[^herpderp]: who does that? i wouldn't do that. who would do such a thing?
+[^herpderp]: who does that? *i* wouldn't do that. who would do such a thing?
 
 ![it's like a wave](http://dl.dropboxusercontent.com/u/406291/Screenshots/4TcL.png)
 
@@ -83,7 +83,7 @@ So, back to our project: how do we animate it? Well, the neat thing again is tha
 
 Which is great and hypnotic. But how do we incorporate this into the announcement banner?
 
-My first instinct was animated gif: but the gifs ended up being multi-megabyte monstrosities and movies no better. Even the gyfcat embed up a few paragraphs ago is, at worst, 4M and, at best, a 400k webp movie. and the quality... let's just say, not the best. Ugh, this is not a very complicated thing! it's just a bunch of triangles rotating round and round and...
+My first instinct was animated gif: but the gifs ended up being multi-megabyte monstrosities and movies no better. Even the gyfcat embed up a few paragraphs ago is, at worst, 4M and, at best, a 400k webp movie. and the quality... i mean, you have eyes, just *look* at it... it's let's just say, not the best. Ugh, this is not a very complicated thing! it's just a bunch of triangles rotating round and round and...
 
 ## wait a minute
 
