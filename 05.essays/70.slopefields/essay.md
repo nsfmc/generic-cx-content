@@ -10,16 +10,29 @@ content:
 
 A while ago, we needed to send out a notification to all our [LearnStorm](https://www.khanacademy.org/learnstorm) winners inviting them to the Finals event in Mountain View. It's a big deal! Only *200 Students* from all of the bay area got invited to the event.
 
-But... because most of them were under 13, we couldn't email them so we needed to make something that would catch their eye the next time they visited the website.
+Because most (if not all) of them were under 13, we couldn't email[^privacy] them so we needed to make something that would catch their eye the next time they visited the website.
 
+And, as with the most fun projects, there was very little time to actually work on this: from start to finish, this was bounded to around three days, so in terms of design, it would need to be nice, but it couldn't be 100% totally new shiny design work: compromises would need to be made.
 
-## step one: learnstorm?
+[^coppa]: let's put it this way, i am *not* a lawyer, but i *do* know that [COPPA](https://www.ftc.gov/tips-advice/business-center/guidance/complying-coppa-frequently-asked-questions) prevents everyone from collecting any personally identifiable information for anyone under 13 (that includes email addresses).
 
-If you haven't seen it, you are about to discover that a [slope field](https://www.khanacademy.org/math/differential-equations/first-order-differential-equations/differential-equations-intro/v/slope-field-to-visualize-solutions) motif is the heart of learnstorm's identity.[^sloperefresh] In making this notification banner I knew that I wanted echo the identity, but from another angle or perspective. And in order to do that I needed to understand learnstorm's identity a little better.
+## step one: notifications
+
+You have probably gotten a notification on Khan Academy before, and readily dismissed it like so much purple rain.[^purplerain]
+
+[^purplerain]: > ... "Purple rain," later the title of a 1984 song, album, and film (and the tour that supported both the album and film), from the artist Prince. Although it is not known if there is actually any connection, both Mikel Toombs of The San Diego Union and Bob Kostanczuk of the Post-Tribune have written that Prince got the title directly from "Ventura Highway". Asked to explain the phrase "purple rain" in "Ventura Highway", Gerry Beckley has responded: "You got me". (via [wikipedia](https://en.wikipedia.org/wiki/Ventura_Highway#Legacy))
+
+![a default ka notification in portuguese](http://dl.dropboxusercontent.com/u/406291/Screenshots/Mjew.png)
+
+And why not, it's certainly... *distinctive*, but that purple rectangle is not exactly injecting anybody's retinas with "notification delight," so step one was figuring out how to make the notifications look nicer.
+
+## step two: learnstorm?
+
+The next step of research was teasing apart learnstorm's visual style: the [slope field](https://www.khanacademy.org/math/differential-equations/first-order-differential-equations/differential-equations-intro/v/slope-field-to-visualize-solutions) motif is the heart of learnstorm's identity.[^sloperefresh] In making this notification banner I knew that I wanted echo the identity, but from another angle or perspective. To do that I would need to grok that slope field a little better because already at this point, i knew i wanted to incorporate it into the banner in some way.
 
 [^sloperefresh]: A refresher: a slope field (naturally) is the slope (and often magnitude) of a differential equation plotted along a grid. You can use slope fields to build intuition about the nature of first order differential equations, their tangent points, and so forth.
 
-![](http://dl.dropboxusercontent.com/u/406291/Screenshots/JGuX.png)
+![the learnstorm page](http://dl.dropboxusercontent.com/u/406291/Screenshots/JGuX.png)
 
 But wait a second... math??? we can't even [center a div](http://howtocenterincss.com), how can we possibly do anything with slope fields?
 
@@ -27,19 +40,27 @@ Actually, let's step back even further... differential equations? what's a slope
 
 ### step yak: a math detour
 
-My thinking went: if the identity of our contest is rooted in differential equations, maybe it'll help to revisit them.
+My thinking went: our contest is rooted in differential equations, it'll probably help to revisit them. [^1803revisited]
 
-And you find that a slope field is basically what it claims to be: the slope of a differential equation calculated at periodic points on a plane. And differential equations only express *the feel* of an equation, not exactly what it looks like because they're missing several constant values.
+[^1803revisited]: slope fields make up the lion's share of the early weeks of a diff eq class and are by far the least interesting part: all the applied and domain-specific uses of differential equations end up being wayyyyy more interesting.
 
-So for a plain ol' circle (y^2 + x^2 = 1), you'd get *y' = -x/y + c* (which you could find via [implicit differentiation](https://www.khanacademy.org/math/differential-calculus/taking-derivatives/implicit_differentiation/v/implicit-differentiation-1)), but again' all that's saying is that the slope for this differential equation at *any point* is the x value divided by the y value times negative one plus some arbitrary c (which, for us, we'll just pretend is zero). Again, for whatever point, you just enter x and y into that equation and that's the slope. neat!
+And after a brief while you find that a slope field is basically what it claims to be: the slope of a differential equation calculated at periodic points on a plane. And differential equations only express *the feel* of an equation, not exactly what it looks like because they're missing several constant values.
 
-But when we attempt to draw this (say on paper or digitally), we don't actually want y', we really want whatever *direction* y' corresponds to so that we can figure out where a triangle will point. With a simple equation like y' = -x / y , we're going to run into this problem where for zeroey y values we have infinitely positive or negative y' and what do you do with that?
+So for a plain ol' circle *y^2 + x^2 = 1*, you'd get *y' = -x/y + c* (which you could find via [implicit differentiation](https://www.khanacademy.org/math/differential-calculus/taking-derivatives/implicit_differentiation/v/implicit-differentiation-1)), but again' all that's saying is that the slope for this differential equation at *any point* is the *x* value divided by the *y* value times negative one plus some arbitrary *c* (which, for us, we'll just pretend is zero). For whatever point, you just enter x and y into that equation and *that's the slope.*[^slopedetour] neat!
 
-Well, `Math` to the rescue! Specifically the standard [atan2](https://en.wikipedia.org/wiki/Atan2) method which returns the angle in radians (from the origin) for the point at (x,y). It's a special function which calculates the arctangent *but* is smart enough to compensate for zero denominators in pretty much the same way you would (because it takes the denominator as an argument).
+[^slopedetour]: in a blog post full of detours, i should point out how satisfying it is to end up at an early 'solution' that requires the simplest of computations.
 
-Looking at the `atan2` implementation, you find that it does the kind of "intuitive limit-ey division" that you're often asked to do in the first weeks of a calc class. Instead of `NaN` you get ±π/2 and instead of 0 you get 0 or π. It's great! and it's *exactly* what we need because for a given x,y pair, you get exactly the corresponding radian value.
+But when we attempt to draw this (say on paper or digitally), we don't actually want *y'*, we want whatever **direction** *y'* corresponds to so we can point a triangle in that direction. With a simple equation like *y' = -x / y* , we run into this problem where for zeroey *y* values we have infinitely positive or negative *y'* and what do you do with that?
 
-And you'll recall, we have a diff eq that is given by y' = -x/y, we can use `atan2` to find the slope of each point on the plane. Ok, we know how we might use this, now we just need to get started actually drawing it.
+Well, `Math` to the rescue! Specifically the standard [atan2](https://en.wikipedia.org/wiki/Atan2) method which returns the angle in radians (from the origin) for the point at *(x,y)*. It's a special function which calculates the arctangent *but* is smart enough to compensate for zero denominators in pretty much the same way you would.[^divzero]
+
+[^divzero]: because it takes the denominator as an argument, `atan2` avoids the standard movie trope of "tricking" the computer by having it try to divide by zero.
+
+Looking at the `atan2` implementation, you find that it does the kind of "intuitive limit-ey division" that you're often asked to do in the first weeks of a calc class. Instead of `NaN` you get ±π/2 and instead of 0 you get 0 or π. It's great! And it's *exactly* what we need. For a given *(x,y)* pair, you get a corresponding radian value.
+
+Also, recall, we have a diff eq that is given by *y' = -x/y*, we can use `atan2` to find the slope of each point on the plane.[^atan2deets] Ok, we know how we might use this, now we just need to get started actually drawing it.
+
+[^atan2deets]: specifically, you're going to ask for `radians = Math.atan2(y, -x)`
 
 ## step two: prototyping
 
@@ -47,17 +68,17 @@ The first step of prototyping this was a small python script that i wrote for [P
 
 [^plod]: plotdevice is great! it's a python-based drawing application i'm real fond of. Take a look, you might like it! If you like the idea behind processing but you're whatever on java, then you'll probably enjoy it.
 
-Because i didn't have much time to work on this project, I needed to be certain that I could fake out the learnstorm identity so if I began to run out of time, i could, at the very least, use a static (but novel) image as the background for the banner.
+Again, remember that i didn't have too much time to work on this project, I needed to be certain that I could fake out a new spin on learnstorm identity so if I began to run out of time, I could, at the very least, render a cute static image as the background for the banner.
 
 ![a first sketch with nodebox](http://dl.dropboxusercontent.com/u/406291/Screenshots/HB9P.png)
 
-Well, this is looking promising! But now i have a small problem: how do i animate this?
+Well, this looks promising! But the day is young: could i... animate this?
 
-Stepping back, let's do a small crit here: part of what makes the learnstorm identity cool is that you get this round vibe *even though* everything is stuck on a grid. Breaking the grid in this case would not only require me animating each dart but animating them along circular paths which, i mean, would look *awesome* but... umm... let's save that for LearnStorm 2016 when we have more time...
+Stepping back, let's do a small crit here: part of what makes the learnstorm identity cool is that you get this round vibe *even though* everything is stuck on a grid. Breaking the grid in this case would not only require me animating each dart but animating them along circular paths which, i mean, would look *awesome* but... umm... maybe let's save that for LearnStorm 2016 when we have more time...
 
-Let's take this moment to visibly and vocally *Pivot*.[^lolsv] Because i spent all this time in the beginning trying to figure out how to procedurally draw these slope fields, i already have (a sort of) infrastructure for generating slope fields, but the problem is that i want something i can easily animate. Time for a new differential equation!
+Also, let's take this moment to visibly and vocally *Pivot*.[^sandhillfootnote] Because i spent the morning trying to figure out how to procedurally draw slope fields, i *already* have (a sort of) infrastructure for generating slope fields, but the problem is that i want something i can easily animate. Time for a new differential equation!
 
-[^lolsv]: I mean, we're *already* in the bay area, what sort of blog post about a startup doesn't enthusiastically talk about pivoting.
+[^sandhillfootnote]: I mean, we're *already* in the bay area, what sort of blog post from a startup doesn't enthusiastically and vigorously talk and rationalise pivoting as a way of life.
 
 Maybe we can just make something up, something... real easyish, like...
 
@@ -67,17 +88,17 @@ and if you plot this out correctly, you end up seeing something like this:
 
 ![swooooop!](http://dl.dropboxusercontent.com/u/406291/Screenshots/sdKS.png)
 
-but say you make a mistake[^herpderp] and remove that super convenient `atan2` we just learned about, you get something... *interesting.*
+but say you make a mistake[^herpderp] and remove that super "interesting" `atan2` we just learned about, you get something... *novel.*
 
 [^herpderp]: who does that? *i* wouldn't do that. who would do such a thing?
 
 ![it's like a wave](http://dl.dropboxusercontent.com/u/406291/Screenshots/4TcL.png)
 
-because what's happening is that if you pick a row or a column, you find that the values are monotonically increasing but at a slightly different starting point and because the atan2 isn't around, the darts just continue rotating and rotating...
+What's happening is that if you pick a row or a column, you find that the rotation values are monotonically increasing but at a slightly different starting point and because the atan2 isn't around, the darts just continue rotating and rotating...
 
 Ok, so now we have a moderately intriguing slope field which, let's be honest, is something of an accidental slope field at the moment.
 
-So, back to our project: how do we animate it? Well, the neat thing again is that if you walk along the y axis (or x axis) every dart will rotate however much you moved. So if you start with the darts on a grid and tell they all moved just a little in one direction, they *all* rotate just a little bit more counterclockwise, like so:
+So, back to our project: how do we animate it? Well, the neat thing again is that if you walk along the y axis (or x axis) every dart rotates however much you moved. So let's say you start with that static image above and, for each point, you increase *y* or *x* in that *y' = x + y* by a little without actually moving the point, they *all* appear to rotate just a little bit more counterclockwise, like so:
 
 <iframe src="http://gfycat.com/ifr/LinearWideeyedHorsefly" frameborder="0" scrolling="no" width="600" height="200" style="-webkit-backface-visibility: hidden;-webkit-transform: scale(1);" ></iframe>
 
