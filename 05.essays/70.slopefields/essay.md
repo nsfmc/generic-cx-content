@@ -108,23 +108,23 @@ My first instinct was animated gif: but the gifs ended up being multi-megabyte m
 
 ## wait a minute
 
-Instead of actually rendering some background image and scaling it up, why not actually *animate* background elements using a technique you may have heard of called [Dynamic HTML](http://en.wikipedia.org/wiki/Dynamic_HTML).[^dhtml]
+Instead of actually rendering some background image and scaling it up, why not do the animation in the browser using a technique you may have heard of called [Dynamic HTML](http://en.wikipedia.org/wiki/Dynamic_HTML).[^dhtml]
 
-[^dhtml]: "a more elegant weapon for a more civilized age"
+[^dhtml]: "...a more elegant weapon for a more civilized age" -- [alec guiness](https://www.youtube.com/watch?v=0aRtupiY9Dw)
 
 ## staggering animations
 
-Here's how I would roughly do it: i would use a single dart image, lay out a bunch of them on a grid and then rotate them with css. At first i thought
+Here's how I would roughly do it: i would use a *single* dart image, lay out a bunch of them on a grid and then rotate them with css. At first i thought
 
 > I can set each dart's from-rotation and it's to-rotation dynamically!
 
-I would use `css` to start each dart's animation at, say, some radians value, rotate 2π radians over some fixed time scale. Genius!
+And i would use `css` to start each dart's animation at, say, some radian value, setup a keyframe animation to rotate 2π radians over some fixed time scale and then call it a day. Genius!
 
-But because[^emailmarco] there's no easy way to create a parameterized css animation with arbitrary start/end points and because it *felt* wasteful to specify a new animation starting at some radian value going a full 2π for all radian values, i instead opted for a more, shall we say, lo-fi approach.
+But because[^pleasemaildan] there's no easy way to create a parameterized css animation with arbitrary start/end points and because it *felt* wasteful to specify a new animation starting at some radian value going a full 2π for all radian values, i instead opted for a more, shall we say, lo-fi approach.
 
-[^emailmarco]: please, feel free to correct me on hn
+[^pleasemaildan]: please, feel free to correct me on hn
 
-I would have each dart use the exact-same 2π rotation animation, but I would set each dart's *animation delay* to achieve the same effect. Then, I would set this field of spinning darts on a z-index below an actual html notification.
+Instead, each dart would use the *exact-same 2π rotation animation*, but to stagger the animations, I would set each dart's *animation delay* to achieve the same effect. Then, I would set this field of spinning darts on a z-index below an actual html notification.
 
 ## implementing this
 
@@ -141,9 +141,9 @@ My [first attempt](https://gist.github.com/nsfmc/fc241d6f97a4b3b5203d/95b38bcc97
     ...
 
 
-I iterated over *all the values* and then used that to set the animation delay. My goodness! how ridiculous! That's basically as bad as writing out all those css animations one-by-one.
+I iterated over *all the values* and then used that to set the animation delay. My goodness! how ridiculous! That's basically as bad as writing out all those css animations one-by-one. But i mean, the takeaway was that *the idea* was not bad *even if* my initial implementation was.
 
-Instead, I set down the project and took until the next morning to realize that i could do something *much* less ridiculous:
+Instead, I set down the project for the day and it took until the next morning to realize that i could do something *much* less ridiculous:
 
     ...
     for (var x=0; x < dartCols; x += 1){
@@ -154,32 +154,29 @@ Instead, I set down the project and took until the next morning to realize that 
     }
     ...
 
-This wasn't even that much more work, i had already done it in python!
+This wasn't even that much more work, i had already done much of it in python,  i just needed to translate it! Here's basically a demo of that react implementation.[^democaveat]
 
-In this demo, the darts are all displayed `inline-block` just to avoid having to deal with position.
+[^democaveat]: In this demo, the darts are all displayed `inline-block` just to avoid having to be distracted by setting position manually
 
 <a class="jsbin-embed" href="http://jsbin.com/cemewot/embed?output">JS Bin on jsbin.com</a><script src="http://static.jsbin.com/js/embed.min.js?3.34.0"></script>
 
-And the nice thing here is that not only is the code *not* packed with magic arrays, it's also wayyyyyy more obvious what's going on. Even setting the x/y positions (*not shown*) in the style object is more obvious and the code you end up with allows you to think in terms of a unit grid but render elements by twiddling the knobs of your various scale factors. The cool thing about this is that the animation appears to stagger into being. Everything initially starts off pointing to one direction only to eventually fall in line at some point along the animation delay.
+The nice thing here is that not only is the code *not* packed with magic arrays, it's also wayyyyyy more obvious what's going on. Even setting the x/y positions (*not shown*) in the style object is more obvious and the code you end up with allows you to think in terms of a unit grid but render elements by twiddling the knobs of your various scale factors.
 
-
-if you decided that you wanted to change the virtual grid size, you could divide the *x + y* `animationDelay` by some `CONSTANT` value. if you want to change grid spacing, you can easily do that too. the code practically writes itself.
+Because the animation works by setting an animation delay, it slowly staggers into being. So when the banner appears, everything starts off pointing to one direction only to eventually fall in line at some point along the animation delay.
 
 At Khan Academy, we have a neat tool to let you prototype a react component in the context of the site called the React Sandbox. It works on the local dev server and lets you get a quick jsbin/fiddle environment but with all the goodies you've come to expect on the site. Using it, you get something like this:
 
-![](https://dl.dropboxusercontent.com/u/406291/Screenshots/quV1.png)
+![an image of the header inside the react sandbox](https://dl.dropboxusercontent.com/u/406291/Screenshots/quV1.png)
 
-The design isn't super mind blowing: it's a variation on the regular learnstorm header, but it's... animating! And, more importantly, it transfers the gravity of the original learnstorm header towards celebrating the accomplishments of our regional winners and brings the identity to life.
+The design isn't super mind blowing: it's a spin on the regular learnstorm header, but it's... *alive*! And, more importantly, it transfers the gravity of the original learnstorm header into celebrating the accomplishments of our regional winners and brings the identity to life even if it doesn't directly animate the circular slope field.
 
 ## lessons learned
 
-Well, aside from the fact that it's fun to use math to make cool notifications, the main lesson (i think), is that by thinking in terms of parametrizing early on, you can come up with interesting ways of procedurally generating animations later on even if your environment (like css) is constrained.
+Well, aside from the fact that it's fun to use math to make cool notifications, the main lesson (i think), is that by thinking about prototyping (and parametrizing) early on, you can come up with interesting ways of procedurally generating animations later on even when your environment (like css) is constrained.
 
-Part of this was definitely embedded in the early prototyping and differential equation soul searching.
+Part of this was definitely baked into the early differential equation investigations. Later this was teased out using python and in the end, even though the animation was implemented using react, the various explorations let me realize that this is the sort of thing that you could implement with anything else like d3 or even good ol' jQuery or handlebars.
 
-In this case, although the animation was implemented using react, this is the sort of thing that you could do with anything else like d3 or even good ol' jQuery.
-
-In the end, somebody who had received the notification visiting the site would see this (except animating):
+In the end, somebody who had received the notification by visiting the site would see this (except animating):
 
 ![](https://dl.dropboxusercontent.com/u/406291/Screenshots/YQtk.png)
 
