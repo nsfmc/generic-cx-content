@@ -10,7 +10,7 @@ content:
 
 A while ago, we needed to send out a notification to all our [LearnStorm](https://www.khanacademy.org/learnstorm) winners inviting them to the Finals event in Mountain View. It's a big deal! Only *200 Students* from all of the bay area got invited to the event.
 
-Because most (if not all) of them were under 13, we couldn't email[^privacy] them so we needed to make something that would catch their eye the next time they visited the website.
+Because most (if not all) of them were under 13, we couldn't email[^coppa] them so we needed to make something that would catch their eye the next time they visited the website.
 
 And, as with the most fun projects, there was very little time to actually work on this: from start to finish, this was bounded to around three days, so in terms of design, it would need to be nice, but it couldn't be 100% totally new shiny design work: compromises would need to be made.
 
@@ -64,7 +64,7 @@ Also, recall, we have a diff eq that is given by *y' = -x/y*, we can use `atan2`
 
 ## step two: prototyping
 
-The first step of prototyping this was a small python script that i wrote for [PlotDevice](plotdevice.io)[^plod]
+The first step of prototyping this was a small python script that i wrote for [PlotDevice](http://plotdevice.io/)[^plod]
 
 [^plod]: plotdevice is great! it's a python-based drawing application i'm real fond of. Take a look, you might like it! If you like the idea behind processing but you're whatever on java, then you'll probably enjoy it.
 
@@ -74,7 +74,9 @@ Again, remember that i didn't have too much time to work on this project, I need
 
 Well, this looks promising! But the day is young: could i... animate this?
 
-Stepping back, let's do a small crit here: part of what makes the learnstorm identity cool is that you get this round vibe *even though* everything is stuck on a grid. Breaking the grid in this case would not only require me animating each dart but animating them along circular paths which, i mean, would look *awesome* but... umm... maybe let's save that for LearnStorm 2016 when we have more time...
+Stepping back, let's do a small crit[^crytime] here: part of what makes the learnstorm identity cool is that you get this round vibe *even though* everything is stuck on a grid. Breaking the grid in this case would not only require me animating each dart but animating them along circular paths which, i mean, would look *awesome* but... umm... maybe let's save that for LearnStorm 2016 when we have more time...
+
+[^crytime]: a crit (not *[that crit](https://en.wikipedia.org/wiki/Criterium)*) is a time to look over design work with your peers, evaluate and discuss what's succeeding, what's not (and for both, *why*), and offer suggestions for how it could communicate what it needs to most efectively.
 
 Also, let's take this moment to visibly and vocally *Pivot*.[^sandhillfootnote] Because i spent the morning trying to figure out how to procedurally draw slope fields, i *already* have (a sort of) infrastructure for generating slope fields, but the problem is that i want something i can easily animate. Time for a new differential equation!
 
