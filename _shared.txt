@@ -7,6 +7,6 @@ headextras:<link rel="stylesheet" href="//wf.typotheque.com/WF-009837-000865" ty
 email: <marcos@generic.cx>
 -
 footer:
-Marcos Ojeda is a designer living in Saint&nbsp;Paul,MN &amp; previously employed at [khan academy](http://www.khanacademy.org/). You may email him at <marcos@generic.cx> or you may call him at 619&nbsp;721&nbsp;3606.
+Marcos Ojeda is a designer living in Saint&nbsp;Paul,MN, married to [kate ricke](http://www.katericke.com/) and previously employed at [khan academy](http://www.khanacademy.org/). You may email him at <marcos@generic.cx> or you may call him at 619&nbsp;721&nbsp;3606.
 
 c.f. [twitter](http://twitter.com/nsfmc/) [flickr](http://flickr.com/photos/subliminal) [tumblr](http://nsfmc.tumblr.com/) [last.fm](http://last.fm/user/nsfmc) [delicious](http://del.icio.us/nsfmc/) [ffffound](http://ffffound.com/home/nsfmc/found/) [hn](http://news.ycombinator.com/user?id=nsfmc) [pgp](pgp.html)
