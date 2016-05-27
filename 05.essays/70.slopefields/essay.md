@@ -4,7 +4,7 @@ codelang: javascript
 -
 metadesc: i hardly remembered anything about slope fields until i deployed them to make khan academy's learnstorm announcement.
 -
-metaphoto: @pathJqQO.png
+localmetaphoto: sJ4t.png
 -
 content:
 

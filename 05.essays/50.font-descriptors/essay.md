@@ -4,7 +4,7 @@ codelang: swift
 -
 metadesc: As part of khan academy's last healthy hackathon, i had a chance to learn about UIFont and UIFontdescriptors. Here's how you can use them to activate opentype features in your iOS app with swift.
 -
-metaphoto: @pathJqQO.png
+localmetaphoto: 1520000234_46b91b992e_b.jpg
 -
 content:
 
@@ -45,7 +45,7 @@ and for any run of text in iOS, you are allowed to set this UIFont property howe
 
 and whenever you need to use both of them, what you do is create and [attributed string](https://developer.apple.com/library/ios/documentation/Cocoa/Reference/Foundation/Classes/NSAttributedString_Class/Reference/Reference.html#//apple_ref/doc/uid/TP40003622) that contains a run of text whose font may be `liningFont` and then append a second run of text whose font is `osfFont`. In the abstract, i think this doesn't sounds *totally* crazy, but it is a bit verbose. the above example reads like this:
 
-    var liningRun = NSMutableAttributedString(string: "01234", 
+    var liningRun = NSMutableAttributedString(string: "01234",
         attributes: [NSFontAttributeName: liningFont!])
     var osfRun = NSAttributedString(string: "567890",
         attributes: [NSFontAttributeName: osfFont!])
@@ -74,9 +74,9 @@ the typical approach to muddling around with fonts, in particular, activating op
         let features: [NSObject: AnyObject] = [
             UIFontDescriptorFeatureSettingsAttribute: [
                 [
-                    UIFontFeatureTypeIdentifierKey: 
+                    UIFontFeatureTypeIdentifierKey:
                         kNumberCaseType,
-                    UIFontFeatureSelectorIdentifierKey: 
+                    UIFontFeatureSelectorIdentifierKey:
                         kLowerCaseNumbersSelector
                 ]
             ]
@@ -121,25 +121,25 @@ But instead of dealing with features abstractly, we'd like to at least have a wa
 So we do something like this:
 
     extension UIFont {
-        
+
         // repeated from above
         func fontWithFeature(...) -> UIFont { ... }
-        
+
         func fontWithSMCP() -> UIFont {
             return self.fontWithFeature(
-                kLowerCaseType, 
+                kLowerCaseType,
                 value: kLowerCaseSmallCapsSelector)
         }
-        
+
         func fontWithC2SC() -> UIFont {
             return self.fontWithFeature(
-                kUpperCaseType, 
+                kUpperCaseType,
                 value: kLowerCaseSmallCapsSelector)
         }
-        
+
         func fontWithONUM() -> UIFont {
             return self.fontWithFeature(
-                kNumberCaseType, 
+                kNumberCaseType,
                 value: kLowerCaseNumbersSelector)
         }
     }
@@ -148,7 +148,7 @@ If you're wondering what other options exist other than `kNumberCaseType`, you c
 
 Anyhow, with these three methods, you can do something along the lines of writing code like:
 
-    
+
     let styledFont: UIFont = UIFont(
             name: "ProximaNova-Regular",
             size: 14.0)! // explicitly unwrap since init -> UIFont?
@@ -162,7 +162,7 @@ and that would give you a font that would turn "A small caps font with 123456789
 
 ### gripes
 
-I obliquely mentioned that i have 'mixed' feelings about font descriptors and it's mostly because they're explicitly unreliable and because they assume the existence of exhaustive font families, such that you'd be able to query for a font with some properties like number types or special characters and so forth. 
+I obliquely mentioned that i have 'mixed' feelings about font descriptors and it's mostly because they're explicitly unreliable and because they assume the existence of exhaustive font families, such that you'd be able to query for a font with some properties like number types or special characters and so forth.
 
 The system is designed to let you ask, but makes no assurances you'll get what you're looking for which can make it difficult to distinguish errors in your own code and errors in the font provided. Case in point [rdar://17624040](rdar://17624040) (closed as dupe of [rdar://17624040](rdar://17624040)), a bug in iOS' bundled version of Avenir Next that prevents SMCP and C2SC from activating even though the features are present in the font (or if queried via [`CTFontCopyFeatures`](https://developer.apple.com/library/ios/documentation/carbon/reference/CTFontRef/index.html#//apple_ref/c/func/CTFontCopyFeatures))
 
@@ -170,7 +170,7 @@ Which is sort of disappointing because those sorts of silent errors make it hard
 
 Since this was mostly an exploration of activating features, i thought i'd add in another method for selectively activating stylistic sets as a bonus for anyone that made it all the way to the end. Enjoy!
 
-    /** 
+    /**
     pass in a positive integer to activate that stylistic set
     or pass a negative integer to deactivate that set.
     0 deactivates all features.
@@ -182,17 +182,17 @@ Since this was mostly an exploration of activating features, i thought i'd add i
         case 0:
             let ss = 0
             return self.fontWithFeature(
-                kStylisticAlternativesType, 
+                kStylisticAlternativesType,
                 value: ss)
         case 1...20:
             let ss = stylistic_set * 2
             return self.fontWithFeature(
-                kStylisticAlternativesType, 
+                kStylisticAlternativesType,
                 value: ss)
         case (-20)...(-1):
             let ss = (stylistic_set * -2) + 1
             return self.fontWithFeature(
-                kStylisticAlternativesType, 
+                kStylisticAlternativesType,
                 value: ss)
         default:
             // in the worst case, return the font
