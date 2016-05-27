@@ -1,5 +1,7 @@
 title: under the dome
 -
+metadesc: my review of stephen king's Under The Dome
+-
 content:
 
 i came to Under the Dome after being disappointed at the second episode of the show, so i started the audiobook and about 50 percent of the way through <i>that</i>, i started reading it proper. It was a true multimedia experience.

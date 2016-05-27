@@ -1,5 +1,7 @@
 title: the death of paper prototypes
 -
+metadesc: are paper prototypes dead? (no)
+-
 content:
 
 some have said that [paper prototypes are a waste of time](http://www.gv.com/lib/paper-prototyping-is-a-waste-of-time).
@@ -18,11 +20,11 @@ but again, if you've already decided something is a good idea, then in-app or li
 
 which is to say, if you're at the stage where you're going "head to head with your competitors" then you probably should be doing real prototypes or building real mvcs in whatever system works best. this is effectively the same as what they're saying in the original article: you can't only paper prototype and expect it all to be peaches and cream.
 
-even as i'm writing this i'm getting a huge fred brooks flashback here because the reality is that making good ui is actually quite time consuming even if you have fancy whizbang frameworks. this is why people love framer or qc—they simplify thinking about interaction to the most basic aesthetic choices as relates to some states: this thing fades out while this thing flies in. or these things pop in at staggered delays when you go to the next part of the tutorial. 
+even as i'm writing this i'm getting a huge fred brooks flashback here because the reality is that making good ui is actually quite time consuming even if you have fancy whizbang frameworks. this is why people love framer or qc—they simplify thinking about interaction to the most basic aesthetic choices as relates to some states: this thing fades out while this thing flies in. or these things pop in at staggered delays when you go to the next part of the tutorial.
 
 i'm not trying to knock those tools, but the truly hard ui problems are rarely solved by a single motion sketch in any app. and honestly, even those keynote/qc/framer 'high fidelity mocks' are, to my mind, as disingenuous as polished paper prototypes because most of the time their animations are wildly disconnected from the reality of using the app day to day when you're trying to accomplish anything.
 
-the reality mirrors something closer to the epic 500+ email process thread from the creators of Threes, a thread so epic that it doesn't deserve to be occluded within an html link, i'll just put it here 
+the reality mirrors something closer to the epic 500+ email process thread from the creators of Threes, a thread so epic that it doesn't deserve to be occluded within an html link, i'll just put it here
 
         http://asherv.com/threes/threemails/
 
