@@ -2,7 +2,7 @@ title: what you don't know
 -
 metadesc: why does empathy from a computer feel so discomforting in practice?
 -
-localmetaphoto: jUQA.png
+localmetaphoto: @pathjUQA.png
 -
 content:
 
