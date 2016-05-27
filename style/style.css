@@ -187,6 +187,10 @@ primary_style:
     font-family: Times, serif;
   }
 
+  blockquote strong {
+    color: #9F002D;
+  }
+
   footer p{
     font-size:12px;
     line-height:16px;
