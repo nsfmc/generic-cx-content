@@ -4,7 +4,9 @@ codelang: swift
 -
 metadesc: As part of khan academy's last healthy hackathon, i had a chance to learn about UIFont and UIFontdescriptors. Here's how you can use them to activate opentype features in your iOS app with swift.
 -
-localmetaphoto: 1520000234_46b91b992e_b.jpg
+localmetaphoto: @path1520000234_46b91b992e_b.jpg
+-
+metaphotoalt: a hand holding a composing stick with lead type in it
 -
 content:
 

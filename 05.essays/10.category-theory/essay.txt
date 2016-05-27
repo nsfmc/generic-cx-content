@@ -2,6 +2,8 @@ title: Category Theory.
 -
 localmetaphoto: @pathprinter.jpg
 -
+metaphotoalt: a duotoned photo of a printer error message
+-
 metadesc: does design succeed if you need to know the backstory first?
 -
 content:

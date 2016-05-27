@@ -4,6 +4,8 @@ metadesc: why does empathy from a computer feel so discomforting in practice?
 -
 localmetaphoto: @pathjUQA.png
 -
+metaphotoalt: a flickr page with a missing photo
+-
 content:
 
 

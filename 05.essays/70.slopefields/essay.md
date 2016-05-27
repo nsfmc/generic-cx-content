@@ -6,6 +6,8 @@ metadesc: i hardly remembered anything about slope fields until i deployed them 
 -
 localmetaphoto: @pathsJ4t.png
 -
+metaphotoalt: a view of a slopefield in the mac app plotdevice
+-
 content:
 
 A while ago, we needed to send out a notification to all our [LearnStorm](https://www.khanacademy.org/learnstorm) winners inviting them to the Finals event in Mountain View. It's a big deal! Only *200 Students* from all of the bay area got invited to the event.
