@@ -2,6 +2,8 @@ title: Category Theory.
 -
 localmetaphoto: printer.jpg
 -
+metadesc: does design succeed if you need to know the backstory first?
+-
 content:
 
 I find myself getting more and more curmudgeonly over time. I bought a receiver for my tv, but i found configuring it to be arduous. I use new software and wonder if i'm missing something by only *skimming* the menus rather than devoting myself to them.
