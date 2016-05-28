@@ -93,7 +93,7 @@ An aside here: as a kid i always though binary file formats were magic until i r
 
 anyhow, a quick trip to google reveals that this CommonCrypto incantation is a stock AES 128[^aes128] incantation, which means that even though you could could reuse that code to make a cli application[^cli_disclosure], you could also (probably) just feed a `vkeys` file to openssl and decrypt it there successfully.
 
-[^ae128 which kind of aes, we'll discuss later]
+[^ae128]: which kind of aes, we'll discuss later
 
 this makes sense, too, if you stop and think about the app being cross-platform: if the key files are generated via webapp, that means that the webapp has to be able to output some format that can easily be parsed by c# in windows and objective c on the mac, so the webapp is unlikely to be spewing forth the result of `[internalRepresentation writeToUrl: foo atomically: YES]`
 
