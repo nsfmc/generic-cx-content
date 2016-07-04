@@ -1,0 +1,11 @@
+title: make,do
+---
+idx: 30
+---
+content:
+
+This is the website for the 2010 graphic design class shop, [make, do](http://makedoshop.com).
+
+The typeface for Make, Do's logo is Vergi, by [Alpkan Kirayoglu](http://alpabets.com), the type for the rest of the site is Typotheque's Plan Grotesque goes through their web font service.
+
+The whole site is backed by a json database and navigation happens via jquery-address, which permits deep-linking and nice animation effects. HTML/CSS/JS (2010)

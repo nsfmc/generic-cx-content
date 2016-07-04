@@ -1,0 +1,17 @@
+title: hackney
+---
+idx: 110
+---
+content:
+
+For khan academy's [hack week 2014](http://hackweek.khanacademy.org) i fleshed out a simple ios application as a proof of concept for how khan academy could implement a highly focused coach and parent application. I recruited [desmond brand](https://twitter.com/dmnd_) and [zach gotsch](https://twitter.com/codeathena) to help me with api data modeling, network integration and push notification support.
+
+The project began as a series of sketches to try to understand how best to develop intelligence for coaches on khan academy. rather than develop an app that ranked students in a class, the goal was to provide actionable information: each student could be evaluated as part of a group but *not against their peers.*
+
+Since iOS UITableViewController applications are so relatively common, i made it a goal to specifically incorporate typography throughout each prototype cell view and within the navigation bar. To that end, the application uses many of Proxima Nova's opentype features as well as bundling a custom made monolinear icon font whose weight matches Proxima Nova Regular so both could be used within a UILabel's attributed string without changing the string's type size.
+
+The app was laid out using storyboards with custom swift classes to define layout and appearance. See also this essay here [on using fontdescriptors in swift](/essays/font-descriptors/) for more technical details on how to extend UIFont to harness a font's opentype features when writing swift applications.
+
+Desmond and Zach helped in incorporating alamofire, creating internal swift representations of KA's Student Progress and enabling live apns notifications.
+
+iOS7, swift, robofont, illustrator. october 2014

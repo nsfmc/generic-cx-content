@@ -1,0 +1,11 @@
+title: Eslinger Law Site
+---
+idx: 40
+---
+content:
+
+I recently did a facelift for eslingerlawoffice.com
+
+A major goal of the site was to remove the dependence on type-images that the previous site used. The type is Calluna (and its small caps). Because many of the clients use windows computers, verdana is used for body copy because it is well hinted. The site is IE7+ compatible, which is always a more painful process than one would want.
+
+The site is built with [Stacey](http://staceyapp.com), the portfolio/templating system.

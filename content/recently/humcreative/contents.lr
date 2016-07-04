@@ -1,0 +1,13 @@
+title: hum creative
+---
+idx: 90
+---
+content:
+
+I developed kate harmer's humcreative.com website recently.
+
+The site is mostly a portfolio site, but it includes lots of small treats, like history pop/pushstate for browsers that support it, and multi-column text, css animations and all those cute buzzwords.
+
+The site also has lots of random backend things built in, like tumblr api-integration for pain-free blogging and html multi-part contactform emails.
+
+The vast majority is structured off a customized fork of the html5 boilerplate + stacey 2.2 that i work on. The site is easy to maintain and was a blast to work on.

@@ -1,0 +1,131 @@
+title: Category Theory.
+---
+idx: 10
+---
+localmetaphoto: printer.jpg
+---
+metaphotoalt: a duotoned photo of a printer error message
+---
+metadesc: does design succeed if you need to know the backstory first?
+---
+content:
+
+I find myself getting more and more curmudgeonly over time. I bought a receiver for my tv, but i found configuring it to be arduous. I use new software and wonder if i'm missing something by only *skimming* the menus rather than devoting myself to them.
+
+As an unfashionably nerdy child, i consumed product manuals and software specs with vigor. I was a master VCR programmer. I was an early tech support weenie. "Young people have energy."
+
+Let me suggest that it's maybe not actually a matter of energy (but you're free to disagree). Instead, i think it was an easy comfort to relish in Rules; to understand and play out the system someone else had designed for me to live in.
+
+***
+
+There's an interesting article from Harper's Magazine[^tensePresent] which is mostly about "Democratic Spirit" but proposes the, now prosaic, notion that language is shaped and observed by two camps, Descriptivists and Prescriptivists. The Descriptivists watch language play itself out and document it as well as they can. Meanwhile, Prescriptivists (as their name implies) *prescribe* historically correct and proper usage of language. Who's right? I won't spoil the surprise. The article makes a good case, though.
+
+Design is an opinionated field, informed by concepts like "systems" and "visual languages" and [semiotics](http://www.aber.ac.uk/media/Documents/S4B/semiotic.html). The AIGA [describes design][aiga] as a "creative process that combines art and technology to communicate ideas." and design crits are littered with gems like "it just doesn't speak to me" or "what is this trying to *say*?" That design is a communicative medium should surprise nobody, least of all designers.
+
+Folks, myself included, like to make the distinction between "design aesthetic" and "design function" as if they're different things, but from a fundamental standpoint they're both a *kind of vernacular*; each a style and method for making a point. Sometimes 'how you say it' *is* as important as 'what you say.'
+
+![Turn off, then on](./printer.jpg)
+
+Let's go back to tv receivers & software. When it comes to things like software and hardware, there's this Jakob Nielsen/Don Norman-esque belief that objects should be obvious, clear, reuse metaphors, etc. These are not bad goals at all. Interaction and interface design are important *because* they aim to create intelligible and reusable mental models for what are often complex ideas.
+
+Over time, these ideas coalesce into a semi-standardized design language. At their outset, though, apps and devices try to find a way to express their newfound utility and differences through icons, metaphors and novel interface elements[^winampVsItunes]. John maeda once noted[^maedaVolvo] that his digital camera's manual was twice as large as the one for his Volvo sedan. Digital camera technology still, to some degree, actively improves "the basics" enough that we still need to deal with these changes. In contrast, cars largely refine existing features nowadays rather than innovating fundamental things like the accelerator. If your [car gets an upgrade](http://www.apple.com/ios/carplay/) these days, you don't need to relearn how to use the brakes or accelerator.
+
+The goal of converging standards in ui design is to democratize the components of interfaces. In the development of [indexhibit](http://www.indexhibit.org), daniel eatock said that he wanted to create 'archetypal' [online portfolios](http://www.indexhibit.org/) which democratically favored *content* rather than the design of the portfolio. Back when voicemail *wasn't* tied to a touchscreen ui, you could mostly count on the 7 key to mean 'delete'. When navigating indexhibit, you know what the portfolio contents are. When using a doorknob, you usually know how it's going to behave.
+
+Standards exist to simplify common things, which is goood, nobody disputes that.
+
+***
+
+There's a term for a certain flavor of exaggerated gramattical etiquette called "hypercorrection"[^gmau] where people, afraid of sounding 'stupid' always use "I" instead of "me", despite the word "me" being 'more appropriate' in the context as a grammatical object. Languages and their grammars have lots of rules, mostly so you can make a point as unambiguously as possible to as many people as possible.
+
+In design, as in a grammar, these rules are often byzantine. There are accepted [numerical guidelines][shaykin] for justifying text in inDesign on the numeric end and there are flavor-profiles for [mixing and matching type](http://www.typography.com/email/2010_03/index_tw.htm) on the abstract end. There are rules as to what you can do and [what you shouldn't do](http://www.thinkingwithtype.com/contents/extras/#Type_Crimes) and what has, historically, looked 'good,' and what "[Golden Ratios](http://alistapart.com/article/more-meaningful-typography)" and [musical scales](http://lamb.cc/typograph/) have been used since time immemorable. These rules are passed down in the best Prescriptive manner by instructors and classmates.
+
+Graphic Design is largely prescriptive. It thrives on *correct* things and as a result it has its fair share of hypercorrection. Why do so many designs look similar? Why do hierarchies often look the same between websites? Why are standardized grids so common? Part is pragmatism but the other part is often falling back on standards. But when you start falling back on prescriptive rules and pre-fab systems to Design something you are consciously making a choice to make *that aspect* of your design [invisible](http://gmunch.home.pipeline.com/typo-L/misc/ward.htm). This is roughly the same argument for using [Standard Written English](http://en.wikipedia.org/wiki/Standard_written_English) to make your point.
+
+My impression has been that Fine Artists think this manner of rule-using and setting is laughable since Fine Art thrives on people challenging norms and conventions. As in Fine Art, Design rewards 'successful' challenges to convention. The [successes are duplicated](http://trendlist.org), they evolve, they change, they take on a life of their own. They are memes in the highest-brow sense. The others are simply 'wrong' until a subculture fetishizes them and champions them on their own merits[^subculture].
+
+For an example of this, you can look at David Carson, the poster-child for designers wanting to tout that "design doesn't *have* to play by the rules." And, since he existed at a time when grunge was very much culturally *de stijl*, you can witness the accompanying success of his cohort of zuzana and neville and paula and stefan and all the gang who just wanted to eff things up real nice[^grungeCoda]. The exact same people who massimo was *very* publicly pillorying and, if you've watched Helvetica, you can see him slighting with gusto.
+
+To say that Design, as a field, is conflicted about its place in the Art world is something of an understatement[^whatIsDesign].
+
+***
+
+![2012 headline - by gareth hague](klute.jpg)
+
+The comedy of iOS7 was chiefly the '[designer reaction](http://designerscomplaining.tumblr.com/),' mostly for their bare-fisted prescriptivism (at quantities unseen since the reveal of wolff olins' london 2012 logo[^london2012]). iOS7 was all *wrong* they said. Helvetica as system font was [wrong][spiekermann]. The grid was "OK", but its [application was wrong][mrgan]. Even the gracious crits toed the party line vis-a-vis type, color, icon design, etc[^chimero].
+
+Then, just as soon as the crits began, the consensus turned again to the fact that iOS7 [wasn't complete yet][moltz], and finally that we were [judging iOS7 prematurely][warner].
+
+But the point is not that iOS's design was divisive (uninteresting) but that the *kind of reaction* is highly divisive. You see arguments that fall back on prescribed rubric, on taste, on 'correctness' and so forth. The opposing viewpoints have mostly centered around "give it time" and "it's new, let's see what happens."[^gigaom] Certainly there's probably some hedging going on, but a rationale for reserving judgment that centers on "i don't understand what this means yet" implies a descriptivist's assessment that iOS' success is largely dependent on what everyone else does in relation to it.
+
+***
+
+Actually, let me return to london 2012 for a second:
+
+> The typeface needed to be part of this world, be linear and graphic, not typographic, not have the formal typographic subtleties of the typefaces its been compared to, or their reference points of blackletter or cartoon.
+>
+> Such comparisons have missed the point and have not considered idea of the identity or the type in context, or context according to its original brief. Or they have just not liked the identity per se, so have expressed a general dislike of all aspects of the identity, not considering the inadequacies or otherwise of the type as a supporting element to the logo.[^alias]
+
+The overarching critique of the games' identity was formal[^formalLingo], but for a *system*, this is something of a red herring. The above plea is not asking that folks accept the aesthetic choices that produced the logo or font, rather it's begging that people evaluate the type in the *context* of the logo and the universe it spawned.
+
+And if we tolerate, as a profession, the notion that design is a tool for communication, it is unfortunate that a vocal subset of influential designers expect design to communicate instantly intelligible ideas. Certainly, much of design services simple ideas, but any communication platform will at some stage try to express or present a legitimately new idea. [What then](http://paulgraham.com/avg.html)?
+
+This isn't an excuse for needless complexity in design. Nobody likes that, but most interaction designs tend to be compromises between convention and the peculiarities of whatever new mental model is being presented[^mentalModel]. The canonical example is File Sync (which is Hard, btw). As of 2005, the best solution was something like [Unison](http://www.cis.upenn.edu/~bcpierce/unison/). And then dropbox showed up and instead of letting people deal with a complex config file, just gave people a magic folder with blue and green icons to let you know if your files had finished syncing. Sync is still hard, but dropbox acknowledged that most people just don't care as long as you create conflicted versions and give them a few gigs of free storage space.
+
+And some conceptual simplifications are helpful but others are [leaky abstractions](http://en.wikipedia.org/wiki/Leaky_abstraction) and as a result, when we begin to critique anything new, we look for the familiar and try to make sense of elements we haven't seen before.
+
+> * What you get right, nobody mentions it.
+> * What you get wrong, people bitch about.
+> * What is difficult to understand you have to explain to people over and over again[^elixir]
+
+---
+And naturally it's difficult to let go of your own rule-systems:
+
+you've invested lots of energy in creating them and there's nothing which objectively proves anyone has it figured out any more than you have.
+
+
+
+[^elixir]: joe armstrong's Three Laws of Programming Languages re: [elixir](http://joearms.github.io/2013/05/31/a-week-with-elixir.html). It's worth mentioning if it's not obvious that this gem comes from the designer of a Programming Language, a person intimately aware of the limitations of trying to express complex ideas in a strict grammar.
+
+[^formalLingo]: here i use the word *formal* as "Relating to the form or structure of something" rather than its more common use as "ceremonial" or "official"
+
+
+[^winampVsItunes]: Remember the difference between Winamp and iTunes back in the day (if you remember that far back)?. Winamp was particularly hands-off about your music collection and unskinned, it *looked* like a piece of component audio hardware. Its main ui element was the playlist editor which gobbled up m3us or whole directory structures. By contrast, iTunes was very much designed to not only play, but *collect* your music. Playlists were available, but they were secondary to its Library view.
+
+[^mentalModel]: This was made apparent to me the first time i used Lightroom and the first time i attempted to use final cut pro. I had zero frame of reference for film and so the whole thing seemed to me needlessly complex. In contrast, when i used lightroom, i immediately understood what they were trying to do, possibly because i had spent plenty of time thinking in "the photo space."
+
+    I actually don't know if final cut is considered a Good application, but i do know that i lack a mental frame of reference from which to judge it which makes me think that
+
+[^gigaom]: om malik's ios7 [designer roundup](http://gigaom.com/2013/06/10/ios-7-love-it-hate-it-either-way-designers-are-talking-about-it/) is disturbingly informative.
+
+[warner]: https://medium.com/design-ux/3c4f01573adc
+
+[moltz]: http://www.macworld.com/article/2042556/ios-7-proves-once-again-that-change-is-the-way-apple-does-business.html
+
+[^subculture]: see for example: pixel art / ascii art / scanner glitches over rococo tapestries / etc
+
+[^chimero]: This is perhaps an unkind assessment of Frank Chimero's [honest realization](http://frankchimero.com/blog/2013/06/generosity-of-perspective/) that time smooths over many design wounds but even as rational as his argument was, he couldn't help but get a dig in.
+
+[mrgan]: http://mrgan.tumblr.com/post/53308781143/wrong
+
+[spiekermann]: https://twitter.com/espiekermann/status/344394584798949377
+
+[shaykin]: http://instagram.com/p/YyJNA6Jb8F/
+
+[aiga]: http://www.aiga.org/guide-whatisgraphicdesign/
+
+[^maedaVolvo]: This musing appears in his [ted talk](http://www.ted.com/talks/john_maeda_on_the_simple_life.html) and also featured prominently in his run-up to his Laws of Simplicity book. And with good reason, it's an astute observation that technological innovation has the capacity to make once-obvious things complicated. Having a tiny screen on the back of your camera is valuable for providing you feedback, but it has the effect of encouraging you to perform your feedback loop as you're taking photos rather than editing your photos much later.
+
+[^tensePresent]: [Tense Present](http://instruct.westvalley.edu/lafave/DFW_present_tense.html), David Foster Wallace. Haper's Magazine April 2001. I am underselling how brilliant this essay is: the reality is that DFW starts by making you understand the context of the prescriptivist/descriptivist debate and then after he lets you make up your own mind about which is Right, he wallops you with this book review about a book that is doing, as a reference book, the same thing wallace is doing in prose.
+
+[^gmau]: garner's modern american usage, Hypercorrection. The problem is not limited to I/me, but also who/whom, and so forth.
+
+[^whatIsDesign]: this debate goes pretty much all the way back to the 1920s or so when typographers debated whether or not the title Graphic Designer was an affront towards honest typographers. Is Design layout? Is it Art? Is it Typography? Is it Illustration? These questions (and more) are fodder for most MFA seminars.
+
+    Take a second and ask yourself if it's problematic if design aspires to art. For art to be 'successful' do you have to 'get it' the same way you have to 'get' a design? Certainly, design has some leeway to express itself creatively, but is it the same leeway we allow to something like, say, R.Mutt's [Fountain](http://en.wikipedia.org/wiki/Fountain_(Duchamp))?
+
+[^london2012]: it's, at this point, not totally beyond the pale to suggest that the logocalypse that was foretold by vocal designers was completely overblown. Why this was an issue *at all* is ridiculous. Did the logo violate the sanctity of the games any more than the 2000 sydney games or the 2008 beijing games (both of which might as well have been cut from the same cloth)?
+
+[^grungeCoda]: or Weingart if you want to go further back.
+
+[^alias]: Naturally, Gareth Hague, the designer of Headline 2012, [weighed in](http://alias.dj/blog/a-spiky-typeface-for-a-spiky-logo/) on the vocal reactions to the 2012 logo. Note, even in this quote and in the rest of his reaction the use of the word 'context.'
