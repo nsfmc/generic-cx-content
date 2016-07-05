@@ -1,13 +1,15 @@
 title: chaining font descriptors in uikit
--
+---
+idx: 50
+---
 codelang: swift
--
+---
 metadesc: I had a chance to learn about UIFont and UIFontdescriptors. Here's how you can use them to activate opentype features in your iOS app with swift.
--
+---
 localmetaphoto: @path1520000234_46b91b992e_b.jpg
--
+---
 metaphotoalt: a hand holding a composing stick with lead type in it
--
+---
 content:
 
 A  [few months ago](http://healthyhackathon.khanacademy.org) i decided to try my hand at doing some work in swift but i ended up yak shaving my way into finally understanding what's going on in textkit. One of the neat things i came across was this idea of chaining font descriptors to progressively activate opentype features on a font. Now that we're in [full blown hack week](http://hackweek.khanacademy.org) at khan academy, i'm taking the time to use this code for a project i'm working on.

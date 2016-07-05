@@ -1,11 +1,13 @@
 title: what you don't know
--
+---
+idx: 80
+---
 metadesc: why does empathy from a computer feel so discomforting in practice?
--
-localmetaphoto: @pathjUQA.png
--
+---
+localmetaphoto: jUQA.png
+---
 metaphotoalt: a flickr page with a missing photo
--
+---
 content:
 
 
@@ -75,13 +77,13 @@ Which, again, i want to return to that first excerpt from zeynep's piece:
 
 This is similar to people who trust that digital archives are some kind of panacea but don't realize that digital data (unless archived on [resiliant physical media](http://group47.com/what-is-dots/)) is subject to corruption, bit flips and other sundry damage (although the physical copy has its own problems).
 
-![was this photo... backed up?](https://dl.dropboxusercontent.com/u/406291/Screenshots/jUQA.png)
+![was this photo... backed up?](jUQA.png)
 
 to claim that a system that gracefully tolerates hardware failure exhibits a bias *is 100% true*, and there are other biasing factors at work in any of these systems (which, [see the depressing end of the spectrum](https://www.propublica.org/article/machine-bias-risk-assessments-in-criminal-sentencing)). But it also gives the laws of nature an easy pass—what does it mean to have a law of nature anchor a search result? Do we choose a system that behaves predictably at the expense of convenience? Certainly the decision to "show the truth" vs "show a good approxmation" is an ethical one, but how big of one is it? **When does data-center latency become ethically fraught?** What sorts of disclaimers do services need to furnish us with? What about our friends?
 
 When you ask yelp for a bar and it suggests a park, what sort of moralistic puritanic editorializing is that? also, how do you know it's _not_? when a hardware failure prevents you from seeing a retweet for a minute (but lets you see the rest of your feed), what _kind_ of bias is that? Why are we so offended (and scandalized!) when we're presented with the equivalent of a white lie or a gap in memory? Is it because we don't know the reason behind it? Is it because it exposes the nature of our relationships with these services?
 
----
+***
 
 Some other unstructured thoughts:
 
@@ -95,7 +97,7 @@ I'm not going to defend google or facebook, both of whom have had significant is
 
 When the stakes are low, do we need transparency in how google or facebook make decisions about our newsfeed? that's a good question! should we have transparency as to why my server is upselling today's special appetizer? should the server tell me that today's lunch special is the result of a roast's last day of usable shelf life? should i ask the record store employee what cultural basis grounds all the recommendations they give me? Or should we regulate that instead? Should a sales person be required to tell me up-front they work on commission?
 
----
+***
 
 I'll close this out with a thought on google glass. I still believe that google glass' failure wasn't a foregone conclusion, but it _was_ poorly socialized. There were absolutely _no norms_ around it and so it became odd to see people taking it to the extreme as users and other folks assuming the worst when going about their day. It was too many new things at once.
 
