@@ -19,7 +19,7 @@
 
   <!-- Stylesheets -->
   <!-- pure grids -->
-  <link rel="stylesheet" href="{{ '/public/style/css/handheld.css'|asseturl }}">
+  <link rel="stylesheet" href="{{ '/public/style/handheld.css'|asseturl }}">
 
   <!-- main styles -->
   <link rel="stylesheet" href="{{ '/public/style/style.css'|asseturl }}">
@@ -102,10 +102,29 @@
     {% endblock footer %}
 
   {% endblock container %}
+  </div> <!-- end of #container -->
+
+  {% block footscripts %}
+  <!-- old... jquery, cdn, then local fallback -->
+  <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script>!window.jQuery && document.write('<script src="{{ '/public/docs/js/jquery-1.11.3.min.js'|asseturl }}"><\/script>');</script>
+
+  <!-- zoom images -->
+  <!-- zoom.js -->
+  <script src="{{'/public/scripts/zoom.js'|asseturl}}"></script>
+  <script>
+  (function(){
+    var img_list = document.querySelectorAll(".main-content p img");
+    var img_arr = Array.prototype.slice.call(img_list);
+    img_arr.forEach(function(c,i,a){
+        c.setAttribute('data-action', 'zoom')
+    })
+  })();
+  </script>
+  {% endblock %}
 
   {% block scriptextras %}
   {% endblock %}
-  </div> <!-- end of #container -->
 
 </body>
 </html>
