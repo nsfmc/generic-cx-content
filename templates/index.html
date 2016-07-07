@@ -1,12 +1,21 @@
 {% extends 'main.html' %}
-{% from "macros/project-pagination.html" import render_pagination %}
 
 {% set title = this.title %}
-{% set pageclass = 'workpage' %}
-{% set images = this.attachments.images.all() %}
 
 {% block navigation %}
-  {{ render_pagination(this.get_siblings()) }}
+  <ul id="navigation">
+  {% for child in this.children %}
+    <li><h2>{{ child.title }}</h2>
+      <ul class="children">
+      {% for item in child.children %}
+        <li><h3><a href="{{ item|url }}">
+          {{ item.path.split('/')[-1].replace('-', ' ') }}
+        </a></h3></li>
+      {% endfor %}
+      </ul>
+    </li>
+  {% endfor %}
+  </ul>
 {% endblock %}
 
 {% block body %}

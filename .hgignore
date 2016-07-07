@@ -1,2 +1,2 @@
-syntax:glob
-.DS_Store
+syntax: glob
+*.DS_Store
