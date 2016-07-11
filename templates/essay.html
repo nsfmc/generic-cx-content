@@ -7,7 +7,7 @@
   <link href="//cloud.webtype.com/css/59a32a45-7c84-477a-a4b4-fa8a4749e900.css" rel="stylesheet" type="text/css" />
 
   <!-- syntax highlighting -->
-  <link rel="stylesheet" href="{{ 'public/style/prism.css'|asseturl }}?v=1">
+  <link rel="stylesheet" type="text/css" href="{{ get_pygments_stylesheet()|url }}">
 
   <!-- zoom.js's css -->
   <link rel="stylesheet" type="text/css" href="{{ '/public/style/zoom.css'|asseturl }}">
@@ -54,8 +54,5 @@
 
 
 {% block scriptextras %}
-
-  <!-- syntax highlighting -->
-  <script src="{{ '/public/docs/js/prism.js'|asseturl }}"></script>
 
 {% endblock %}

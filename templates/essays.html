@@ -1,0 +1,25 @@
+{% extends 'main.html' %}
+{% from "macros/project-pagination.html" import render_pagination %}
+
+{% set title = this.title %}
+{% set pageclass = 'workpage' %}
+
+{% block nav %}
+  {{ render_pagination(this.pagination) }}
+{% endblock %}
+
+{% block body %}
+    <div id="main">
+      {{ this.content }}
+    </div>
+{% endblock %}
+
+{% block images %}
+  {% if images %}
+    <div id="images">
+    {% for image in images %}
+    <p><img src="{{ image|url }}">
+    {% endfor %}
+    </div>
+  {% endif%}
+{% endblock %}

@@ -106,7 +106,7 @@ Ok, so now we have a moderately intriguing slope field which, let's be honest, i
 
 So, back to our project: how do we animate it? Well, the neat thing again is that if you walk along the y axis (or x axis) every dart rotates however much you moved. So let's say you start with that static image above and, for each point, you increase *y* or *x* in that *y' = x + y* by a little without actually moving the point, they *all* appear to rotate just a little bit more counterclockwise, like so:
 
-<iframe src="http://gfycat.com/ifr/LinearWideeyedHorsefly" frameborder="0" scrolling="no" width="600" height="200" style="-webkit-backface-visibility: hidden;-webkit-transform: scale(1);" ></iframe>
+<iframe src="http://gfycat.com/ifr/LinearWideeyedHorsefly" frameborder="0" scrolling="no" width="600" height="200" style="-webkit-backface-visibility: hidden;-webkit-transform: scale(1);"></iframe>
 
 Which is great and hypnotic. But how do we incorporate this into the announcement banner?
 
@@ -137,28 +137,31 @@ Instead, each dart would use the *exact-same 2π rotation animation*, but to sta
 My [first attempt](https://gist.github.com/nsfmc/fc241d6f97a4b3b5203d/95b38bcc9707128c2b1d0501d22f48d070eea036) did something comical: because i had already generated the animation above using plotdevice as part of my testing, i already had a series of timing offsets along with x/y positions so i printed the starting rotation for each dart and saved that as a json array which i loaded directly into a *very* small react template yielding something approximately like the
 
 
-    ...
-    var dartRot = [0, 0.234, 0.469, ..., a few megabytes more, ...]
-    ...
-    for (var i=0; i < dartRot.length; i += 1){
-      style = { animationDelay: dartRot[i], ..., };
-      return <dart style={style} />;
-    }
-    ...
-
+```javascript
+...
+var dartRot = [0, 0.234, 0.469, ..., a few megabytes more, ...]
+...
+for (var i=0; i < dartRot.length; i += 1){
+  style = { animationDelay: dartRot[i], ..., };
+  return <dart style={style} />;
+}
+...
+```
 
 I iterated over *all the values* and then used that to set the animation delay. My goodness! how ridiculous! That's basically as bad as writing out all those css animations one-by-one. But i mean, the takeaway was that *the idea* was not bad *even if* my initial implementation was.
 
 Instead, I set down the project for the day and it took until the next morning to realize that i could do something *much* less ridiculous:
 
-    ...
-    for (var x=0; x < dartCols; x += 1){
-      for (var y=0; y < dartRows; y += 1){
-        style = { animationDelay: (x+y), ..., };
-        return <dart style={style} />;
-      }
-    }
-    ...
+```javascript
+...
+for (var x=0; x < dartCols; x += 1){
+  for (var y=0; y < dartRows; y += 1){
+    style = { animationDelay: (x+y), ..., };
+    return <dart style={style} />;
+  }
+}
+...
+```
 
 This wasn't even that much more work, i had already done much of it in python,  i just needed to translate it! Here's basically a demo of that react implementation.[^democaveat]
 
