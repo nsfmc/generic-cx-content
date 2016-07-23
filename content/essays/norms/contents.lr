@@ -81,7 +81,7 @@ This is similar to people who trust that digital archives are some kind of panac
 
 to claim that a system that gracefully tolerates hardware failure exhibits a bias *is 100% true*, and there are other biasing factors at work in any of these systems (which, [see the depressing end of the spectrum](https://www.propublica.org/article/machine-bias-risk-assessments-in-criminal-sentencing)). But it also gives the laws of nature an easy pass—what does it mean to have a law of nature anchor a search result? Do we choose a system that behaves predictably at the expense of convenience? Certainly the decision to "show the truth" vs "show a good approxmation" is an ethical one, but how big of one is it? **When does data-center latency become ethically fraught?** What sorts of disclaimers do services need to furnish us with? What about our friends?
 
-When you ask yelp for a bar and it suggests a park, what sort of moralistic puritanic editorializing is that? also, how do you know it's _not_? when a hardware failure prevents you from seeing a retweet for a minute (but lets you see the rest of your feed), what _kind_ of bias is that? Why are we so offended (and scandalized!) when we're presented with the equivalent of a white lie or a gap in memory? Is it because we don't know the reason behind it? Is it because it exposes the nature of our relationships with these services?
+When you ask yelp for a bar *and it suggests a park*, what sort of moralistic puritanic editorializing is that? also, how do you know it's _not_? when a hardware failure prevents you from seeing a retweet for a minute (but lets you see the rest of your feed), what _kind_ of bias is that? Why are we so offended (and scandalized!) when we're presented with the equivalent of a white lie or a gap in memory? Is it because we don't know the reason behind it? Is it because it exposes the nature of our relationships with these services?
 
 ***
 
@@ -111,4 +111,5 @@ But what are the societal norms around the apps we use? Well, we've been around 
 
 As a field, we designers spend a lot of time talking about how to design with empathy and grace. but i suspect the problem is partly that people expect apps to behave like utilities, deterministic and steely-eyed in their execution, and are discovering there's something strange about our landlord or our electric company talking to (and empathizing with) us like our best friend and then shaking us down for extra money when the conversation takes a turn.
 
-
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">latest <a href="https://twitter.com/magic">@magic</a> growth hack starts by acting like an old friend, ends by asking to &quot;hop on a call for 10 minutes&quot; 😒😬😡 <a href="https://t.co/PyQedn5yeh">pic.twitter.com/PyQedn5yeh</a></p>&mdash; Michael Grinich (@grinich) <a href="https://twitter.com/grinich/status/755132086210617345">July 18, 2016</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>

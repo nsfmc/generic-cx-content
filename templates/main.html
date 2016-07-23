@@ -6,11 +6,20 @@
   <!-- do the right thing for phones -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>{{ title }}{{ title and '||'}}{{ site_title or 'This is Generic Dot Cx' }}</title>
+  {%- set site_title = site.get('/').title|striptags -%}
+  {%- set page_title = site.get('/').title|striptags -%}
 
-  {% if metadesc %}
+  {%- if pagetitle -%}
+    {%- set page_title = this.page_title -%}
+  {%- elif title -%}
+    {%- set page_title = title|striptags + ' || ' + site_title -%}
+  {%- endif %}
+
+  <title>{{ page_title }}</title>
+
+  {% if metadesc -%}
   <meta name="description" content="{{ metadesc }}">
-  {% endif %}
+  {%- endif -%}
 
   <meta name="author" content="Marcos Ojeda">
 
@@ -25,30 +34,31 @@
   <link rel="stylesheet" href="{{ '/public/style/style.css'|asseturl }}">
 
   <!-- twitter cards -->
-  {% block twittercard %}
+  {%- block twittercard %}
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@nsfmc" />
-  {% if title %}
-    <meta name="twitter:title" content="{{ title }}" />
-  {% endif %}
 
-  {% if metadesc %}
+  {% if title -%}
+    <meta name="twitter:title" content="{{ page_title }}" />
+  {%- endif %}
+  {% if metadesc -%}
     <meta name="twitter:description" content="{{ metadesc }}" />
-  {% endif %}
+  {%- endif %}
 
-  {% set images = this.attachments.images.all() %}
-  {% if images %}
-    {% for image in images %}
-      {# FIXME(marcos): is this correct? #}
-      <meta name="twitter:image" content="{{ image.thumbnail(640)|url }}" />
-    {% endfor %}
-  {% endif %}
+  {%- set images = this.attachments.images.all() -%}
+  {%- if images -%}
+    {#- FIXME(marcos): is this correct? -#}
+  {%- for image in (images|sort(reverse=True))[:4] -%}
+    <meta name="twitter:image" content="{{ image.thumbnail(640)|url }}" />
+  {% endfor -%}
+  {%- endif -%}
 
-  {# TODO(marcos): does this need to be an absolute url? #}
+  {#- TODO(marcos): does this need to be an absolute url? #}
   <meta name="twitter:url" content="{{ '.'|url }}" />
 
-  {% endblock twittercard %}
+  {% endblock twittercard -%}
 
+  <!-- webfonts -->
   <link rel="stylesheet" href="//wf.typotheque.com/WF-009837-000865" type="text/css" />
 
   {% block headextras %}
@@ -62,7 +72,7 @@
   {% block container %}
 
     <header>
-      <h1>{{ title }}</h1>
+      <h1>{{ title|safe }}</h1>
     </header>
 
     <nav>
@@ -79,7 +89,7 @@
     <div id="prettystuff">
       {% block images %}
         {% if images %}
-          {% for image in images %}
+          {% for image in images|sort(reverse=False, attribute='path') %}
           <img src="{{ image|url }}">
           {% endfor %}
         {% endif%}
@@ -89,6 +99,9 @@
       {% endblock %}
 
       {% block html %}
+      {% for doc in this.attachments.documents.all() if doc.path.endswith('.html') %}
+        {{ doc.contents.as_text()|safe }}
+      {% endfor %}
       {% endblock %}
     </div>
 

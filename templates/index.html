@@ -10,7 +10,7 @@
       <ul class="children">
       {% for item in child.children %}
         <li><h3><a href="{{ item|url }}">
-          {{ item.path.split('/')[-1].replace('-', ' ') }}
+          {{ item.path.split('/')[-1].replace('-', ' ')|title }}
         </a></h3></li>
       {% endfor %}
       </ul>
@@ -21,16 +21,9 @@
 
 {% block body %}
     <div id="main">
-      {{ this.content }}
+      {{ this.body }}
     </div>
 {% endblock %}
 
 {% block images %}
-  {% if images %}
-    <div id="images">
-    {% for image in images %}
-    <p><img src="{{ image|url }}">
-    {% endfor %}
-    </div>
-  {% endif%}
 {% endblock %}
