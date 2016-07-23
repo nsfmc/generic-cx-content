@@ -1,0 +1,58 @@
+/*default css stylesheet for web.mit.edu/thinker/www/  */
+
+body {
+  background: #fff; color:black
+}
+a {
+  background: #fff; color: navy;
+  text-decoration: overline;
+  margin-right: 60px;
+  font: 13px/1em Geneva, Arial, sans-serif;
+}
+a:visited {
+  background: #fff; color: navy;
+  text-decoration: line-through;
+}
+a:hover {
+  text-decoration: none;
+}
+
+p, li {
+  background: #fff;  color: black;
+  font: 13px Geneva, Arial, sans-serif;
+  text-indent:.25in;
+}
+h1 {
+  position: absolute; 
+  top:20px; left: 73px; 
+  margin-top:0px; padding-top: 0px;
+  background: #fff; color: black;
+  font: bold 1em Arial, Geneva, sans-serif;
+}
+.links {
+  position: absolute; 
+  top: 433px; left: 13px;
+  text-align: right;
+}
+.photo {
+  float:left; position: absolute; 
+  top:73px; left: 73px;
+}
+
+.descriptions {
+  position: absolute; 
+  top:65px; left: 620px; 
+  margin-right: 10px; max-width: 300px;
+}
+
+.zippo {
+  position: absolute;
+  max-width: 300px; max-height: 200px;
+  top: 400px; left: 200px;
+}
+
+.zippoship {
+  position: absolute;
+  max-width:200px; max-height: 200px;
+  top: 400px; left: 520px;
+}

@@ -1,0 +1,223 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>untitled</title>
+	<meta name="generator" content="TextMate http://macromates.com/">
+	<meta name="author" content="Marcos Ojeda">
+	<!-- Date: 2009-05-12 -->
+	<script src="jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="newrisd.js" type="text/javascript" charset="utf-8"></script>
+	<!-- <script src="tworisd.js" type="text/javascript" charset="utf-8"></script> -->
+	<script src="rowvis.js" type="text/javascript" charset="utf-8"></script>
+	<link rel="stylesheet" href="grey.css" type="text/css" media="screen" title="no title" charset="utf-8">
+	
+	<script type="text/javascript" charset="utf-8">
+	 $(function(){ // run on page load
+	   for (var i = 0; i < two_risd["authors"].length; i+=1){ 	   // get all author names
+	     var auth = $("<li>"+two_risd["authors"][i]+"</li>");
+       $("#auths ul").append(auth);  // add to #auths ul
+	   }
+	   
+	   //  get all post titles
+	   for (var i=0; i<two_risd["ids"].length;i+=1){
+	     var thread = two_risd["ids"][i];
+	     var post = $("<div>"+two_risd["posts"]["threads"][thread].content+"</div>")
+	     $(post).text($(post).text());
+	     $("#posts").append(post)
+	     post.hide(0).animate({opacity:"1"},Math.log(i+1)*200+3000).fadeIn(30);
+	     
+	     
+	     
+	     /*
+	      * hovering over each post
+	      *
+	      */
+	    
+	     post.hover(function(post_idx){
+	       return function(){
+	         
+	         var post_obj = two_risd["posts"]["threads"][post_idx]; // get the thread
+	         if($("#info h2.locked").size() == 0){
+   	         $("#info h2").text(post_obj.title);
+	         }
+ 	         if(post_obj.hasOwnProperty("replies")){ // if any replies
+ 	           var replies = post_obj["replies"];
+ 	           var author_set = {}
+   	         for (var j=0; j < replies.length; j+=1){ // iterate over all replies
+   	           var rep = replies[j];        
+   	           author_set[rep.author] = true; // create author "set"
+   	         }
+   	         
+   	         if($("#auths li.locked").size() == 0){ // no locked authors, then highlight
+               $("#auths li").each(function(index, domElt){ // iterate over all author names
+     	           if($(this).text() in author_set){
+     	             $(this).addClass("active");  //make active if replied to post
+     	           }
+     	         })
+   	         }
+  	         
+ 	         }
+ 	         
+	       }
+	     }(thread), // thread is passed to the closure as post_idx, the wp post # in the blog json
+	     
+	     function(post_idx){ // same as above
+
+	       return function(){
+	         if($("#auths li.locked").size() == 0){  // no locked authors, clear on unhover
+    	       $("#auths li").removeClass("active")
+	         }
+	       }
+	     }(thread))
+
+       
+       /*
+        * what to do when clicking a post
+        *
+        */
+       
+	     post.bind("click",function(post_idx){
+	       var faded = false;
+	       return function(){
+	         // toggle aesthetic
+  	       if(!faded){ // this post has not been clicked
+
+             var post_obj = two_risd["posts"]["threads"][post_idx]; // get the thread
+  	         
+   	         $("#posts div.inactive").fadeTo(150,1); // fade in old posts
+   	         $(this).fadeTo(300,.1).addClass("inactive"); // fade out post
+   	         $("#info h2").text(post_obj.title); // set the title 
+   	         $("#info h2").addClass("locked") // lock the h2 in info
+    	       $("#auths li.active").addClass("locked")
+    	       $("#replies").empty();
+    	       
+   	         if(post_obj.hasOwnProperty("replies")){ // if any replies
+   	           var replies = post_obj["replies"];
+   	           var author_set = {}
+     	         for (var j=0; j < replies.length; j+=1){ // iterate over all replies
+     	           author_set[replies[j].author] = true; // create author "set"
+                 var p_a = $("<div />").addClass("person").text(replies[j].author);
+                 var p_r = $("<div />").addClass("post").html(replies[j].content);
+                 
+                 $("#replies").append(p_a).append(p_r);
+               }
+               $("#auths li").each(function(index, domElt){ // iterate over all author names
+     	           if($(this).text() in author_set){
+     	             $(this).addClass("active");  //make active if replied to post
+     	           }
+     	         })
+  	         }
+
+  	       }else{ // this post has been clicked before
+  	         $(this).fadeTo(300,1);
+   	         $("#info h2").removeClass("locked") // lock the h2 in info
+    	       $("#auths li.locked").removeClass("locked")
+    	       $("#replies").empty();
+  	       }
+  	       faded = !faded; // set new toggle
+  	       
+	       }
+	     }(thread))
+	   }
+	   $(".post").live("click",function(){
+	     $("#post").empty().append($(this).html()).fadeIn("slow",function(){$(this).addClass("active")});
+	     $("#posts").addClass("inactive")	     
+	     var authie = $(this).prev().text();
+       $("#post").prepend($("<h2>"+authie+"</h2>"))
+	     //$("#post").prepend($("<div style='width:100%; height:100%; opacity:.3; background-color:white;' />"))
+	   })
+	   $("#post").live("mousedown",function(){
+	     var userSelection;
+       if (window.getSelection) {
+         userSelection = window.getSelection();
+         if(String(userSelection).length > 1){
+           //alert(userSelection)
+           var sel_auth = $("h2",this).text()
+           var spanny = $("<span>"+userSelection+"</span>").attr({title:sel_auth});
+           $(spanny).hover(function(){
+             var whoisit = $(this).attr("title")
+             $("#auths li").each(function(index, domElt){ // iterate over all author names
+   	           if($(this).text() == whoisit){
+   	             $(this).addClass("spotlight");  //make active if replied to post
+   	           }
+   	         })
+           },function(){
+             $("#auths li.spotlight").removeClass("spotlight")
+           }
+           )
+           $("#corpse").append(spanny)
+         }
+       }
+	   })
+	   $(".inactive").live("click",function(){
+	     $("#post").fadeOut("slow",function(){$(this).removeClass("active").empty()});
+	     $("#posts").removeClass("inactive");
+	   })
+	 })
+	</script>
+	<style type="text/css" media="screen">
+	  #posts, #post{margin-top:1em; float: left; width:500px; position:absolute; top:0; left:150px;}
+	  #posts div, #info .post, .person {font-size:1px; float:left; width:45px; margin:0px 5px 5px 0px; width:45px; height:45px; overflow:hidden;}
+	  #posts div:hover{color:white;}
+	  #posts.inactive{opacity:.05;}
+	  
+	  #post{z-index:-100; float:none; border:1px dotted transparent; margin-left:50px; width:400px;}
+	  #post.active{z-index:100;}
+	  
+	  #auths{position:fixed; top:0; left:10px; font-size:1px; width: 100px; margin-top:16px; font-size:2px;}
+	  #auths li{display:inline;}
+	  #info{position:fixed; width:300px; left:700px; top:0; margin-top:1em; float:left; background-color:#aaa; z-index:5;}
+	  .person {width:95px; font-size:10px;}
+	  #info h2{width:300px; margin-bottom:1.5em;}
+	  #auths .active{
+	    color:white;
+	  }
+	  #info img, #info font, #info embed, #info object{
+	    display:none;
+	  }
+	  #info{
+	    height:300px;
+	    width: 350px;
+	    overflow:auto;
+	  }
+	  #corpse{
+	    height:200px;
+	    width: 350px;
+	    position:absolute;
+	    left:680px;
+	    top:340px;
+	  }
+	  .spotlight{color:red !important;}
+	  
+	</style>
+</head>
+<body>
+
+  <div id="auths">
+    <ul>
+    </ul>
+  </div>
+  
+  <div id="post">
+    
+  </div>
+  
+  <div id="posts">
+    
+  </div>
+  
+  <div id="info">
+    <h2></h2>
+    <div id="replies">
+      
+    </div>
+    <div style="clear:both;"></div>
+  </div>
+  <div id="corpse">
+    
+  </div>
+</body>
+</html>

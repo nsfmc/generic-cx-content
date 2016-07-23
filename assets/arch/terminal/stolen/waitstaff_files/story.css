@@ -1,0 +1,19 @@
+P { 
+	font-family: verdana, arial, sans-serif;
+	text-indent: 15px;
+	margin-top: 0px;
+}
+
+.aclass, .imgXLBorder, 
+.imgBorder {
+	border: 1px solid black;
+}
+
+.bclass, .imgXLNoBorder, 
+.imgNoBorder {
+	border: 0px solid none;
+}
+
+.noIndent {
+	text-indent: 0px;
+}

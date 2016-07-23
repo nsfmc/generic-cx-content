@@ -1,0 +1,237 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+
+  <script type="text/javascript"></script>
+  <script src="http://www.google-analytics.com/urchin.js" type="text/javascript"> </script>
+  <script type="text/javascript"> _uacct = "UA-97175-1"; urchinTracker(); </script>
+  <script type="text/javascript">preferred = "Classic";</script>
+  <script type="text/javascript" src="style.js"></script>
+  <script type="text/javascript" src="toc.js"> </script>
+<!--
+  <link rel="alternate stylesheet" type="text/css" href="bauhaus.css" title="Bauhaus" />
+  <link rel="stylesheet" type="text/css" href="classic.css" title="Classic" />
+-->
+  <style type="text/css" media="screen">
+    .acopy, .hcopy{
+      letter-spacing: .025em;
+      font-weight:    bold;
+      color:          #b10a21;
+      font-size:      1.3em;
+    }
+    .acopy{ font-family:    arial; }
+    .hcopy{ font-family:    helvetica; }
+
+    .alogo, .hlogo{
+      letter-spacing:-.03em;
+      font-size:3.7em;
+    }
+
+    .hlogo{ font-family:    helvetica; }
+    .copy img {margin-right: -0em; float: none;}
+    div.image {float: left; }
+    div.image img {float: left; margin: 15px;}
+    div.image p {font-size: .8em;}
+
+  </style>
+  
+  <title>the mit logo - marcos.a.ojeda</title>
+</head>
+
+<body>
+  <div id="container">
+  
+    <div id="intro"> 
+      <h1>about</h1>
+      <div id="intro_text">
+
+        <p><q>The new MIT logotype has evolved since the early days of MIT. <a
+        href="http://web.mit.edu/graphicidentity/symbols/logo.html">[1]</a></q></p>
+
+        <p>When i saw yearbooks inexplicably used as the image for that
+        caption i wondered how Technique was connected. Why wait for an answer
+        to that kind of question when you can answer it yourself?</p>
+
+      </div>
+    </div>
+
+
+    <div id="main_content">
+
+      <div class="subhead"> 
+        <h2>Legitimacy</h2> 
+        
+        <div class="copy">
+
+          <p>Originally, this page was going to appear as one of the main pages
+          for Technique. However, i decided to co-opt the content i had made
+          back into my own webpage. Here it goes.</p>
+          
+          <p>The <a href="http://web.mit.edu/psb/">Publishing Services
+          Bureau</a> (PSB) and the associated <a
+          href="http://web.mit.edu/graphicidentity/process/team.html">MIT I.D.
+          Team</a> will be very explicit about the fact that what appears on
+          this page <strong>is not</strong> the <acronym>mit</acronym> logo.
+          Nevertheless, i feel that there exists a need, if only historic in
+          nature, to preserve the <acronym title="Massachusetts Institute of Technology">mit</acronym> logo that was in use
+          until 2002.</p>
+
+          <p>MIT website owners should feel comfortable using whatever graphic
+          identity they choose, even if only for kitsch, historic or sentimental
+          value. As the logo evolves, so must we remember its history. </p>
+
+        </div>
+      </div>
+
+      <div class="subhead">
+        <h2>websafe logo</h2>
+        
+        <div class="copy">
+        
+          <p>Classically, the <acronym>mit</acronym> logo has consisted of two
+          parts: the <acronym>mit</acronym> and the text "Massachusetts
+          Institute of Technology". This is different than the <em>seal,</em>
+          which you can learn about <a
+          href="http://libraries.mit.edu/archives/mithistory/seal/">here.</a></p>
+          
+          <p>The 90s logo is amazing because it is all text, which means that
+          the <em>standards conscious</em> publisher can actually implement it
+          as pure text that is styled with css instead of as a graphic. The
+          clear advantage is that a user that has disabled graphics will
+          <strong>still</strong> experience the substance of the logo as
+          intended. Neat!</p>
+          
+          <p>Thankfully for the rogue publisher, the text of the 90's era logo
+          is set in a demi-bold variant of Arial.  The slightest differences,
+          you will notice, creep in Arial's lowercase <em>t</em> with its
+          chiseled ascender and the weight of the font which is slightly too
+          wide and just a bit too stocky.</p>
+
+          <p class="acopy"><span class="alogo">MIT</span> Massachusetts Institute
+          of Technology</p>
+
+          <p>The font purist may ask "What of Helvetica, Arial's superior
+          counterpart?" Although Helvetica features a correctly shaped
+          <em>t</em>, the problem lies in the fact that Helvetica is simply
+          too tall and features an apparently non-uniform stroke in the M. </p>
+
+          <p class="hcopy"><span class="hlogo">MIT</span> Massachusetts Institute
+          of Technology</p>
+          
+          <h3>code</h3>
+
+          <p>To this end, the following may be used as an inline style
+          definition for the logo. The problematic thing about this is that,
+          obviously, it depends on the fonts Arial and Helvetica. In the worst
+          of cases, the user will just see the words <em>MIT Massachusetts
+          Institute of Technology,</em> but the effect will be lost.</p>
+
+          <p>The following should go in the <code>head</code> section of your
+          html page, or optionally it can go in your stylesheet. You can feel
+          free to play around with these values, but the defaults are pretty
+          good...</p>
+
+<pre>
+&lt;style type="text/css"&gt;
+  .base_logo{
+    letter-spacing: .025em;
+    font-weight:    bold;
+    color:          #b10a21;
+    font-size:      1.3em;
+    font-family:    arial, helvetica; 
+  }
+  .logo{
+    letter-spacing:-.03em;
+    font-size:3.7em;
+  }
+&lt;/style&gt;
+</pre>
+
+          <p>This is the following html snippet that you can put in your
+          webpages, it will make the logos you see above. If you don't like the
+          words <em>Massachusetts Insitute of Technology,</em> then just don't
+          use them.</p>
+
+<pre>
+&lt;p class="base_logo"&gt;&lt;span class="logo"&gt;MIT&lt;/span&gt;
+  Massachusetts Institute of Technology&lt;/p&gt;
+</pre>
+        </div>
+      </div>
+
+      <div class="subhead">
+        <h2>Color</h2>
+        <div class="copy">
+          <p>The <acronym>psb</acronym> makes it clear that there are two
+          official <acronym>mit</acronym> colors. If you are using the Pantone
+          color matching system, then you will use 201 for red and 424 for
+          gray. </p>
+          
+          <p>For the web, however, the <acronym>psb</acronym> reccomends that you
+          use #993333 for red and #666666 for gray. Web safe colors were all the
+          rage ten years ago but are an antiquated holdover from those dark ages.
+          Further, the colors in this combination look anemic at best.</p>
+          
+          <p class="acopy" style="color:#666"><span class="alogo"
+          style="color:#933">MIT</span> Massachusetts Institute of Technology</p>
+          
+          <p>May i suggest the more lively  #b10a21 for red and #636363 for gray.</p>
+          
+          <p class="acopy" style="color:#636363"><span class="alogo"
+          style="color:#b10a21">MIT</span> Massachusetts Institute of
+          Technology</p>
+
+          <p>I honestly forget if it's worth the hassle to live your life in
+          websafe colors, but these days, i figure that most people that are
+          designing with css and whatnot probably use plenty of web un-safe
+          colors. But i could be wrong.</p>
+
+        </div>
+        
+      </div>
+   
+      <div class="subhead">
+        <h2>Images</h2>
+
+        <div class="copy">
+
+          <p>When i started at MIT, <acronym>is</acronym> had a neat webpage
+          where you could download the MIT part of the logo in different sizes
+          so that you could liberally sprinkle it on your webpage wherever you
+          felt like it. Here are cleverly made replicas:</p> 
+
+          <div class="image">
+            <img src="http://web.mit.edu/yearbook/logo/logo 36.png" alt="the mit logo"/>
+            <p><code>&lt;img src="http://web.mit.edu/yearbook/logo/logo 36.png" /&gt;</code></p>
+          </div>
+          <div class="image">
+            <img src="http://web.mit.edu/yearbook/logo/logo 36 gray.png" alt="the mit logo in gray"/>
+          </div>
+          <div class="image">
+            <img src="http://web.mit.edu/yearbook/logo/logo 36 black.png" alt="the mit logo in black"/>
+          </div>
+          
+        </div>
+        <!-- copy -->
+      </div>
+      <!-- subhead -->
+      
+    </div>
+    <!-- main-content -->
+  
+    <div id="footer">
+      
+      <p><span id="contact">thinker at mit dot edu</span></p>
+
+      <p><span id="compliance"> <a
+      href="http://validator.w3.org/check?uri=referer">xhtml</a> <a
+      href="http://jigsaw.w3.org/css-validator/validator?uri=http://web.mit.edu/thinker/www/bauhaus.css">css</a></span></p>
+    
+    </div>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <title>{Title}</title>
+  <link rel="shortcut icon" href="{Favicon}" />
+  <link rel="alternate" type="application/rss+xml" href="/rss" />
+  
+  <style type="text/css" media="screen">
+    html,body{padding:0;margin:0; width:100%;}
+    body{font-size:76%; font-family:"Helvetica Neue", HelveticaNeue,helvetica,sans-serif}
+    h1{
+      position:relative;
+      left:7.4375em;
+      font-size:4em; 
+      color:#aaa;
+      padding:0;margin:.416em 0;
+      width:6.7375em;
+    }
+    h2{
+      color:#888;
+      font-size:2em;
+      margin:.833em 0;
+    }
+    a:link,a:visited,a:hover,a:active{
+      color:#3f3f3f;
+      text-decoration:none; 
+      font-weight:bold;
+      font-family:"Helvetica Neue Bold",HelveticaNeue-Bold,helvetica,sans-serif;
+    }
+    a:hover,a:active{color:#8a8a8a;}
+
+    .desc a:link, .desc a:visited, .desc a:hover, .desc a:active{
+      font-family:"Helvetica Neue Bold Italic",HelveticaNeue-BoldItalic,helvetica,sans-serif;
+    }
+
+    #header{
+      left:0;
+      position:relative; 
+      width:100%;
+      border-bottom:1.66em solid #3f3f3f;
+    }
+    #nav{
+      position:absolute;
+      top:2.66em;
+      left:1.25em;
+      width:25em;
+    }
+    #nav ul{
+      padding:0; margin:0;
+      width:10.083em;
+      margin-right:1.25em;
+      margin-bottom:.833em;
+      float:left;
+      list-style-type:none;
+    }
+    li{
+      font-size:.833em;
+      line-height:1.25em;
+    }
+    #picture{
+      position:absolute;
+      width:23.33em;
+      max-width:534px;
+      padding-left:1.33em;
+      border-bottom:1.66em solid #3f3f3f;
+    }
+    p {
+      font-family:verdana;
+      padding:0;
+      margin:1.67em 0;
+    }
+    #picture img{
+      width:21.33em;
+      min-height:14.15em;
+      max-width:500px;
+      border:.33em solid #3f3f3f;
+      margin:0; padding:0;
+    }
+    #picture .desc{
+      font-size:.833em;
+      padding:0 3.33em 0 2em;
+      margin:2em 0;
+      font-style: italic;
+      text-align:center;
+    }
+    #body{
+      position:relative;
+      left:29.66em;      
+      width:26.95em;
+    }
+    #body p{
+      margin:0 0 1.667em 0;
+      line-height:1.4em;
+    }
+    #body p:first-line{
+      text-indent:1em;
+    }
+    
+  </style>
+  
+  <style type="text/css" media="screen">
+    {CustomCSS}
+  </style>
+  
+</head>
+
+<body>
+  <div id="content">
+    
+    <div id="header">
+      <h1>{Title}</h1>
+    </div>
+    
+    <div id="nav">
+      <ul>
+        <li><a href="http://www.flickr.com/photos/subliminal/">my flickr</a></li>
+        <li><a href="http://www.last.fm/user/nsfmc/">my last.fm</a></li>
+      </ul>
+
+      <ul>
+        <li><a href="http://del.icio.us/nsfmc/">my del.icio.us</a></li>
+        <li><a href="http://twitter.com/nsfmc/">my twitter</a></li>
+        <li><a href="http://openstudio.media.mit.edu/artists/marcos">my openstudio</a></li>
+      </ul>
+      
+      
+      
+    </div>
+    
+    {block:Description}
+    <div id="picture">
+      <p class="desc">{Description}</p>
+    </div>
+    {/block:Description}
+    
+    <div id="body">
+    {block:Posts} 
+      {block:Text}
+        {block:Title}
+        <h2>{Title}</h2>
+        {/block:Title}
+        {Body}
+      {/block:Text}
+
+      {block:Quote}
+        <blockquote class="{length}">
+        "{Quote}"
+        </blockquote>
+        
+        {block:Source}
+        <p class="source">{Source}</p>
+        {/block:Source}
+      {/block:Quote}    
+    {/block:Posts}
+
+    </div>
+  </div>
+
+
+  <script type="text/javascript">
+  var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+  document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+  </script>
+  <script type="text/javascript">
+  var pageTracker = _gat._getTracker("UA-97175-5");
+  pageTracker._initData();
+  pageTracker._trackPageview();
+  </script>  
+</body>
+</html>
+

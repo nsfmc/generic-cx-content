@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Let Me Tell You About My Thesis</title>
+	<meta name="author" content="Marcos Ojeda">
+	<!-- Date: 2010-03-22 -->
+	<link rel="stylesheet" href="http://wf.typotheque.com/WF-009837-000414" type="text/css" />
+	<script src="jquery-1.4.2.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="jquery.scrollTo.js" type="text/javascript" charset="utf-8"></script>
+	
+	<style type="text/css" media="screen">
+    html,body{
+      height:100%;
+      margin:0;padding:0;
+    }
+	  body{
+	    position:absolute; 
+	    top:0;
+	    font-family:georgia;
+      font-size:10px;
+      height: 100%; /*30em;*/
+      width:100%;
+	  }
+	  section{
+	    height:90%;position:relative; margin:0;
+	    }
+	  article{
+	    height:100%;position:relative;
+	    height:90%;
+	    font-size:10px;
+	    -webkit-column-width:20em;
+      -webkit-column-gap:1em;
+	    -moz-column-width:20em;
+      -moz-column-gap:1em;
+	  }
+	  article{
+	  }
+	  h1,h2{
+	    font-family: "Fedra Mono Medium 2";
+      font-style: normal;
+      font-weight: normal;
+      font-stretch: normal;
+      font-variant: normal;
+      font-size:1em;
+	  }
+	  p,ul{
+	    font-family: "Greta Text";
+      font-style: normal;
+      font-weight: normal;
+      font-stretch: normal;
+      font-variant: normal;
+      font-size:1.2em;
+	    line-height:1.5em;
+	    color:#555;
+	    margin-bottom:2em;
+	  }
+	  img{
+	    width:100%;
+	  }
+	  div#nav, footer{
+	    width:200px;
+	    margin:1em auto;
+	    text-align:center;
+	    font-family: "Fedra Mono Medium 2";
+	  }
+	  blockquote{
+	    margin: 1em 1em 1em 2.5em;
+	  }
+	  blockquote p{
+	    font-style:italic;
+	  }
+	  footer{
+	    width:5em;
+	    border-top:1px solid #aaa;
+	    padding-top:5px;
+	    margin-top:-2em;
+	  }
+	  footer p{
+	    margin:0;
+	    font-family: "Greta Text";
+      font-style: italic;
+      font-weight: normal;
+      font-stretch: normal;
+      font-variant: normal;
+	    font-size:.9em;
+	  }
+	  #nav a{
+	    color:#aaa;
+	    font-weight:normal;
+	    text-decoration:none;
+	  }
+	  .mask{
+	    height:100%; 
+	    position:fixed; 
+	    left:0; 
+	    width:28px;
+	    z-index:100;
+	  }
+	  #maskleft{
+	    background-image:url(leftmask.png); 
+	    right:0;
+	  }
+	  #maskright{
+	    background-image:url(maskright.png); 
+	    left:0;
+	  }
+	</style>
+	<script type="text/javascript" charset="utf-8">
+	jQuery.extend( jQuery.easing,{
+  	def: 'easeOutQuad',
+  	swing: function (x, t, b, c, d) {
+  		return jQuery.easing[jQuery.easing.def](x, t, b, c, d);
+  	},
+  	easeInQuad: function (x, t, b, c, d) {
+  		return c*(t/=d)*t + b;
+  	},
+  	easeOutQuad: function (x, t, b, c, d) {
+  		return -c *(t/=d)*(t-2) + b;
+  	},
+  	easeInOutQuad: function (x, t, b, c, d) {
+  		if ((t/=d/2) < 1) return c/2*t*t + b;
+  		return -c/2 * ((--t)*(t-2) - 1) + b;
+  	},
+  	easeInCubic: function (x, t, b, c, d) {
+  		return c*(t/=d)*t*t + b;
+  	},
+  	easeOutCubic: function (x, t, b, c, d) {
+  		return c*((t=t/d-1)*t*t + 1) + b;
+  	},
+  	easeInOutCubic: function (x, t, b, c, d) {
+  		if ((t/=d/2) < 1) return c/2*t*t*t + b;
+  		return c/2*((t-=2)*t*t + 2) + b;
+  	}
+  });
+	  $(document).ready(function(){
+      var n = $("#eol").offset().left//+$("p").css("width");
+      $("article").css({width:n});
+      $("section").css({
+        width:"26em", 
+        overflow:"hidden",
+        margin:"0 auto"
+      });
+      
+      var fixMasks = function(){
+        $("#maskleft").css({
+          top:$("section").offset().top,
+          height:$("section").height(),
+          left:$("section").offset().left-1
+        })
+        $("#maskright").css({
+          top:$("section").offset().top,
+          height:$("section").height(),
+          left:$("section").offset().left+$("section").width()-20
+        })
+        $("footer")
+      }
+      fixMasks();
+
+      var getDims = function(){
+        var colWidth = $("p:eq(0)").width();
+        var bigWidth = $("section").width();
+        var offset = ((bigWidth-colWidth) / 2);
+        var eolOffset = $("#eol").offset().left;
+        var startingOffset = $("h1").offset().left;
+        var totWidth = eolOffset + colWidth - startingOffset;
+        var fontSize = parseInt($("p:eq(0)").css("fontSize"),10);
+        var maxPages = Math.ceil(totWidth / (colWidth+fontSize));
+        return{
+          colWidth : colWidth, 
+          bigWidth : bigWidth, 
+          offset : offset, 
+          eolOffset : eolOffset, 
+          startingOffset : startingOffset,
+          totWidth : totWidth, 
+          fontSize : fontSize,
+          maxPages : maxPages
+        };
+      }
+      var handleKeydown = function(e){
+        if (e.metaKey) return
+        if (e.keyCode==39 || e.keyCode==74){ // left or j
+          mover('left')
+        }else if (e.keyCode==37 || e.keyCode==75){ // right or k
+          mover('right')
+        }
+      }
+      var mover = function(startat){
+        var colWidth = $("p:eq(0)").width();
+        var bigWidth = $("section").width();
+        var offset = ((bigWidth-colWidth)/2+5 /*half gutter*/);
+        $("article").css({left:offset})
+        
+        var eolOffset = $("#eol").offset().left + colWidth;
+        var startingOffset = $("h1").offset().left;
+        var totWidth = eolOffset + colWidth - startingOffset;
+        var fontSize = parseInt($("article").css("fontSize"),10);
+        console.log("getting:",totWidth, colWidth, fontSize, totWidth / (colWidth+fontSize))
+        var maxPages = Math.ceil(totWidth / (colWidth+fontSize));
+        var page = startat;
+        $("footer p").text(page+" of "+maxPages);
+        
+        var handler = function(direction){
+          console.log(colWidth, fontSize)
+          var moveAmt = colWidth + 10 // gutter == 10px
+          
+          switch (direction){
+            case 'left':
+              page += 1;
+              break;
+            case 'right':
+                page -= 1;
+              break;
+            default:
+              break;
+          };
+          page = (page < 1) ? maxPages : page;
+          page = (page > maxPages) ? (page % maxPages) : page;
+          if (page == maxPages){$("#maskright").fadeOut(30)}
+          if (page == 1){$("#maskright").fadeIn(30)}
+          var absPos = (page-1%(maxPages+1))*moveAmt
+          $("footer p").text(page+" of "+maxPages);
+          $("section").scrollTo({top:0, left:absPos}, {duration:200, easing:"easeInOutCubic"})
+        };
+        return handler;
+      }(1);
+      
+      $("#next").click(function(){
+        mover('left');
+      });
+      $("#prev").click(function(){
+        mover('right');
+      });
+      // $(body).swipe({
+      //      swipeLeft: function() { mover('left'); },
+      //      swipeRight: function() { mover('left'); },
+      // })   
+      $(document).bind("keydown", handleKeydown);
+	    $(window).bind("resize", fixMasks)
+	  });
+	</script>
+</head>
+
+<body>
+  <div id="nav">
+    <a id="prev" href="javascript:">«prev</a>
+    <a id="next" href="javascript:">next»</a>
+  </div>
+    
+  <section id="masky">
+    
+    <article>
+      <h1 id="letmetellyouaboutmythesisbymarcosojeda">Let me tell you about my thesis<br/> marcos ojeda</h1>
+
+    <p>There is a part of me that often asks: &#8220;at this moment, what are you supposed to be doing?&#8221; and in most cases i give it the most honest response that i have at my disposal. Right now for instance, I am telling you about my thesis.</p>
+
+    <p>So what was my thesis about? It was basically about answering that prompt over and over again. Oh, i couched it in a more serious language at the time: &#8220;the use of procedural abstraction to produce a working model for a graphic design practice.&#8221; Or something like that.</p>
+
+    <p>But basically, if you&#8217;ve developed one of these abstractions, you know that you&#8217;re always self-aware of what you&#8217;re <em>doing.</em> This translates to analyzing patterns of behavior. So the second time you find yourself setting a heading underlined all caps italics you&#8217;re thinking about what this means for lesser headings, or how general of an action this could be.</p>
+
+    <p>This is known in the computer science world as <em>bottom-up design</em>, by which i mean: you develop the system as you go along. The complement to bottom-up design is <em>top-down design,</em> which basically means that you develop the system and <em>then</em> implement it. In both cases, there&#8217;s some language that you&#8217;re trying to express. In the bottom-up case, you&#8217;re developing the rules (and the language) each time you use it, so it changes, develops and matures over time. In the top-down case, you specify some rules and produce something given that system. And so, with this process you always produce <em>two</em> things: a process and a finished product.</p>
+
+    <h2 id="interaction">Interaction</h2>
+
+    <p>In the fall of 2008, I began a project which involved using a screen reader, a program used by sightless people that vocalizes a computer&#8217;s interface or content on the screen. I wanted to understand the screen reading experience and then find out what sort of visual forms that would inspire. This form-driven exploration, lacking any particular driving focus, is a bottom-up exploration of the visual possibilities of the project. As such, much of this project is devoted to developing a way to visually articulate this experience.</p>
+
+    <p>When designing web pages, we are constantly told to develop them so that they are as accessible as possible. Without experiencing a screen reader, it&#8217;s hard to really know what this means. How could i convey the screen reading experience to sighted people?</p>
+
+    <p>I didn&#8217;t want to show or playback a VoiceOver session, so instead, I began trying to convey the parts of sightless web browsing i was most fascinated with:  </p>
+
+    <ul>
+    <li>the flattening of content and </li>
+    <li>the inability to perceive the organizational structure of a webpage.</li>
+    </ul>
+
+    <p>This first produced a web application that harvested a brief sighted web browsing session and then flattened the resultant webpages and forced the user to browse it using only the left and right arrows of the keyboard. As was the case with the screen reader, only one piece of content could occupy the screen at a time, although if you navigated quickly enough, afterimages of content would remain.</p>
+
+    <p><img id="ascreenshotofthescreenreader" src="reader.png" alt="a screenshot of the screen reader" title="" /></p>
+
+    <p>Part of the process that yielded the visual screen reader was piecing apart the experience of using the auditory one. It was this pattern recognition, this bottom-up view of the application that helped me develop my visual reader. From the experience of being lost in a webpage came the lack of apparent navigation. From the incessant repetition of the user interface came the prolonged visual blinking once you reached the end of page. These are 1:1 relationships in some way with the auditory experience, but they are more heavily influenced by the parts of the interface i became more aware of rather than parroting the interface altogether.</p>
+
+    <p>The next stage of this was the development of a way of somewhat objectively analyzing this experience. Because it is difficult, if not inconvenient, to navigate all pages this way, i began looking for a visual form to express the relative scarcity of content on webpages i was visiting.</p>
+
+    <p><img id="firstsketchesatlookingatcontent" src="process.png" alt="first sketches at looking at content" title="" /></p>
+
+    <p>This yielded a way of thinking about content: in particular, i began to rescale the <em>spoken</em> length of any content with the longest piece of content on a page. This is actually a very forgiving metric, but it exposes vast deserts of content in webpages. Whole sections that are occupied with single links that waste your valuable time (recall, there is no easy way to visually inspect which part of the page you care about when you have no way of seeing what is <em>on</em> the page.)</p>
+
+    <p><img id="relativesizeofcontentonwebpages" src="grids.png" alt="relative size of content on webpages" title="" /></p>
+
+    <p>The graphics are then reminders of how a webpage may be perceived. Their appearance is a quick indication of both how vast a page may be and also where the content is and how it is organized.</p>
+
+    <p>The development of both these component projects: the visual screen reader and the content density graphics, stemmed from a mostly bottom-up exploration of a <em>very vague</em> top-down idea. While the finished product remains the density graphics, they represent a condensed form of the interactive screen reader. Both are presented at the same time because the evolution of one is critical to the development of the other.</p>
+
+    <h2 id="reuse">Reuse</h2>
+
+    <p>Reuse is a typeface that i developed in the spring of 2009. It was developed because i wanted to find a way for designers to address the &#8220;green issue.&#8221; How can a practice that typically generates a vast quantity of waste paper be green? My solution was the creation of a typeface that could be formed from the left over 8.5x11&#8221; paper.</p>
+
+    <p>The typeface is unicase and it is, by design, also monospace. It is designed to be fast and easy to physically implement. When set by computer, the uppercase provides instructions for how to create the lowercase.</p>
+
+    <p><img id="reallyreally" src="reuse-really.png" alt="really? really!" title="" /></p>
+
+    <p>So there are both products: the process and the the product. Cleverly (or not, depending on how you feel), the <em>process</em> is encapsulated in the uppercase and the <em>product</em> is manifest in the lowercase. That is, the system is sort of in your face. How was this made? see the uppercase. What will this look like? see the lowercase.</p>
+
+    <p>Again, here I asked myself the question: what is it you&#8217;re supposed to be doing?</p>
+
+    <blockquote>
+      <p>And the answer revealed itself in some dialogue: how can you make reusing paper cool (or cooler)? Find a way to make it serve a second purpose. Ok, so if it&#8217;s going to be a font, then &#8220;so what?&#8221; &#8230; Well, you need two things: instructions and a finished product. Wouldn&#8217;t it be cool if you could use the typeface for prototyping what your design will look like. But how do you explain how to make the letters? A book? umm&#8230;. Oh yeah, how about making it unicase and reserving the instructions for the uppercase.</p>
+    </blockquote>
+
+    <p>Or something like that.</p>
+
+    <p>After I had decided upon the top-down constraint (everything starts with an 8.5x11&#8221; piece of paper), I began forming the letters. But as I was making the letters, i started to ask myself what i liked about some letters that i didn&#8217;t like about others. So the bottom-up process evolved what worked and what didn&#8217;t: i decided upon 45 and 90 degree angles as the only two allowed. Then i applied a new constraint: a fold was preferred to a tear.</p>
+
+    <p>In this way the two processes met in the middle and each influenced the design of the other. The result, the finished typeface, is as much a product of an overarching vision as it is the result of iteratively developing individual letterforms. The two arrive together, so that at some point it becomes hard to separate the two: the process is affected by the practice and the practice is driven by the process.</p>
+
+    <p>I want to suggest that most design is neither exclusively bottom-up or entirely top-down. The extremes exist:  But if you&#8217;re lucky, the thing that you create will be an intersection of the two.</p>
+
+    <h2 id="closing">closing</h2>
+
+    <p>These two projects are but a fraction of my thesis work, but they have have both been influenced by the question of what it is that i am doing and how it is that i can best explain that. They build on the idea that at each stage of development, you aggregate visible patterns and then build with those. </p>
+
+    <p>This process yields work which is expressive of my own understanding of these topics and my hope that you will gain something from seeing them as i do.<span id="eol">&nbsp;</span></p>
+    <div id="eol" style="height:0;"></div>
+    
+    </article>
+	</section>
+	
+	<footer><p></p></footer>
+
+  <div id="maskleft" class="mask"></div>
+  <div id="maskright" class="mask"></div>
+  
+  
+</body>
+</html>

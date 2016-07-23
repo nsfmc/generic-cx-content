@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>marcos ojeda is generic.cx</title>
+	<meta name="author" content="Marcos Ojeda">
+	<!-- Date: 2010-05-19 -->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" charset="utf-8"></script>
+	<link rel="stylesheet" href="http://wf.typotheque.com/WF-009837-000643" type="text/css" />
+	<style type="text/css" media="screen">
+	  body{
+	    background-color:white;
+	    font-family: "Plan Grotesque Light 2";
+      font-style: normal;
+      font-weight: normal;
+      font-stretch: normal;
+      font-variant: normal;
+      width:30em;
+      margin-left:5em;
+	  }
+	  h1, h2{
+	    font-family: "Fedra Sans Display 1 Thin 2";
+      font-style: normal;
+      font-weight: normal;
+      font-stretch: normal;
+      font-variant: normal;
+	  }
+	  h2{
+	    font-size:1em;
+	  }
+	  h1 a{
+	    color:rgb(23,128,200);
+      text-decoration:none;
+	  }
+	  iframe{
+	    background-color:white;
+	    width:1000px;
+	    height:1000px;
+	    position:absolute;
+	    left:700px;
+	    top:30px;
+	    border-width:0;
+	    display:none;
+	  }
+	  .desc{
+	    display:none;
+	  }
+	  
+	</style>
+	<script type="text/javascript" charset="utf-8">
+	  $(document).ready(function(){
+	    $("h1 a").toggle(function(e){
+	      e.preventDefault();
+	      $(".desc").not(this).slideUp("slow")
+	      $(this).parent().next().slideToggle();
+	      $("iframe").attr({src:this.href}).load(function(){$(this).fadeIn()})
+	    },
+      function(e){
+        e.preventDefault();
+        $(this).parent().next().slideToggle();
+        $("iframe").fadeOut("slow",function(){$(this).attr({src:""})})
+  	  })
+	  })
+	</script>
+</head>
+
+<body>
+	<article id="">
+	  <h1>marcos ojeda is </h1>
+	  <h1><a href="http://generic.cx/">generic.cx</a></h1>
+	  <div class="desc">
+	    <p>This recursive webpage, also known as a quine, is an example of a complete object. It represents itself entirely and is capable of copying its own source.</p>
+	    <p>You can see it in action here:
+	    <object type="application/x-shockwave-flash" width="400" height="250" data="http://www.flickr.com/apps/video/stewart.swf?v=71377" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"> <param name="flashvars" value="intl_lang=en-us&photo_secret=6ff73942a4&photo_id=4625400726&hd_default=false"></param> <param name="movie" value="http://www.flickr.com/apps/video/stewart.swf?v=71377"></param> <param name="bgcolor" value="#000000"></param> <param name="allowFullScreen" value="true"></param><embed type="application/x-shockwave-flash" src="http://www.flickr.com/apps/video/stewart.swf?v=71377" bgcolor="#000000" allowfullscreen="true" flashvars="intl_lang=en-us&photo_secret=6ff73942a4&photo_id=4625400726&hd_default=false" height="250" width="400"></embed></object>
+	  </div>
+    
+    <h1><a href="http://generic.cx/homework">some work</a></h1>
+    <div class="desc">
+      <p>I make lots of things, but i often forget to talk about them. Here are a few! Some of them are also on this wall near where you are standing. You can learn a bit about them here and also learn about others that did not make their way here.</p>
+    </div>
+	
+    <!-- <h1><a href="http://www.flickr.com/photos/subliminal/tags/risd">some photos</a></h1>
+    <div class="desc">
+      <p>I have documented the past three years at risd quite extensively. Here are all the photos i have tagged "risd."
+    </div> -->
+    
+    <h1><a href="http://nsfmc.tumblr.com/">a blog</a></h1>
+    <div class="desc">
+      <p>When i am bored i usually post a random quote i find on my blog. My blog contains some writing, too, but it mostly contains these quotes and images i find</p>
+    </div>
+    
+    <h1><a href="http://fontasm.tumblr.com/">some type specimens</a></h1>
+    <div class="desc">
+      <p>I find that it is usually nice to be able to put a face to a name. "Oh, there goes Alice" i might think, or "Hello, Thomas!" But i wondered also what that might mean if i could do it with typefaces.</p>
+      <p>Why shouldn't typefaces also be things we recognize, that have a life of their own outside of ours? This blog is full of specimens which hope to give a face and a name to type we often see around us.</p>
+    </div>
+
+    <h1><a href="http://makedoshop.com/">make, do</a></h1>
+    <div class="desc">
+      <p>Along with the graduate graphic design class of 2010, I have helped out with Make,Do a shop that exhibits design objects that have been created during the course of our thesis research. To the right is the shop's webpage, which designed.</p>
+    </div>
+    
+    <h1><a href="tada.html">a cube</a></h1>
+    <div class="desc">
+      <p>I was trying the other night to render a 3d lattice and realized it could be done with html and css. Who knew? The result on the right is a study for a visualization of a 3-dimensional data set i recently completed using amazon's mechanical turk.</p>
+    </div>
+	</article>
+	
+	<h2>marcos @ generic.cx</h2>
+	
+	<iframe src="">
+	  
+	</iframe>
+	
+</body>
+</html>

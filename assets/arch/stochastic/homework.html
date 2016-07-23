@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+  <title>marcos.andres.ojeda</title>
+
+
+  <script type="text/javascript" charset="utf-8" src="scripts/jquery.js"></script>
+  
+  <link rel="stylesheet" href="style/base.css" type="text/css" media="screen" title="Plain Jane" charset="utf-8">
+
+</head>
+
+<body id="portfolio">
+  <div id="content">
+    
+    <div id="header">
+      <h1>marcos andres <br /> ojeda <br /></h1>
+    </div>
+    
+    <div id="nav">
+      <ul>
+        <li><a href="http://www.flickr.com/photos/subliminal/">my flickr</a></li>
+        <li><a href="http://www.last.fm/user/nsfmc/">my last.fm</a></li>
+      </ul>
+
+      <ul>
+        <li><a href="http://del.icio.us/nsfmc/">my del.icio.us</a></li>
+        <li><a href="http://twitter.com/nsfmc/">my twitter</a></li>
+      </ul>
+      
+      <ul>
+        <li><a href="../">my old webpages</a></li>
+        <li><a href="portfolio.pdf">an old 'portfolio'</a> .pdf ~4 megs</li>
+      </ul>
+      
+      <ul>
+        <li><a href="intro.html">back home</a></li>
+      </ul>
+      
+    </div>
+    
+    <div id="picture">
+      <div id="portfolio_nav">
+        <div style=""  id="p_nav"></div>
+        <div style="" id="n_nav"></div>
+      </div>
+      <div id="thumbs"></div>
+    </div>
+    
+    <div id="body">      
+    </div>
+  </div>
+  
+  <script type="text/javascript" charset="utf-8">
+    var portfolio_url =  "http://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=ad5e3ee622a20f8774488118dea1a78a&user_id=72809415@N00&tags=mine&format=json&content_type=7"
+    var nsid = "72809415@N00"
+
+    var buildThumbs = function(){
+      $.getJSON(portfolio_url+"&jsoncallback=?", function(data){
+        $.each(data.photos.photo, function(i,item){
+          var url = "http://farm"+item.farm+
+                     ".static.flickr.com/"+item.server+
+                     "/"+item.id+"_"+item.secret+"_s.jpg"
+           var thumb = $("<div id='thumb_"+(i+1)+"' style='margin:3px; float: left; position:relative;'></div>")
+           $("<a target='_blank' onclick='loadPortfolioPage("+(i+1)+"); return false;' href='http://flickr.com/photos/subliminal/"+item.id+"/'><img style='max-height:75px; max-width:75px;' title='"+item.title+"' src='"+url+"' /></a>").appendTo(thumb)
+           thumb.appendTo("#thumbs");
+          
+        })
+        $("<div style='clear:both;'></div>").appendTo("#thumbs")
+      });
+    }
+    buildThumbs()
+    
+    var buildNav = function( /*object*/ obj ){
+      current_page = obj.photos.page
+      total_pages = obj.photos.pages
+      $("#p_nav").empty()
+      $("#n_nav").empty()
+      prev_page = (current_page == 1) ? total_pages : current_page - 1
+      $("<a href='#'>&larr;previous&#8195;</a> ").attr("onclick","loadPortfolioPage("+prev_page+"); return false;").appendTo("<p>").appendTo("#p_nav")
+      $("<a href='#'>&#8195;next&rarr;</a>").attr("onclick","loadPortfolioPage("+(current_page  + total_pages + 1) % total_pages+"); return false;").appendTo("<p>").appendTo("#n_nav")
+   }
+   
+   var getPortfolioItem = function(data){
+     buildNav(data)
+     $("#body").empty()
+     $.each(data.photos.photo, function(i,item){
+         //http://farm{farm-id}.static.flickr.com/{server-id}/{id}_{secret}_[mstb].jpg
+         /* expected kind of response from flickr
+         jsonFlickrApi(
+           {"photos":
+             {"page":1, "pages":22, "perpage":1, "total":"22", "photo":
+               [{"id":"2506995847", "owner":"72809415@N00", "secret":"0a077ef1c2", 
+                 "server":"2034", "farm":3, "title":"jan tschicold postcards", 
+                 "ispublic":1, "isfriend":0, "isfamily":0}
+               ]
+             },
+           "stat":"ok"})
+         */
+              
+       var url = "http://farm"+item.farm+
+                 ".static.flickr.com/"+item.server+
+                 "/"+item.id+"_"+item.secret+"_b.jpg"
+       //alert(url)
+       $("<p>&nbsp;</p>").appendTo("#body")
+       $("<a class='flickr' target='_blank' href='http://flickr.com/photos/subliminal/"+item.id+"/'><img title='"+item.title+"' src='"+url+"' /></a>").appendTo("<p class='display'></p>").appendTo("#body");
+       $("<h3>"+item.title+"</h3>").appendTo("#body")
+       
+       var photo_info = "http://api.flickr.com/services/rest/"+
+                        "?method=flickr.photos.getInfo"+
+                        "&api_key=ad5e3ee622a20f8774488118dea1a78a&"+
+                        "&photo_id="+ item.id +
+                        "&format=json&jsoncallback=?"
+       $.getJSON(photo_info, function(data){
+         var desc = data.photo.description["_content"]
+         desc = desc.replace(/\n/gi,"<br />")
+         $("<p class='desc'>"+desc+"</p>").appendTo("#body")
+       })
+       
+     });
+   }
+   
+   var loadPortfolioPage = function(/* int */ page){
+     $.getJSON(portfolio_url+"&per_page=1&page="+page+"&jsoncallback=?", getPortfolioItem);
+   }
+   
+   loadPortfolioPage(1)
+    
+  </script>
+
+  <script src="http://www.google-analytics.com/urchin.js" type="text/javascript"> </script>
+  <script type="text/javascript"> _uacct = "UA-97175-1"; urchinTracker(); </script>
+
+  
+</body>
+</html>
+

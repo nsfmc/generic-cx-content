@@ -1,0 +1,65 @@
+body{
+  background-color:white;
+  font-family: Georgia, Times, "Times New Roman", serif;
+  font-size: 76%;
+  margin-left: 3em;
+}
+
+p, li, blockquote{
+  font-size: 1em;
+  line-height: 1.3em;
+  width: 18em;
+}
+
+h1,h2,h3{
+  font-family:  Baskerville, "Times Std", "Bembo Std", Times, "Times New Roman";
+  font-weight: normal;
+  width: 10.3em;
+}
+h1{
+  font-size:  1.75em;
+}
+h2{
+  font-size: 1.5em;
+}
+h3{
+  font-size: 1.5em;
+  font-variant: small-caps;
+}
+
+#toc, #style, #footer{
+  position: absolute;
+  left: 60em;
+  width: 25em;
+}
+#toc{ top: 2em; }
+#style{ top: 6em; }
+#footer{ position: relative;}
+
+p ul li, p ol li, #toc ul li, #style ul li{
+  display: inline;
+}
+#toc ul li, #style ul li{
+  margin-right: 1em;
+}
+#toc p{
+  display: none;
+}
+
+blockquote{
+  font-style: italic;
+  width: 18em;
+  margin-left: 2em;
+}
+
+.copy{
+  width: 18em;
+}
+
+.copy p{
+  display: inline;  
+}
+
+#main_content{
+  margin-left: 20em;
+}

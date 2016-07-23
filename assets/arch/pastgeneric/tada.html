@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>3d cube display</title>
+	<meta name="author" content="Marcos Ojeda">
+	<!-- Date: 2010-05-19 -->
+	<style type="text/css" media="screen">
+	  body{
+	    background-color:#333;
+	  }
+    #container{
+      -webkit-perspective: 1200;
+      -webkit-perspective-origin-x: 50%;
+      -webkit-perspective-origin-y: 0%;
+    }
+	  #container > div{
+	    opacity:.6;
+	    -webkit-transform-style: preserve-3d;
+	  }
+	  #xaxis, #yaxis, #zaxis{ 
+	    position:absolute;
+	    left:100px;
+	    height:400px;
+	    width:400px;
+	  }
+	  #xaxis{
+	    -webkit-transform: rotateY(45deg);
+	  }
+	  #xaxis .marker-x{
+	    background-color:#cfc;
+	    opacity:.15;
+	    position:absolute;
+	    width:300px;
+	    height:300px;
+	    -webkit-transition:all .5s;
+	  }
+	  #xaxis .marker-x:hover{
+	    opacity:1;
+	  }
+    .marker-x:nth-child(n+1){
+      -webkit-transform: translate3d(0,00px,00) rotateX(90deg);
+    }
+    .marker-x:nth-child(n+2){
+      -webkit-transform: translate3d(0,50px,00) rotateX(90deg);
+    }
+    .marker-x:nth-child(n+3){
+      -webkit-transform: translate3d(0,100px,00) rotateX(90deg);
+    }
+    .marker-x:nth-child(n+4){
+      -webkit-transform: translate3d(0,150px,00) rotateX(90deg);
+    }
+    .marker-x:nth-child(n+5){
+      -webkit-transform: translate3d(0,200px,00) rotateX(90deg);
+    }
+    .marker-x:nth-child(n+6){
+      -webkit-transform: translate3d(0,250px,00) rotateX(90deg);
+    }
+    
+    
+	  #yaxis{ 
+/*      background-color:magenta;*/
+      -webkit-transform: translate3d(-100px,0,0) rotateY(45deg)
+	  }
+	  
+	  #yaxis .marker-y{
+	    background-color:#ccf;
+	    opacity:.15;
+	    position:absolute;
+	    top:150px;
+	    width:300px;
+	    height:300px;
+	  }
+    .marker-y:nth-child(n+1){
+      -webkit-transform: translate3d(00px,00,00) rotateY(90deg);
+    }
+    .marker-y:nth-child(n+2){
+      -webkit-transform: translate3d(50px,00,00) rotateY(90deg);
+    }
+    .marker-y:nth-child(n+3){
+      -webkit-transform: translate3d(100px,00,00) rotateY(90deg);
+    }
+    .marker-y:nth-child(n+4){
+      -webkit-transform: translate3d(150px,00,00) rotateY(90deg);
+    }
+    .marker-y:nth-child(n+5){
+      -webkit-transform: translate3d(200px,00,00) rotateY(90deg);
+    }
+    .marker-y:nth-child(n+6){
+      -webkit-transform: translate3d(250px,00,00) rotateY(90deg);
+    }
+	  
+	  #zaxis{ 
+/*      background-color:magenta;*/
+      -webkit-transform: translate3d(-80px,0,-150px) rotateY(45deg)
+    }
+
+    #zaxis .marker-z{
+      background-color:#ccf;
+      opacity:.15;
+      position:absolute;
+      top:150px;
+      width:300px;
+      height:300px;
+    }
+    .marker-z:nth-child(n+1){
+      -webkit-transform: translate3d(00,00,00px) rotateZ(90deg);
+    }
+    .marker-z:nth-child(n+2){
+      -webkit-transform: translate3d(00,00,50px) rotateZ(90deg);
+    }
+    .marker-z:nth-child(n+3){
+      -webkit-transform: translate3d(00,00,100px) rotateZ(90deg);
+    }
+    .marker-z:nth-child(n+4){
+      -webkit-transform: translate3d(00,00,150px) rotateZ(90deg);
+    }
+    .marker-z:nth-child(n+5){
+      -webkit-transform: translate3d(00,00,200px) rotateZ(90deg);
+    }
+    .marker-z:nth-child(n+6){
+      -webkit-transform: translate3d(00,00,250px) rotateZ(90deg);
+    }
+
+	  
+	  .container, .container *{
+	    width:400px; height:300px;
+	  }
+	  .box{
+	    background-color:red;
+	    opacity:.3;
+	  }
+	  .leaf{
+	    background-color:blue;
+	    opacity:.3;
+	  }
+	  
+	</style>
+</head>
+
+<body>
+  <div id="container">
+  	<div id="xaxis">
+  	  <div class="marker-x"></div>  	  
+  	  <div class="marker-x"></div>
+  	  <div class="marker-x"></div>
+  	  <div class="marker-x"></div>
+  	  <div class="marker-x"></div>
+  	  <div class="marker-x"></div>  	  
+  	</div>
+  	<div id="yaxis">
+  	  <div class="marker-y"></div>  	  
+  	  <div class="marker-y"></div>
+  	  <div class="marker-y"></div>
+  	  <div class="marker-y"></div>
+  	  <div class="marker-y"></div>
+  	  <div class="marker-y"></div>  	  
+  	</div>
+  	<div id="zaxis">
+  	  <div class="marker-z"></div>  	  
+  	  <div class="marker-z"></div>
+  	  <div class="marker-z"></div>
+  	  <div class="marker-z"></div>
+  	  <div class="marker-z"></div>
+  	  <div class="marker-z"></div>  	  
+  	</div>
+  </div>
+	
+  <!-- <div class="container" style="-webkit-perspective: 600px">
+    <div class="box" style="-webkit-transform-style: preserve-3d; -webkit-transform: rotateY(10deg)">
+      <div class="leaf" style="-webkit-transform: rotateX(10deg)"></div>
+    </div>
+  </div> -->
+</body>
+</html>
