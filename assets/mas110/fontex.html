@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="824.11">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Courier; color: #1041aa}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Courier; color: #c52524}
+    p.p3 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Courier; color: #215313}
+    p.p4 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Courier; color: #eb6830}
+    p.p5 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Courier; color: #215313; min-height: 14.0px}
+    span.s1 {color: #215313}
+    span.s2 {color: #c52524}
+    span.s3 {color: #1041aa}
+    span.s4 {color: #000000}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;?php</p>
+<p class="p1"><span class="s1">if (!</span>extension_loaded<span class="s1">(</span><span class="s2">'gd'</span><span class="s1">)) {</span></p>
+<p class="p2"><span class="s1">  </span><span class="s3">dl</span><span class="s1">(</span>'gd.so'<span class="s1">);</span></p>
+<p class="p3">}</p>
+<p class="p4">// Set the content-type</p>
+<p class="p2"><span class="s3">header</span><span class="s1">(</span>"Content-type: image/png"<span class="s1">);</span></p>
+<p class="p5"><br></p>
+<p class="p4">// Create the image</p>
+<p class="p1">$im <span class="s1">= </span>imagecreate<span class="s1">(</span>200<span class="s1">, </span>60<span class="s1">);</span></p>
+<p class="p5"><br></p>
+<p class="p4">// Create some colors</p>
+<p class="p1">$red <span class="s1">= </span>imagecolorallocate<span class="s1">(</span>$im<span class="s1">, </span>255<span class="s1">, </span>0<span class="s1">, </span>0<span class="s1">);</span></p>
+<p class="p1">$white <span class="s1">= </span>imagecolorallocate<span class="s1">(</span>$im<span class="s1">, </span>255<span class="s1">, </span>255<span class="s1">, </span>255<span class="s1">);</span></p>
+<p class="p1">$grey <span class="s1">= </span>imagecolorallocate<span class="s1">(</span>$im<span class="s1">, </span>128<span class="s1">, </span>128<span class="s1">, </span>128<span class="s1">);</span></p>
+<p class="p1">$black <span class="s1">= </span>imagecolorallocate<span class="s1">(</span>$im<span class="s1">, </span>0<span class="s1">, </span>0<span class="s1">, </span>0<span class="s1">);</span></p>
+<p class="p5"><br></p>
+<p class="p4">// The text to draw</p>
+<p class="p2"><span class="s3">$text </span><span class="s1">= </span>'Testing...'<span class="s1">;</span></p>
+<p class="p4">// Replace path by your own font path</p>
+<p class="p2"><span class="s3">$font </span><span class="s1">= </span>'futura_bo.ttf'<span class="s1">;</span></p>
+<p class="p5"><br></p>
+<p class="p4">// Add some shadow to the text</p>
+<p class="p4">//imagettftext($im, 20, 0, 11, 21, $grey, $font, $text);</p>
+<p class="p1">imagettftext<span class="s1">(</span>$im<span class="s1">, </span>20<span class="s1">, </span>0<span class="s1">, </span>11<span class="s1">, </span>26<span class="s1">, </span>$black<span class="s1">, </span>$font<span class="s1">, </span>$text<span class="s1">);</span></p>
+<p class="p5"><br></p>
+<p class="p4">// Add the text</p>
+<p class="p1">imagettftext<span class="s1">(</span>$im<span class="s1">, </span>20<span class="s1">, </span>0<span class="s1">, </span>10<span class="s1">, </span>25<span class="s1">, </span>$white<span class="s1">, </span>$font<span class="s1">, </span>$text<span class="s1">);</span></p>
+<p class="p5"><br></p>
+<p class="p4">// Using imagepng() results in clearer text compared with imagejpeg()</p>
+<p class="p1">imagepng<span class="s1">(</span>$im<span class="s1">);</span></p>
+<p class="p1">imagedestroy<span class="s1">(</span>$im<span class="s1">);</span></p>
+<p class="p1">?&gt;<span class="s4"><span class="Apple-converted-space"> </span></span></p>
+</body>
+</html>

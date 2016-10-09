@@ -1,0 +1,28 @@
+// this is supposed to look like my portrait
+//--marcos.a.ojeda
+paper 40
+repeat a 0 30
+{
+pen 100
+  //hair
+  line (20-(a/2)) (70+a) (20+a) (70+a)
+  line (80-(a*3)) (75+a) (80+a) (75+a)
+
+  //eyebrows
+  line 30 65 40 60
+  line 70 60 80 65
+
+  //eyes
+  line 30 (55-(a/6)) 35 (55-(a/6))
+  line 68 (53-(a/6)) 73 (53-(a/6))
+
+  //'nose'
+  pen 50
+  line (60+(a/3)) (50-(a/2)) (60+(a/3)) 25
+
+  //mouth
+  pen 45
+  line 37 (20-(a/10)) 55 (15-(a/10))
+  line 55 (15-(a/10)) 70 (21-(a/10)) 
+}
+

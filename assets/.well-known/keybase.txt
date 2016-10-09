@@ -1,0 +1,64 @@
+==================================================================
+https://keybase.io/nsfmc
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://generic.cx
+  * I am nsfmc (https://keybase.io/nsfmc) on keybase.
+  * I have a public key with fingerprint 55CF 0365 F98C 2904 200A  7034 22D2 16D1 9B7C 45A7
+
+To claim this, I am signing this object:
+
+{
+    "body": {
+        "key": {
+            "fingerprint": "55cf0365f98c2904200a703422d216d19b7c45a7",
+            "host": "keybase.io",
+            "key_id": "22D216D19B7C45A7",
+            "uid": "d9913e36b8672e9302386bdf176eb700",
+            "username": "nsfmc"
+        },
+        "service": {
+            "hostname": "generic.cx",
+            "protocol": "https:"
+        },
+        "type": "web_service_binding",
+        "version": 1
+    },
+    "ctime": 1395935477,
+    "expire_in": 157680000,
+    "prev": "a73eaaf041f6655ac11011e1a4bc2247baa526799928b6dae90d619aecb3ff31",
+    "seqno": 7,
+    "tag": "signature"
+}
+
+with the aforementioned key, yielding the PGP signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: GnuPG v1
+
+owE1kVtIFFEYx3d185KIPoRPRXgiE1xk7rOzIaEppkRElqEV25yZM+uYO7POjLrm
+hVKCLmphJln0UpBQoWVZVEqppZKRF7LNQqNeMsruJppUM2Ln5XD+3+///87Hdyo6
+1BZiB2Nxo+crM1rtQw9noC2H2jJbAaAqlgN3BTiAli5JVrxI82uyYgA3oGlBwkiG
+ljiXQHAYRWAYz2IkRRAigTMizkFWoGieBU5QoOqWw4yBvI6SZdXUzIdHFk2VINJN
+Ph3n0tjNFJ1q8SVLBZHjcBKRDHQxLIE4EiNIFwNFCWcZBFkMs0AdaQrvQyat6JJP
+AFVOYEqlsoCsD1t9l8tepCBNFpKFgGnza6qhCmqRqRcYhl93Wz6j3G+BZQh6liM8
+UFZEc2bTUYo0XVYV4MZNUjBkKxMnOZojaYplnQAF/LKGPLJF0Czjwsxj9UGlZiTP
+kojnJYzCJYahaV7AcQzHEc5TUCAIioU8TxMMy3Ec4YKMyCMOExmc45EASUkicWAN
+VayowG12MnivGanLXoU3SjQEqo7ZVzts9hBb2IoQa2u2lZGx/3f5vTbC1r8TDsZt
+C6b1JBwZXTWRffJe7enGzrq0lLW3vv2NPD4cXki05AUmi0F1UstATk/tuqs1bwYH
+GoKx1UXvqp/jvtSP9xMdQwkbQpq3Rn4ZKhekucXwnzfcU66zr/aeOAQfuB3BqLnp
+PZ+rtj96HXDM5yxknmm/ljTS0Z1LddXvz5hOin9/WSyqfDIz1RFT6TzY2jI8Etc1
+sXChtz10/M6aqNmGwrHM3rt91z80anltt79GX2rLv5joXg9v7n65L+v34qaegf6s
+K/F62Xiz71P22yaY/xju2PgiDJURU51zTSV9XM3RtpSYdubpZN34rvnOEaYp90fE
+j6j66V/Bw+KfZ+e6/wE=
+=6y/B
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/nsfmc
+
+==================================================================

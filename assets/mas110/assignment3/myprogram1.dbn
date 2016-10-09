@@ -1,0 +1,14 @@
+// marinetti triangle - marcos.a.ojeda
+repeat a 0 15
+{
+//left
+  line (-100 + 9*a) 0 (-100 + 9*a) 100
+  line (-99 + 9*a) 0 (-99 + 9*a) 98
+  line (-98 + 9*a) 0 (-98 + 9*a) 96
+
+//bottom
+  line (95 - 4*a) 0 (95 - 4*a) 15
+
+//right
+  line (40 + 3*a) (60 - 2*a) 100 (60 - 2*a)
+}

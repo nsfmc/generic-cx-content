@@ -3,3 +3,8 @@ name = generic-dot-cx
 
 [packages]
 lektor-markdown-highlighter = 0.1
+
+[servers.abilify]
+name = abilify
+default = yes
+target = rsync://root@generic.cx/var/www/abilify

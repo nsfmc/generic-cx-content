@@ -1,0 +1,7 @@
+// triangle - marcos.a.ojeda
+repeat a 30 20
+{
+  line 20 a 70 a
+  line a 30 (a+30) 85
+  line (a+30) 85 (a+30) 10
+}

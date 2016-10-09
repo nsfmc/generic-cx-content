@@ -12,17 +12,17 @@ content:
 
 I find myself getting more and more curmudgeonly over time. I bought a receiver for my tv, but i found configuring it to be arduous. I use new software and wonder if i'm missing something by only *skimming* the menus rather than devoting myself to them.
 
-As an unfashionably nerdy child, i consumed product manuals and software specs with vigor. I was a master VCR programmer. I was an early tech support weenie. "Young people have energy."
+As an unfashionably nerdy child, i consumed product manuals and software specs with vigor. I was a master VCR programmer. I was an early tech support weenie. The common retort to this is "Young people have energy."
 
-Let me suggest that it's maybe not actually a matter of energy (but you're free to disagree). Instead, i think it was an easy comfort to relish in Rules; to understand and play out the system someone else had designed for me to live in.
+But maybe it wasn't a matter of energy (you're free to disagree) but an easy comfort to relish in Rules; to understand and play out the system someone else had designed for me to live in (absolving myself the responsibility of choice).
 
 ***
 
-There's an interesting article from Harper's Magazine[^tensePresent] which is mostly about "Democratic Spirit" but proposes the, now prosaic, notion that language is shaped and observed by two camps, Descriptivists and Prescriptivists. The Descriptivists watch language play itself out and document it as well as they can. Meanwhile, Prescriptivists (as their name implies) *prescribe* historically correct and proper usage of language. Who's right? I won't spoil the surprise. The article makes a good case, though.
+There's an interesting article from Harper's Magazine[^tensePresent] about the concept of a "Democratic Spirit" via the (now prosaic) notion that language is shaped and observed by two camps, Descriptivists and Prescriptivists[^descriptivists]. You can look anywhere and find these sorts of folks: the kinds that are fascinated with following rules for a system (meet anyone with a vague interest in DnD) and those that are like cultural sponges, remixing style and systems to suit their needs. And it's not a binary-choice either, it's more like a gradient between the two.
 
-Design is an opinionated field, informed by concepts like "systems" and "visual languages" and [semiotics](http://www.aber.ac.uk/media/Documents/S4B/semiotic.html). The AIGA [describes design][aiga] as a "creative process that combines art and technology to communicate ideas." and design crits are littered with gems like "it just doesn't speak to me" or "what is this trying to *say*?" That design is a communicative medium should surprise nobody, least of all designers.
+Design is an opinionated field, informed by concepts like "systems" and "visual languages" and [semiotics](http://www.aber.ac.uk/media/Documents/S4B/semiotic.html). The AIGA [describes design][aiga] as a "creative process that combines art and technology to communicate ideas." and design crits are littered with gems like "it just doesn't speak to me" or "what is this trying to *say*?" That design is a communicative medium should surprise nobody, least of all designers. It should also be no surprise that there are two camps of designers: the kind that treat design
 
-Folks, myself included, like to make the distinction between "design aesthetic" and "design function" as if they're different things, but from a fundamental standpoint they're both a *kind of vernacular*; each a style and method for making a point. Sometimes 'how you say it' *is* as important as 'what you say.'
+Folks, myself included, like to make the distinction between "design aesthetic" and "design function" as if they're different things, but from a certain standpoint they're both a *kind of vernacular*; each is a style and method for making a point. Sometimes 'how you say it' *is* as important as 'what you say.'
 
 ![Turn off, then on](./printer.jpg)
 
@@ -78,17 +78,28 @@ And some conceptual simplifications are helpful but others are [leaky abstractio
 > * What you get wrong, people bitch about.
 > * What is difficult to understand you have to explain to people over and over again[^elixir]
 
----
-And naturally it's difficult to let go of your own rule-systems:
+***
 
-you've invested lots of energy in creating them and there's nothing which objectively proves anyone has it figured out any more than you have.
+In mathematics, Category Theory[^mitcattheory] is a way of Strictly/Formally defining 'things' and mappings or relations between them and how it is possible to combine those relations/mappings. The allure and the beatuy of category theory is that the rules for defining a category are quite straightforward and they allow you to define a rational system *from the outset.* There can be no ambiguity because in order to get to the point where you're talking about the interactions between mappings and groups, you must necessarily agree with the initial context.
+
+What's appealing is that this system provides you a set of guidelines for understanding how this world works and then lets you figure out how you go about mixing and matching the components in a way that both creates some newish thing also within the bounds of the rules you all agreed to.
+
+The problem with design is that it is *not* in any way like category theory. The rules are always changing, the way the world deals with design is unbounded and ill-defined. Critics champion random things, rules are broken, people like Wrong Things for reasons that defy logic. And further
+
+***
+
+But part of this whole vcr love as a child but receiver disappointment as an adult is that I have developed more complex ideas about how receivers *could* work. A VCR is not a complicated device and, as a six year old, i don't think i had very complex demands of them. But as time goes on, there are more things i expect devices or designs or anything to "get right."
+
+And naturally, in this, prescriptivism is a comfortable stance to take. But you define your own prescriptivism as well, you set down rules for how the world or design or logos should work and those define the edges of what others get right or wrong. I'm not treading new ground here by saying this, we all know this is how taste and subjective opinions play out.
+
+And naturally it's difficult to let go of your own rule-systems: you've invested lots of energy in creating them and there's nothing which objectively proves anyone has it figured out any more than you have.
 
 
+[^mitcattheory]: another good description with more historical context appears in Spivak's [category theory for natural sciences](http://category-theory.mitpress.mit.edu/chapter001.html#lev_1-1). Here i resist the urge to use the word *functor*.
 
 [^elixir]: joe armstrong's Three Laws of Programming Languages re: [elixir](http://joearms.github.io/2013/05/31/a-week-with-elixir.html). It's worth mentioning if it's not obvious that this gem comes from the designer of a Programming Language, a person intimately aware of the limitations of trying to express complex ideas in a strict grammar.
 
 [^formalLingo]: here i use the word *formal* as "Relating to the form or structure of something" rather than its more common use as "ceremonial" or "official"
-
 
 [^winampVsItunes]: Remember the difference between Winamp and iTunes back in the day (if you remember that far back)?. Winamp was particularly hands-off about your music collection and unskinned, it *looked* like a piece of component audio hardware. Its main ui element was the playlist editor which gobbled up m3us or whole directory structures. By contrast, iTunes was very much designed to not only play, but *collect* your music. Playlists were available, but they were secondary to its Library view.
 
@@ -116,7 +127,7 @@ you've invested lots of energy in creating them and there's nothing which object
 
 [^maedaVolvo]: This musing appears in his [ted talk](http://www.ted.com/talks/john_maeda_on_the_simple_life.html) and also featured prominently in his run-up to his Laws of Simplicity book. And with good reason, it's an astute observation that technological innovation has the capacity to make once-obvious things complicated. Having a tiny screen on the back of your camera is valuable for providing you feedback, but it has the effect of encouraging you to perform your feedback loop as you're taking photos rather than editing your photos much later.
 
-[^tensePresent]: [Tense Present](http://instruct.westvalley.edu/lafave/DFW_present_tense.html), David Foster Wallace. Haper's Magazine April 2001. I am underselling how brilliant this essay is: the reality is that DFW starts by making you understand the context of the prescriptivist/descriptivist debate and then after he lets you make up your own mind about which is Right, he wallops you with this book review about a book that is doing, as a reference book, the same thing wallace is doing in prose.
+[^tensePresent]: Here cementing my yuppie bona fides, [Tense Present](http://instruct.westvalley.edu/lafave/DFW_present_tense.html), David Foster Wallace. Haper's Magazine April 2001. I am underselling how great this essay is: it starts by showing the context of the prescriptivist / descriptivist debate and afterwards challenges you to determine which is Right. Fine, but *spoilers*, the essay then wallops you with a review for a reference guide that does the same thing Wallace does in prose.
 
 [^gmau]: garner's modern american usage, Hypercorrection. The problem is not limited to I/me, but also who/whom, and so forth.
 
@@ -129,3 +140,5 @@ you've invested lots of energy in creating them and there's nothing which object
 [^grungeCoda]: or Weingart if you want to go further back.
 
 [^alias]: Naturally, Gareth Hague, the designer of Headline 2012, [weighed in](http://alias.dj/blog/a-spiky-typeface-for-a-spiky-logo/) on the vocal reactions to the 2012 logo. Note, even in this quote and in the rest of his reaction the use of the word 'context.'
+
+[^descriptivists]: For the purposes of the article, Descriptivists watch language play itself out and document it as well as they can. Meanwhile, Prescriptivists (as their name implies) *prescribe* historically correct and proper usage of language.

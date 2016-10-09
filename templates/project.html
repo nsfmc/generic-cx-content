@@ -18,7 +18,7 @@
 {% block images %}
   {% if images %}
     <div id="images">
-    {% for image in images|sort(reverse=True) %}
+    {% for image in images|sort(reverse=True, attribute='path') %}
     <p><img src="{{ image|url }}">
     {% endfor %}
     </div>
