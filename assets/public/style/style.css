@@ -297,16 +297,37 @@ button {  width: auto; overflow: visible; }
     margin-bottom: 30px;
   }
 
-  #essaypage code {
+  #essaypage code,
+  #essaypage .highlight pre span {
     font-family: inputmonocondensed-regular, "Input Mono Cond", "andale mono", monospace;
     font-weight: normal;
     font-style: normal;
     white-space: pre;
-    font-size: 85%
+    font-size: 100%
   }
 
-  #essaypage pre code {
-    font-size: 100%;
+  .highlight .c1 {
+    color: #999;
+  }
+  .highlight .kd,
+  .highlight .kc,
+  .highlight .k{
+    color: #ef580a;
+  }
+
+  .highlight .nx {
+    color: #5599d8;
+  }
+  .highlight .s1 {
+    color: #7ebb0e;
+  }
+  .highlight .mi,
+  .highlight .mf {
+    color: #b15fb1;
+  }
+
+  #essaypage code {
+    font-size: 80%;
     line-height: 130%;
   }
 
