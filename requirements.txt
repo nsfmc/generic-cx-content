@@ -1,0 +1,2 @@
+# to appease the netlify gods
+Lektor==2.3
