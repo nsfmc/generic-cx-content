@@ -24,27 +24,29 @@ The practice, introduced to us via craig silverstein[^csilvers], (and to be clea
 
 let me show you a 'for instance' from my super hacky [tumblr editor](https://github.com/nsfmc/stumblr) package:
 
-<pre><code class="language-python"># TODO(marcos): what if this also fails?
+```python
+# TODO(marcos): what if this also fails?
 if more_info['meta']['status'] == 200:
     post = more_info['response']['posts'][0]
     # TODO(marcos): maybe check a pref for this
     webbrowser.open(post['post_url'])
-</code></pre>
+```
 
 the two `TODO(marcos)` comments map to things that i might, at some point get to eventually, but that aren't truly 'blocking' or 'stopships' or whatever. They're basically baby yaks that if i'm not careful, might develop into full grown yaks[^yakshaving] demanding my attention and shears.
 
-[^yakshaving]: ![](@pathmalcolm-in-the-middle.gif), [which see](http://raganwald.com/2014/02/28/a-programmers-story.html)
+[^yakshaving]: ![](malcolm-in-the-middle.gif), [which see](http://raganwald.com/2014/02/28/a-programmers-story.html)
 
 or more recently, this past week, while playing with [Framer](http://github.com/koenbok/Framer):
 
-<pre><code class="language-javascript">// TODO(marcos): use cycle here
+```javascript
+// TODO(marcos): use cycle here
 var collapsed = true
 scrubBG.on(Events.Click, function(){
 
     if (collapsed) {
         // TODO(marcos): instead of just unclipping the layer
         // animate the text in separately
-</code></pre>
+```
 
 And, to be clear, the code works! Right now! it's just that *if* i ever want it to work better or if i return to it, i have already outlined a roadmap for myself (or others) on how to do that. The framer code is *by definition* a prototype, so let's be honest, who cares if i'm using `cycle` correctly, but my intuition to Do The Right Thing™[^dtrt] is the sort of yak that might have wasted precious prototyping time.
 
