@@ -1,0 +1,13 @@
+{% macro render_pagination(siblings) %}
+  <ul>
+    {% if siblings.parent %}
+      <li><a href="{{ '/'|url }}">home</a></li>
+    {% endif %}
+    {% if siblings.prev_page %}
+      <li><a href="{{ siblings.prev_page|url }}">prev</a></li>
+    {% endif %}
+    {% if siblings.next_page %}
+      <li><a href="{{ siblings.next_page|url }}">next</a></li>
+    {% endif %}
+  </ul>
+{% endmacro %}

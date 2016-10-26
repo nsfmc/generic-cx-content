@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+  <title>marcos.andres.ojeda</title>
+
+  <script type="text/javascript" charset="utf-8">
+    /* pushOnLoad adds a procedure to the window.onload event without 
+     * removing other events that may have already been put there.
+     */
+    function pushOnload(/* function */ proc){
+      if(window.onload){ 
+        var orig = window.onload
+        window.onload = function(){ orig(); proc(); }
+      }
+      else{ 
+        window.onload = proc 
+      }
+    }
+    
+    var flickrJson = {}
+    var image 
+    
+    jsonFlickrFeed = function(/*obj*/ included){
+      flickrJson = included
+    }
+    
+    /**
+     * fixFlickrLink removes the "_m" from the image sources passed 
+     * from flickr's json feed so you can get a ~500px width image
+     */
+    fixFlickrLink = function(/*str*/ link){
+      return link.substr(0,link.length-6) + ".jpg"
+    }
+    /**
+     * rand returns a random element from the array passed
+     */
+    rand = function(/*array*/ arr){
+      var len = arr.length
+      var idx = Math.floor(Math.random() * len)
+      return arr[idx]
+    }
+    
+  </script>
+
+  <script type="text/javascript" charset="utf-8" src="scripts/prototype.js"></script>
+  
+  <link rel="stylesheet" href="style/base.css" type="text/css" media="screen" title="Plain Jane" charset="utf-8">
+
+</head>
+
+<body>
+  <div id="content">
+    
+    <div id="header">
+      <h1>marcos andres <br /> ojeda <br /></h1>
+    </div>
+    
+    <div id="nav">
+      <ul>
+        <li><a href="http://www.flickr.com/photos/subliminal/">my flickr</a></li>
+        <li><a href="http://www.last.fm/user/nsfmc/">my last.fm</a></li>
+      </ul>
+
+      <ul>
+        <li><a href="http://del.icio.us/nsfmc/">my del.icio.us</a></li>
+        <li><a href="http://twitter.com/nsfmc/">my twitter</a></li>
+        <li><a href="http://openstudio.media.mit.edu/artists/marcos">my openstudio</a></li>
+      </ul>
+      
+      <ul>
+        <li><a href="arch/">my old webpages</a></li>
+        <li><a href="portfolio.pdf">my portfolio</a> .pdf ~4 megs</li>
+      </ul>
+      
+      <ul>
+        <li><a href="./">back home</a></li>
+      </ul>
+      
+    </div>
+    
+    <div id="picture">
+      <p><img src="images/stochasticism.png" /></p>
+      <p class="desc">try it... you'll like it!</p>
+    </div>
+    
+    <div id="body">      
+      <h2>a casual resume</h2>
+      <p>People often ask me, "what do you program in?" The answer these days is either 'python' or 'javascript.' For a while it was 'lisp' or 'ruby' and for another brief while it was 'matlab' or 'java.' when i was younger, the answer was 'php' and 'sql.' before that, though, i would say 'basic' or 'c'. although nobody really asked me back then.</p>
+      <p>I have been lucky enough to mostly program in very high level languages (scheme included), so i have missed out on the joys of malloc or clearing out registers or pretty much anything like that. i have written code for a pic, but i wouldn't say that i know how to program for any architecture, as everything i do seems to be pretty portable</p>
+      <p>I took mit's teacher education program during which time i observed at cambridge rindge latin + science, buckingham brown + nichols middle school and student taught at arlington high school. As i was not planning on teaching secondary school in the near future, i did not pick up a credential.</p>
+      <p>Before i graduated from MIT, i worked as a line cook or 'chef garde manger,' at 400 Highland in davis square. I worked with some really talented folks: seth amsden, kim prue, andrew bridge, zach lord, and briefly mike penna. The experience made me a better cook than i ever imagined. I stopped working there to start doing full time graphic design work.</p>
+      <p>While i started doing graphic design work, i began teaching html, css and other random web technologies at the center for digital imaging arts at boston university.</p>
+      <p>That's about it, except for the fact that i'm going to grad school in the fall to pursue an mfa in graphic design. woo!</p>
+    </div>
+  </div>
+  
+  <script type="text/javascript" charset="utf-8">
+    initStochastic = function(){
+      var pic = $("picture").getElementsByTagName("img")[0]
+      image = new Image()
+      var item  = rand(flickrJson["items"])
+      image.src = fixFlickrLink(item["media"]["m"])
+      
+      var clickable_pic = $("picture").getElementsByTagName("img")[0]
+      var desc = $("picture").getElementsByTagName("p")[1]
+      
+      var nu_desc = document.createElement("p")
+      nu_desc.innerHTML = "<a href='"+ flickrJson["link"] +"'>i</a> took this photo: <a href='"+ item["link"]+"'>"+ item["title"] +"</a>"
+      nu_desc.className = "desc"
+      
+      clickable_pic.onclick = function(){
+        clickable_pic.parentNode.replaceChild(image,clickable_pic)
+        desc.parentNode.replaceChild(nu_desc,desc)
+        initStochastic()
+      }
+    }
+    pushOnload(initStochastic)
+  </script>
+
+  <script type="text/javascript" charset="utf-8" src="http://api.flickr.com/services/feeds/photos_public.gne?id=72809415@N00&amp;lang=en-us&amp;format=json"></script>
+
+  <script src="http://www.google-analytics.com/urchin.js" type="text/javascript"> </script>
+  <script type="text/javascript"> _uacct = "UA-97175-1"; urchinTracker(); </script>
+
+  
+</body>
+</html>
+

@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+   "http://www.w3.org/TR/html4/loose.dtd">
+
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>flickrtest</title>
+	<meta name="generator" content="TextMate http://macromates.com/">
+	<meta name="author" content="Marcos Ojeda">
+	<!-- Date: 2008-06-03 -->
+	<script src="../jquery.js" type="text/javascript" charset="utf-8"></script>
+	<link rel="stylesheet" href="testsuite.css" type="text/css" media="screen" title="no title" charset="utf-8" />
+  <script src="testrunner.js" type="text/javascript" charset="utf-8"></script>
+  
+  <script src="../flickr.js" type="text/javascript" charset="utf-8"></script>
+  
+  <script type="text/javascript" charset="utf-8">
+    module("Basic Tests")
+    test("cx_generic object", 
+      function() {
+        ok( cx_generic, "cx_generic object initialized" );
+        ok( cx_generic.flickrPortfolio, "portfolio object initialized" );
+        ok( cx_generic.flickrPortfolio().flickrUrl, "url handler exported" );
+      }
+    );
+    
+    var initial = {"photos":
+      {"page":1, "pages":22, "perpage":1, "total":"22", "photo":
+        [{"id":"2506995847", "owner":"72809415@N00", "secret":"0a077ef1c2", 
+          "server":"2034", "farm":3, "title":"jan tschicold postcards", 
+          "ispublic":1, "isfriend":0, "isfamily":0}
+        ]
+      },
+    "stat":"ok"}
+    test("flickrUrl", 
+      function() {
+        equals(cx_generic.flickrPortfolio().flickrUrl(initial.photos.photo[0]).small(), 
+                "http://farm3.static.flickr.com/2034/2506995847_0a077ef1c2_m.jpg");
+        equals(cx_generic.flickrPortfolio().flickrUrl(initial.photos.photo[0]).medium(), 
+                "http://farm3.static.flickr.com/2034/2506995847_0a077ef1c2.jpg");
+        equals(cx_generic.flickrPortfolio().flickrUrl(initial.photos.photo[0]).large(), 
+                "http://farm3.static.flickr.com/2034/2506995847_0a077ef1c2_b.jpg");
+        equals(cx_generic.flickrPortfolio().flickrUrl(initial.photos.photo[0]).square(), 
+                "http://farm3.static.flickr.com/2034/2506995847_0a077ef1c2_s.jpg");
+        equals(cx_generic.flickrPortfolio().flickrUrl(initial.photos.photo[0]).thumb(), 
+                "http://farm3.static.flickr.com/2034/2506995847_0a077ef1c2_t.jpg");
+        equals(cx_generic.flickrPortfolio().flickrUrl(initial.photos.photo[0]).page(), 
+                "http://flickr.com/photos/72809415@N00/2506995847/");
+      }
+    );
+    
+    cx_generic.flickrPortfolio().init()
+  </script>
+  
+  
+</head>
+<body>
+
+  <ol id="tests"></ol>
+
+  <div id="main"></div>
+  <div id="portfolio_nav"></div>
+  <div id="portfolio_thumbs"></div>
+  <div id="body">
+    
+  </div>
+</body>
+</html>

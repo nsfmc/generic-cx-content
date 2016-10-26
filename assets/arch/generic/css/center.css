@@ -1,0 +1,210 @@
+*{
+}
+
+body{
+  background-color: #FFFFFD;
+  font-family: "Bembo Std", Georgia, Times, "Times New Roman", serif;
+  font-size: 76%;
+}
+
+p{ font-size: 1em; line-height: 1.9em; color: #333; }
+
+blockquote{ 
+  color: #666; 
+  line-height: 1.1em; 
+  text-align: left; 
+  font-size: 1.1em;
+}
+
+strong{ font-weight: bold; letter-spacing:.1em; }
+em{ letter-spacing:.1em; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: normal;
+  text-align: center;
+}
+
+h1{ 
+  font-size: 2em;
+  font-variant: small-caps;
+  letter-spacing: .7em;
+}
+
+#intro:after, .inset:after {
+  content: "&nbsp;";
+  display: block;
+  height: 0em;
+  clear: both;
+  visibility: hidden;
+}
+
+h2, h3{ 
+  font-size: 1.5em;
+  font-variant: small-caps;
+  padding-top: .53em;
+}
+h2{
+}
+
+h3{ 
+  color: #666;
+  padding-bottom: .6em;
+}
+
+#intro{ 
+  margin-top: 2em;
+}
+
+#intro_text {
+  width: 100%;
+  font-style: italic; 
+}
+
+#intro_text p {
+  text-align: center;
+  color: #666;
+  letter-spacing: .2em;
+  font-size: 1em;
+  width: 100%;
+}
+
+#main_content{
+  padding: 0px;
+  margin: 0em;
+}
+
+#main_content div {
+  padding: .5em 0em .5em 0em;
+}
+
+#main_content div div {
+  width: 100%;
+}
+
+#main_content p, dl, dd{ }
+
+.copy p { text-align: center;  text-indent:1em; margin-top: 0em; }
+.copy p:first-child { text-indent: 0em; }
+
+
+q, blockquote { 
+  font-style: italic; 
+  font-family: "Scala Italic", Scala-Italic, Georgia, Times, "Times New Roman", serif;
+  }
+
+q:before { content: &#8220; }
+q:after { content: &#8221; }
+
+#container{ 
+  background-color:white;
+  margin-left: 10em; 
+  margin-top: 5em; 
+  margin-bottom: 0em; 
+  width: 35em; 
+  padding: 2em 6em 2em 6em;
+  border: 1px solid #ccc}
+
+#footer{ text-align:center; }
+#footer p{ font-size: .9em; color: #ddd; padding: 0px; }
+
+
+#contact{ }
+#compliance{ display: none;}
+
+p a, li a{
+  text-decoration: none;
+  color: #333;
+  border-bottom: dotted 1px #333;
+  font-style: italic; 
+}
+p a:visited, li a:visited { text-decoration: none; }
+p a:hover, li a:hover { border-bottom: dotted 1px black; }
+
+textarea{
+}
+
+#main_content img, .copy img, .subhead img {
+  margin-bottom: 12pt;
+  display: block;  margin-left: auto;  margin-right: auto;
+}
+
+.caption {
+  float: left;
+  width: 30em;
+  font-size: 1em;
+  margin-left: 40em;
+  margin-right: -30em
+}
+
+dl {
+  font-variant: small-caps;
+  font-size: 1em;
+}
+
+
+ul, ol {
+  padding-left: 2em;
+  line-height: 1.9em;
+  list-style-type: none;
+}
+
+ul { list-style-type: square;}
+
+pre, code {
+  padding: .5em;
+  font-size: .91em;
+  font-family: Monaco, "Courier New", Courier, monospace;
+  background-color: #eee;
+}
+
+pre {
+  border: 1px dotted #ccc;
+}
+
+.inset {
+  border: 1px dotted #ccc;
+  background-color: #eee;
+}
+.adjacent { width: 45%; padding-left:2.5%; padding-right:2.5%; }
+.tinytext { font-size: 1em; }
+
+acronym {
+  font-variant: small-caps;
+}
+
+textarea{
+  font-family: georgia, "times new roman", times, serif;
+  font-size: 1em;
+  background-color: #eee;
+  border: 1px solid #fff;
+  padding: 2em;
+}
+
+#stylediv ul{
+  text-align: center;
+}
+
+#stylediv ul li {
+  display: inline;  padding-right: 20px;}
+}
+
+#crumbs {
+  position:absolute;
+  background-color: red;
+  top:10px;
+  left:100px;
+}
+/*
+ * blog related css styles
+ */
+
+.post{
+  border: 3px dotted #fff;
+}
+.post p{
+  font-size: 1em;
+  line-height: 1.2em;
+}
+.post:hover {
+  border: 3px dotted #eee;
+}

@@ -1,8 +1,10 @@
 title: She & Him
--
-content: 
+---
+idx: 20
+---
+content:
 
-I developed this site with the most excellent kate quinby of [croakandhum](http://croakandhum.com). 
+I developed this site with the most excellent kate quinby of [croakandhum](http://croakandhum.com).
 
 For type, we're using Neutraface Titling via Cufón on the site's headings. The body text is Museo Sans 500 via @font-face. The disparity in delivery mechanism is due to licensing issues, but none of that should be apparent on the page itself.
 

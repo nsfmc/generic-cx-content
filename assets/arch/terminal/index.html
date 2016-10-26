@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+     PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+ <link rel="stylesheet" type="text/css" href="new.css" title="default" media="screen" />
+ <script type="text/javascript" src="http://www.haloscan.com/load/nsfmc">
+ </script>
+ <script type="text/javascript">
+  
+  function randomServer(){
+
+   var pool = new Array();
+   pool[0] = "all-night-tool";
+   pool[1] = "scrubbing-bubbles";
+   pool[2] = "contents-vnder-pressvre";
+   pool[3] = "buzzword-bingo";
+   pool[4] = "cathedral-seven";
+   pool[5] = "no-knife";
+   pool[6] = "home-on-the-dome";
+   pool[7] = "mint-square";
+   pool[8] = "biohazard-cafe";
+   pool[9] = "grumpy-fuzzball";
+
+
+   dialups = pool.length;
+   dialup = Math.floor(Math.random() * dialups);
+   document.writeln("  <title>thinker@"+pool[dialup]+".mit.edu</title>");
+  }
+ </script>
+ <script type="text/javascript">randomServer();</script>
+</head>
+
+<body onload="init();">
+ <div id="welcome"> 
+  <pre>
+login as: thinker
+Sent username "thinker"
+thinker@athena.dialup.mit.edu's password:
+Athena Server (sun4) Version 9.2.27 Thu Feb  5 17:16:18 EST 2004
+
+              ***  Welcome to athena.dialup.mit.edu  ***
+
+The dialups are now running the new Athena release (9.2).
+For more information about this, see
+                 http://web.mit.edu/olh/Release/9.2/
+
+If you are having trouble using the dialup service, please contact an
+Athena User Consultant at 253-4435 or use OLC. When reporting your
+problem, please include the hostname of the machine.
+
+** This machine is not intended for computationally intensive work. **
+If you need to run computationally intensive jobs, please come to
+campus and log in.
+
+Running standard startup activities ...
+zwgc: Unable to open X display -- disabling X driver.
+zwgc: To receive Zephyrgrams, (type `zwgc -ttymode').
+You have 10 unseen messages (3330733 bytes), 6126 total, in INBOX on PO10.MIT.E
+DU.
+Running custom startup activities listed in ~/.startup.tty ...
+athena% ls
+AdobeFnt.lst  Private       nsmail        welcome
+Mail          <a href="../public/" class="dir">public</a>        <a
+href="./showoff/" class="dir">showoff</a>       <a href="./" class="dir">www</a>
+OldFiles      <a href="font.html" class="html">font</a>          <a
+href="stalk.html" class="html">stalk</a>
+<!--
+AdobeFnt.lst  Private       font          stalk
+Mail          public        nsmail        welcome
+OldFiles      comment       showoff       www
+-->
+athena% lastlog thinker/www
+thinker:        -examining AFS volume in athena.mit.edu... processing...
+                Last updated on: Fri Dec 10 15:07:54 2004
+athena% <a href="javascript:HaloScan('index');" target="_self"><script
+type="text/javascript">postCount('index');</script></a>
+athena% <blink>_</blink>
+</pre>
+ </div>
+
+</body>
+</html>

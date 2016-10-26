@@ -1,0 +1,214 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+   "http://www.w3.org/TR/html4/loose.dtd">
+
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>this i believe</title>
+	<meta name="generator" content="TextMate http://macromates.com/">
+	<meta name="author" content="Marcos Ojeda">
+	<!-- Date: 2009-04-27 -->
+	
+	<script src="newrisd.js" type="text/javascript" charset="utf-8"></script>
+	<script src="jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="rowvis.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" charset="utf-8">
+    $(function(){
+      var create_author_list = function(){
+        for(var i=0; i<two_risd.authors.length; i+=1){
+          $("#authors").append("<li>"+two_risd.authors[i]+"</li>")
+        }
+      };
+        
+      create_author_list();
+      
+      
+      var rand_idxs = function(arr){
+        var indices = []
+        for (var i=0; i<arr.length; i+=1){indices[i]=i;}; // range len(arr)
+        indices.sort(function(a,b){return .5 - Math.random();});
+        var index = 0;
+        return function(idx,domelt){
+          //profiles.push(indices[idx])
+          return indices[idx];
+        };
+      }(two_risd.authors);
+      //$("h2").each(function(idx){$(this).text(two_risd.authors[rand_idxs(idx)])});
+      //$("h2").hide()
+      //$("h2").fadeIn()
+      
+      var sorted_posts = function(index){ // index is the author's index #
+        var out = [];
+        var author_name = two_risd.authors[index];
+        var posts = two_risd.posts.authors[author_name];
+        for(var i=0; i<posts.length; i+=1){out.push(posts[i]);} // sort by post date
+        out.sort(function(a,b){return Date.parse(a.date) - Date.parse(b.date);});
+        return out;
+      };
+      
+      var first = sorted_posts(rand_idxs(0));
+      var second = sorted_posts(rand_idxs(1));
+
+      var insertAuthor = function(idx,counter){
+        var bg_offset = counter % 2; // used to shade each author to differentiate from others
+        window.console.log("shade-"+bg_offset)
+        var author_box = $("<div />").css({"float":"none"}).addClass("shade-"+bg_offset);
+        var auth = $("<div class='block name'><h2>"+two_risd.authors[idx]+"</h2></div>");
+        $(author_box).append(auth)
+        var posties = sorted_posts(idx);
+        for(var i=0; i<posties.length; i+=1){
+          var post = $("<div />").html(posties[i].content).addClass('block missive').attr({title:two_risd.authors[idx]});
+          $(author_box).append(post);
+          
+          // for gathering "i () statements"
+          var posttext = $(post).text().toLowerCase();
+          posttext = posttext.split(/\bi\b/); // i at word boundary
+          if(posttext.length > 1 && Math.random() < .5){ // grab i () quote half the time
+            var a = posttext[1];
+            a = a.split(/[\.\?\!]/)
+            console.log(a[0])
+            prefix = ["I think", "I believe", ";"].sort(function(a,b){return .5 - Math.random();});
+            console.log($("#corpse p span").length)
+            var mememe = $("#corpse p span").sort(function(a,b){return .5 - Math.random();});
+            $("#corpse p").empty()
+            for (var j=0; j<mememe.length; j+=1){
+              $("#corpse p").append(mememe[j])
+            }
+            $("<span />").text("I"+ a[0]+". ").attr({title:two_risd.authors[idx]}).prependTo($("#corpse p")).hide().fadeIn()
+          }
+          if(Math.random()<.25){ // grab pullquote only 30% of the time
+            var text = $(post).text();
+            var sentences = text.split(/[\.\?\!]/);
+            var pull = sentences[Math.floor(sentences.length*Math.random())];
+            if($.trim(pull).length > 3){
+              var pullquote = $("<div />").html("<h3>"+pull+"</h3>").addClass('block pullquote');
+              $(author_box).append(pullquote)
+            }
+            //$("#")
+          }
+        }
+        $(author_box).hide().fadeIn("slow").prependTo("#first") // animate?
+      }
+      var addRandomAuthor = function(){
+        var rand_counter = 0;
+        return function(){
+          insertAuthor(rand_idxs(rand_counter),rand_counter);
+          rand_counter += 1;
+          return true;
+        }
+      }();
+      /*
+      $("#authorpicker").fadeOut();
+      for (var i=0; i < two_risd.authors.length; i += 1){
+        $("#authorpicker").append($("<li />").text(two_risd.authors[i]))
+      }
+      $("#authorpicker").fadeIn();
+      var showAuthors = function(){
+        
+      }*/
+      
+      // add four authors to the mix
+      for(var k=0; k<1; k+=1){
+        //insertAuthor(rand_idxs(k));
+        //addRandomAuthor()
+      }
+      $("h1").bind("click",addRandomAuthor)
+    })
+	</script>
+	
+	<style type="text/css" media="all">
+	  body{
+	    font-family:Akkurat-Light;
+	    background-color:#aaa;
+	    padding:0;
+	    margin:0;
+	  }
+	  h1,h2,h3,h4,h5,h6{
+	    font-weight:normal;
+	  }
+	  #authors{
+	    font-size:1px;
+	    list-style:none;
+	    margin:0;
+	    padding:0;
+	    position:relative;
+	    left:20px;
+	    /*width:600px;*/
+	    width:60px;
+	    color:black;
+	  }
+/*    #authors:hover{
+      color:white;
+    }*/
+	  #authors li{
+	    display:inline;
+	  }
+	  #authors li:after{
+	    content:", ";
+	  }
+	  #authors li:last-child:after{
+	    content:"";
+	  }
+    h1{position:relative; margin-left:15px; }
+    h1 span{border-bottom:2px solid #aaa;}
+    h1 span:hover{border-bottom:2px solid white;}
+	  #actors{position:absolute;left:200px; top:37px; }
+	  h2{left:0; width:200px; margin:0; font-size:1em;}
+	  h3{margin:0; font-size:.8em; line-height:1.38em;}
+	  #actors h2+h2{position:absolute; left:200px;}
+	  #first, #second{
+	    float:left;
+	    width:600px;
+	    position:absolute; 
+	    top:55px; 
+	    padding:0;
+	  }
+	  #first img, #first font, #first embed, #second img{
+	    display:none;
+	  }
+	  #first > li, #second > li{
+	    width:50px;
+	  }
+	  #first{left:200px;}
+	  #second{left:400px;}
+	  blockquote{text-indent:1em;margin-left:1em; color:#333;}
+	  .block {height:50px; margin:10px; width:50px; float:left; overflow:hidden;border-bottom:2px solid #aaa;}
+	  .block:hover{border-bottom:2px solid white;}
+	  .missive{font-size:2px;}
+	  .name,.pullquote {width:120px; font-size:.75em;}
+	  .name{text-decoration:underline;}
+	  .pullquote{font-style: italic;}
+	  
+	  #corpse{
+	    font-size:.9em;
+	    width:180px;
+	    margin-left:20px;
+	    line-height:1.6em;
+	  }
+	  .shade-1, .shade-1 div{background-color:#ccc;}
+	  .shade-0, .shade-0 div{background-color:transparent;}
+	</style>
+	
+</head>
+<body>
+  <h1><span>two.risd</span></h1>
+  <div id="actors">
+    <!-- <h2>Marcos Ojeda</h2>
+    <h2>Aaron Perry-Zucker</h2> -->
+  </div>
+  <ul id="authors">
+  </ul>
+  <ul id="authorpicker">
+  </ul>
+  
+  <div id="corpse">
+    <p></p>
+  </div>
+  <ul id="clickable_authors">
+  </ul>
+
+  <div id="first">
+  </div>
+
+</body>
+</html>

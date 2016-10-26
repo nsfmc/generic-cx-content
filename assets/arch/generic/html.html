@@ -1,0 +1,166 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+
+  <script type="text/javascript"></script>
+  <script type="text/javascript" src="style.js"></script>
+
+  <title>html part one - marcos.a.ojeda</title>
+</head>
+
+<body>
+  <div id="container">
+  
+    <div id="intro"> 
+	    <h1>html</h1>
+      <div id="intro_text">
+      
+	      <p>The first thing anyone will tell you is <acronym>HTML</acronym> stands for <em>hypertext markup language</em>.</p>
+      
+	    </div>
+	  </div>
+
+    <div id="main_content">
+
+      <div class="subhead">
+	      <h2>so what?</h2>
+    
+        <div class="copy">
+        
+          <p>When HTML started, it was supposed to provide two basic ideas:
+          structure and linking. Beyond that, everything was supplementary.
+          The big idea here was to make the source human readable and also
+          match the structure.. Here is a minimal HTML document. It has an
+          empty body.</p>
+
+<pre>&lt;html&gt;
+  &lt;body&gt; 
+  &lt;/body&gt; 
+&lt;/html&gt; </pre>
+    
+          <p>While functionally, this document does absolutely nothing
+          visually, it is successful in conveying its structure. Structure is
+          critical in HTML. The following is an example of bad structure.</p>
+
+<pre>&lt;html&gt;
+  &lt;body&gt; 
+&lt;/html&gt;
+  &lt;/body&gt; </pre>
+
+          <p>But <em>why</em> is it bad? because there is
+          <strong>ambiguity.</strong> The web browser will start reading:
+          <q>here begins an html document, here begins its body, here ends
+          the document.</q> But what of the body? did it end? Should the
+          browser keep going until it reaches the end of the body? or should
+          it stop at the end of the html? Both are valid options considering
+          the error, so which takes precendence? If a web page programmer
+          isn't able to decide this, how is a computer supposed to?</p>
+          
+          <h3>real world stuff</h3>
+          <p>In HTML, each tag starts like this &lt;tag&gt; and ends like
+          this &lt;/tag&gt;.  This rule pretty much holds across all HTML
+          files. There's a caveat here, but we'll deal with it later.</p>
+    
+        </div>
+      </div>
+      
+      <div class="subhead">  
+        <h2>Structure</h2>
+        <div class="copy">
+          
+          <p>HTML is broken up into two kinds of tags,
+          <strong>structural</strong> and <strong>presentational.</strong>
+          The critical point here is that structural tags apply a kind of
+          importance to content. Text that appears inside a <em>paragraph
+          tag</em> is a paragraph.  There is meaning there!</p>
+
+          <p>Similarly, text that appears within a <em>heading tag</em> has
+          meaning too, it is a heading, it has importance. There is meaning
+          there too. By applying tags in HTML, you automatically give context
+          to its content.</p>
+
+          <p>While this discussion may seem bizzarely religious, it is
+          important because it gets you thinking about how you structure
+          text. Just like a well written paper, even the lowly HTML document
+          should have structure that identifies its meaning.</p>
+          
+          <p>On to coding.</p>
+          
+        </div>
+      </div>
+
+      <div class="subhead">
+        <h2>code</h2>
+          
+        <div class="copy">
+        
+          <p>Before we begin, let's make a cheat sheet of elements that we'll
+          start off using.</p>
+
+          <ul>
+            <li>HTML</li>
+            <li><code>&lt;html&gt; ... &lt;/html&gt;</code></li>
+            
+            <li>Body</li>
+            <li>
+              <ul>
+                <li><code>&lt;body&gt; ... &lt;/body&gt;</code></li>
+              
+                <li>Body Content</li>
+                <li>
+                  <ul>
+                    <li>Headings</li>
+                    <li><code>&lt;h1&gt;...&lt;/h1&gt;, &lt;h2&gt;...&lt;/h2&gt;, &lt;h3&gt;...&lt;/h3&gt;, &lt;h4&gt;...&lt;/h4&gt;, &lt;h5&gt;...&lt;/h5&gt;, &lt;h6&gt;...&lt;/h6&gt;</code></li>
+                    <li>Paragraphs</li>
+                    <li><code>&lt;p&gt; ... &lt;/p&gt;</code></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+          
+          <p>What really matters, for now, is the body content. Using this
+          code that we have, we can make simple webpages that are capable of
+          conveying structure. If you have used a language like LaTeX, then
+          this series of tags is about equivalent to what you get in run of
+          the mill TeX: headings and paragraphs.</p>
+        
+          <p>Let's see a sample HTML page</p>
+
+<pre>&lt;html&gt;
+&lt;body&gt;
+  &lt;h1&gt;Hello World!&lt;/h1&gt;
+  &lt;p&gt;This is my very first webpage. It has a bit of
+  everything. A little heading here. A little paragraph
+  there.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+          
+          <p>This is pretty much what most html pages look like. They have a
+          body and that's about it. Nothing too fancy.</p>
+
+          <p>This is a good first start. Go off and make a webpage!</p>
+
+        </div>
+             
+	    </div>
+
+    </div>
+
+    <div id="footer">
+      
+      <p><span id="contact">thinker at mit dot edu</span></p>
+
+      <p><span id="compliance"><a
+      href="http://validator.w3.org/check?uri=referer">xhtml</a> <a
+      href="http://jigsaw.w3.org/css-validator/validator?uri=http://web.mit.edu/thinker/www/bauhaus.css">css</a></span></p>
+    
+    </div>
+
+  </div>
+
+</body>
+</html>

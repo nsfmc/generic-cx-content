@@ -1,0 +1,114 @@
+
+body{
+  font-family: "Fedra Sans";
+  font-style: normal;
+  font-weight: normal;
+  font-stretch: normal;
+  font-variant: normal;
+  background-color:#dadada;
+}
+
+#main{
+  margin-left:auto;
+  margin-right:auto;
+  position:relative;
+  width:960px;
+}
+
+#articles{
+  width:480px;
+  border-top:2px solid #666;
+  float:left;
+}
+#content{
+  width:420px;
+  margin-left:20px;
+  margin-top:-35px;
+  float:left;
+  background-color:white;
+  padding:20px 20px;
+  -webkit-border-radius:5px;
+  -webkit-box-shadow:-6px 4px 6px rgba(0,0,0,0.3);
+  -moz-border-radius:5px;
+  -moz-box-shadow:-6px 4px 6px rgba(0,0,0,0.3);
+  border-radius:5px;
+  box-shadow:-6px 4px 6px rgba(0,0,0,0.3);
+  min-height:400px;
+}
+
+h1{
+  font-family: "Fedra Sans Display 1";
+  font-style: normal;
+  font-weight: normal;
+  font-stretch: normal;
+  font-variant: normal;
+  font-size:71px;
+  color:#666;
+  line-height:80px;
+  margin:0;
+}
+
+h2{
+  font-family: "Fedra Sans";
+  font-style: normal;
+  font-weight: normal;
+  font-stretch: normal;
+  font-variant: normal;
+  font-size:20px;
+  color:#666;
+  line-height:20px;
+  margin:0;
+}
+
+
+ul{
+  list-style-type:none;
+  padding:0;
+  margin:0;
+}
+
+#articles ul li{
+  float:left;
+  margin:30px 10px 0px;
+}
+
+ul li a{
+  display:table-cell;
+  vertical-align:bottom;
+  -webkit-border-radius:3px;
+  -webkit-box-shadow:-4px 2px 4px rgba(0,0,0,0.6);
+  -moz-border-radius:3px;
+  -moz-box-shadow:-4px 2px 4px rgba(0,0,0,0.6);
+  border-radius:3px;
+  box-shadow:-4px 2px 4px rgba(0,0,0,0.6);
+  width:127px;
+  height:200px; /*once 46*/
+  text-decoration:none;
+  background-color:#666;
+  text-align:left;
+  font-size:12px;
+  color:white;
+  padding:16px 4px 16px 9px;      
+}
+ul li a:hover {
+  background-color:#999;
+  cursor: pointer;
+}
+
+#content img{
+  
+  max-width:380px;
+}
+#content .images{
+  margin-top:27px;
+}
+#content p{
+  font-family: "Fedra Sans";
+  font-style: normal;
+  font-weight: normal;
+  font-stretch: normal;
+  font-variant: normal;
+  line-height:16px;
+  font-size:12px;
+  color:#666;
+}

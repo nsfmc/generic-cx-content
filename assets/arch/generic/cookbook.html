@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+
+  <script src="http://www.google-analytics.com/urchin.js" type="text/javascript"> </script>
+  <script type="text/javascript"> _uacct = "UA-97175-1"; urchinTracker(); </script>
+  <script type="text/javascript" src="style.js"></script>
+  <script type="text/javascript" src="toc.js"> </script>
+
+  <title>cookbook - marcos.a.ojeda</title>
+</head>
+
+<body>
+  <div id="container">
+  
+    <div id="intro"> 
+      <h1>cooking</h1>
+      <div id="intro_text">
+        <p>Cooking is an elusive art. We learn to cook partly from television,
+        our parents, friends, restaurants we visit and by books. Our learning,
+        however, is disjoint. Sometimes we learn <q>the why</q> of
+        what we are doing in the kitchen, but often we are only exposed to
+        <q>the what</q> of kitchen activities.</p>
+        <p id="toc">toc: </p>
+      </div>
+    </div>
+
+
+    <div id="main_content">
+      <div class="subhead">
+        <h2>Wha?</h2>
+        <div class="copy">
+          <p>I am developing a cookbook. It will be instructional in the way that <a href="http://sicp.ai.mit.edu/"><acronym title="Structure and Interpretation of Computer Programs">sicp</acronym></a> is meant to teach you about programming through essential concepts, but it will feature the almost outrageously detailed nature of Julia Child's <em>Mastering the Art of French Cooking.</em></p>
+          <p>That is, <acronym title="Structure and Interpretation of Computer Programs">sicp</acronym> doesn't actually teach you <em>that many</em> concepts, but the ones you learn happen to be incredibly useful. Cooking is kind of like programming. There are a few concepts that are very important and then there are the others which are stylistically important. Those concepts, we can practice, refine, and turn into an art, but they are based on an understanding of the basic principles of programming.</p>
+          <p>I do not want this to be a book for snobs.</p>
+        </div>
+      </div>
+      
+      <div class="subhead">
+        <h2>Help</h2>
+        
+        <div class="copy">
+          <p>Those intrepid enough to volunteer their time are welcome to do so. There are lots of little aspects of the book right now that are being worked on. Here are a couple, off the top of my head:</p>
+          <ul>
+            <li>schema design (relax ng)</li>
+            <li>inDesign layout and design</li>
+            <li>editing</li>
+            <li>recipes</li>
+            <li>visualizations</li>
+            <li>photography</li>
+            <li>test-cooking</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="subhead">
+        <h2>Technicalities</h2>
+        <div class="copy">
+          <p>Because we live in <em>the future</em>, i am producing the book as an xml document. The main reason for this is so that i can easily import it into Adobe inDesign, but also so that i can create intelligent resources based on what attributes are popular, which ingredients are used, what utensils get lots of attention, which author is most prolific, and so on.</p>
+          <p>Because xml can also be transformed in a ton of ways, this means that the book can be ported to a website, or perhaps just some parts of it can be extracted to visualize recipes and so forth.</p>
+          
+          <h3>Structure</h3>
+            <p>I have developed a Relax NG schema to validate the xml files that constitute the book and have also added a couple of convenience scripts along the way. One generates a proper relax ng xml file from a compact working edition and another validates the project against the current schema. Both these use <a href="http://www.thaiopensource.com/relaxng/jing.html">jing</a> and <a href="http://www.thaiopensource.com/relaxng/trang.html">trang</a>, both of which are supplied in the <tt>bin/</tt> directory within the cookbook's subversion repository.</p>
+            <p>Because it is highly likely that the book will eventually outgrow the single <q>recipe.xml</q> file that currently exists, i am also considering creating an (egads) <a href="http://ant.apache.org/">ant</a> build for the book. For now (with only 1.3 recipes), the cookbook will probably be ok as-is.</p>
+
+
+        </div>
+      </div>
+      
+      <div class="subhead">
+        <h2>Subversion</h2>
+        <div class="copy">
+                  
+          <p>The cookbook is currently available via a subversion repository hosted at csail. Folks <em>without</em> an athena/csail kerberos principal (almost everyone) can still help out, though. Thanks to the magic of computers, we can allow almost anyone access via https. Send me an email if you want to help out, my address is: <tt>thinker at mit dot edu</tt>. I will add you to the repository and you will be able to do work with it.</p>
+          
+          <p>The subversion repository for the cookbook lives at: <code>https://svn.csail.mit.edu/marcos/cookbook/trunk/</code> <a href="https://svn.csail.mit.edu/marcos/cookbook/trunk/">[browse]</a></p>
+          <p>You can check out from it, on a system that has subversion installed, by doing something like the following:</p>
+           <pre>svn checkout https://svn.csail.mit.edu/marcos/cookbook/trunk/ cookbook</pre>
+          <p>The <a href="http://svnbook.red-bean.com/">subversion book</a> (in particular, Chapters 2 and 3) is a pretty good reference if you understand the concept of revision control, but don't yet understand the commands that subversion uses.</p>
+          
+          <h3>Tools for the Mac</h3>
+            <p>If you want to install subversion on your mac, <a href="http://www.codingmonkeys.de/mbo/">Martin Ott</a> has a great package of subversion 1.3.0 on his webpage. I ditched fink's subversion and went for this one because it had fsfs support and because it was just easier.</p>
+            <p>I do most of my file editing using <a href="http://www.codingmonkeys.de/subethaedit/">SubEthaEdit</a> because it is free, a little nicer than textedit, and has nice xml support. I don't feel like paying for <a href="http://macromates.com/">textmate</a>, otherwise i would probably recommend it.</p>
+          
+          <h3>Tools for Windows</h3>
+            <p>Got me! If you have any popular combinations/etc, then drop me a line.</p>
+          
+        </div>
+        
+      </div>
+    </div>
+
+    <div id="footer">
+      
+      <p><span id="contact">thinker at mit dot edu</span></p>
+
+      <p><span id="compliance"><a
+      href="http://validator.w3.org/check?uri=referer">xhtml</a> <a
+      href="http://jigsaw.w3.org/css-validator/validator?uri=http://web.mit.edu/thinker/www/bauhaus.css">css</a></span></p>
+    
+    </div>
+
+  </div>
+
+</body>
+</html>

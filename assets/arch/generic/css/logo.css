@@ -1,0 +1,190 @@
+body{
+  background-color:white;
+  font-family: "Scala Regular", Scala-Regular, Georgia, Times, "Times New Roman", serif;
+  font-size: 76%;
+}
+
+p{ font-size: 1.25em; line-height: 1.9em; color: #333; }
+
+blockquote{ 
+  color: #666; 
+  line-height: 1.1em; 
+  text-align: left; 
+  font-size: 1.1em;
+}
+
+strong{ font-weight: bold }
+
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: normal;
+}
+
+h1{ 
+  font-size: 6em;
+  color: #ccc;
+  float: left;
+}
+
+#intro:after, .inset:after {
+  content: "&nbsp;";
+  display: block;
+  height: 0em;
+  clear: both;
+  visibility: hidden;
+}
+
+h2{ 
+  font-size: 3em;
+  color: #999;
+  float: right;
+  margin-right: -9.3em;
+  margin-top: -1em;
+  text-transform: capitalize;
+}
+
+h3{ 
+  color: #666;
+  font-size: 1.5em; 
+  padding-top: .53em;
+  padding-bottom: .6em;
+  text-align: right;
+  font-variant: small-caps;
+}
+
+#intro{ 
+  width: 30em;  
+  margin-bottom: 1.9em;
+}
+
+#intro_text {
+  width: 100%;
+  text-align: right;
+  margin-left: 40em;
+  margin-right: -30em
+}
+
+#intro_text p {
+  text-align: justify;
+  color: #666;
+  letter-spacing: .2em;
+  font-size: 1em;
+  width: 100%;
+}
+
+#main_content{
+  width: 38em;
+  padding: 0px;
+  margin: 0em;
+}
+
+#main_content div {
+  padding: .5em 0em .5em 0em;
+}
+
+#main_content div div {
+  width: 100%;
+}
+
+#main_content p, dl, dd{ }
+
+.copy p { text-align: justify;  text-indent:1em; margin-top: 0em; }
+.copy p:first-child { text-indent: 0em; }
+.copy p:first-child::first-line { font-variant: small-caps; letter-spacing: .25em; }
+
+q, blockquote { 
+  font-style: italic; 
+  font-family: "Scala Italic", Scala-Italic, Georgia, Times, "Times New Roman", serif;
+  }
+
+q:before { content: &#8220; }
+q:after { content: &#8221; }
+
+#container{ margin-left: 5em; margin-bottom: 0em; }
+
+#footer{ text-align:right;} 
+#footer p{ color: #ddd;}
+
+#contact{ }
+#compliance{ }
+
+p a, li a{
+  font-weight: bold;
+  text-decoration: none;
+  color: #999;
+  border-bottom: dotted 1px #ccc;
+}
+p a:visited, li a:visited { border-bottom: dotted 1px #999 }
+p a:hover, li a:hover { border-bottom: dotted 1px black; }
+
+textarea{
+}
+
+img {
+  margin: 1.8em 2em 1.8em 0em;
+  float:  right;
+  clear: right;
+  margin-right: -28em;
+}
+
+.copy img {
+  margin-right: -28em;
+}
+
+.caption {
+  float: left;
+  width: 30em;
+  font-size: 1em;
+  margin-left: 40em;
+  margin-right: -30em
+}
+
+dl {
+  font-variant: small-caps;
+  font-size: 1em;
+}
+
+
+ul, ol {
+  padding-left: 2em;
+  line-height: 1.9em;
+  list-style-type: none;
+}
+
+ul { list-style-type: square;}
+
+pre, code {
+  padding: .5em;
+  font-size: 1em;
+  font-family: Monaco, "Courier New", Courier, monospace;
+  background-color: #eee;
+}
+
+pre {
+  margin-left: 10%;
+  width: 90%;
+  border: 1px dotted #ccc;
+}
+
+.inset {
+  border: 1px dotted #ccc;
+  background-color: #eee;
+}
+.adjacent { width: 45%; padding-left:2.5%; padding-right:2.5%; }
+.tinytext { font-size: 1em; }
+
+.acopy, .hcopy{
+  letter-spacing: .025em;
+  font-weight:    bold;
+  color:          #b10a21;
+  font-size:      1.3em;
+}
+.acopy{ font-family:    arial; }
+.hcopy{ font-family:    helvetica; }
+
+.alogo, .hlogo{
+  letter-spacing:-.03em;
+  font-size:3.7em;
+}
+
+.hlogo{ font-family:    helvetica; }

@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <!-- do the right thing for phones -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  {%- set site_title = site.get('/').title|striptags -%}
+  {%- set page_title = site.get('/').title|striptags -%}
+
+  {%- if pagetitle -%}
+    {%- set page_title = this.page_title -%}
+  {%- elif title -%}
+    {%- set page_title = title|striptags + ' || ' + site_title -%}
+  {%- endif %}
+
+  <title>{{ page_title }}</title>
+
+  {% if metadesc -%}
+  <meta name="description" content="{{ metadesc }}">
+  {%- endif -%}
+
+  <meta name="author" content="Marcos Ojeda">
+
+  <link rel="shortcut icon" href="{{ '/public/favicon.ico'|asseturl }}">
+  <link rel="apple-touch-icon" href="{{ '/public/apple-touch-icon.png'|asseturl }}">
+
+  <!-- Stylesheets -->
+  <!-- pure grids -->
+  <link rel="stylesheet" href="{{ '/public/style/handheld.css'|asseturl }}">
+
+  <!-- main styles -->
+  <link rel="stylesheet" href="{{ '/public/style/style.css'|asseturl }}">
+
+  <!-- twitter cards -->
+  {%- block twittercard %}
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@nsfmc" />
+
+  {% if title -%}
+    <meta name="twitter:title" content="{{ page_title }}" />
+  {%- endif %}
+  {% if metadesc -%}
+    <meta name="twitter:description" content="{{ metadesc }}" />
+  {%- endif %}
+
+  {%- set images = this.attachments.images.all() -%}
+  {%- if images -%}
+    {#- FIXME(marcos): is this correct? -#}
+  {%- for image in (images|sort(reverse=True))[:4] -%}
+    <meta name="twitter:image" content="{{ image.thumbnail(640)|url }}" />
+  {% endfor -%}
+  {%- endif -%}
+
+  {#- TODO(marcos): does this need to be an absolute url? #}
+  <meta name="twitter:url" content="{{ '.'|url }}" />
+
+  {% endblock twittercard -%}
+
+  <!-- webfonts -->
+  <link rel="stylesheet" href="//wf.typotheque.com/WF-009837-000865" type="text/css" />
+
+  {% block headextras %}
+  {% endblock %}
+
+</head>
+<body id="{{ pageclass }}">
+
+  <div id="container">
+
+  {% block container %}
+
+    <header>
+      <h1>{{ title|safe }}</h1>
+    </header>
+
+    <nav>
+    {% block navigation %}
+    {% endblock %}
+    </nav>
+
+    {% block body %}
+    <div id="main" class="hyphenate">
+      {{ content }}
+    </div>
+    {% endblock body %}
+
+    <div id="prettystuff">
+      {% block images %}
+        {% if images %}
+          {% for image in images|sort(reverse=False, attribute='path') %}
+          <img src="{{ image|url }}">
+          {% endfor %}
+        {% endif%}
+      {% endblock %}
+
+      {% block video %}
+      {% endblock %}
+
+      {% block html %}
+      {% for doc in this.attachments.documents.all() if doc.path.endswith('.html') %}
+        {{ doc.contents.as_text()|safe }}
+      {% endfor %}
+      {% endblock %}
+    </div>
+
+    {% block footer %}
+    <footer>
+      <p>Marcos Ojeda is a designer living in Saint&nbsp;Paul,MN, married to <a href="http://www.katericke.com/">kate ricke</a> and previously employed at <a href="http://www.khanacademy.org/">khan academy</a>. You may email him at <a href="mailto:marcos@generic.cx">marcos@generic.cx</a> or you may call him at 619&nbsp;721&nbsp;3606.</p>
+
+      <p>c.f. <a href="http://twitter.com/nsfmc/">twitter</a> <a href="http://flickr.com/photos/subliminal">flickr</a> <a href="http://nsfmc.tumblr.com/">tumblr</a> <a href="http://last.fm/user/nsfmc">last.fm</a> <a href="http://del.icio.us/nsfmc/">delicious</a> <a href="http://ffffound.com/home/nsfmc/found/">ffffound</a> <a href="http://news.ycombinator.com/user?id=nsfmc">hn</a> <a href="pgp.html">pgp</a></p>
+
+    </footer>
+    {% endblock footer %}
+
+  {% endblock container %}
+  </div> <!-- end of #container -->
+
+  {% block footscripts %}
+  <!-- old... jquery, cdn, then local fallback -->
+  <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script>!window.jQuery && document.write('<script src="{{ '/public/docs/js/jquery-1.11.3.min.js'|asseturl }}"><\/script>');</script>
+
+  <!-- zoom images -->
+  <!-- zoom.js -->
+  <script src="{{'/public/scripts/zoom.js'|asseturl}}"></script>
+  <script>
+  (function(){
+    var img_list = document.querySelectorAll(".main-content p img");
+    var img_arr = Array.prototype.slice.call(img_list);
+    img_arr.forEach(function(c,i,a){
+        c.setAttribute('data-action', 'zoom')
+    })
+  })();
+  </script>
+  {% endblock %}
+
+  {% block scriptextras %}
+  {% endblock %}
+
+</body>
+</html>

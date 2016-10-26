@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+
+ <script src="http://www.google-analytics.com/urchin.js" type="text/javascript"> </script>
+ <script type="text/javascript"> _uacct = "UA-97175-1"; urchinTracker(); </script>
+  <script type="text/javascript">var newtag_timeout = 365</script>
+  <script type="text/javascript" src="style.js"></script>
+  <script type="text/javascript" src="newtag.js"></script>
+  
+  <title>marcos.a.ojeda</title>
+</head>
+
+<body>
+  <div id="container">
+  
+    <div id="intro"> 
+      <h1>New?</h1>
+      <div id="intro_text">
+        <p>When creating hand coded websites, you lose the ability to manage new and old content. You could hand-include a <strong>new</strong> near recently updated text, but when does 'new' stop being new?</p>
+        <p>The problem is much trickier: once you have committed to making that statement of 'newness,' you become responsible for maintaining the status of the item, otherwise your page becomes stale. This could be a webmaster's nightmare, even for a small number of pages.</p>
+      </div>
+    </div>
+
+
+    <div id="main_content">
+      <div class="subhead">
+        <h2>Technique</h2><!--date.2006.03.21-->
+        <div class="copy">
+          <p>Obviously, if <acronym>xhtml</acronym> offered a tag which captured this syntactic meaning, it would be much easier to solve this problem.</p>
+          <p>By adding comments like <code>&lt;!--date.2006.3.21--&gt;</code> in close proximity to new content, it is possible to place relevant information in parts of an html file and use <acronym>dom</acronym> scripting techniques to make it relevant for newer browsers.</p>
+        </div>
+      </div>
+      
+      <div class="subhead">
+        <h2>Example</h2><!--date.2006.03.25-->
+        <div class="copy">
+          <p>Here is an example of how the code looks like in this webpage (so you don't have to 'view source' this page.</p>
+<pre>
+&lt;h2&gt;Example&lt;/h2&gt;&lt;!--date.2006.3.25--&gt;
+&lt;p&gt;Here is an example...&lt;/p&gt;
+</pre>
+          <p>This kind of code snippet, in this website's case, gets transformed into something like the following:</p>
+<pre>
+&lt;h2&gt;
+  &lt;strong title="posted xx days ago"&gt;New: &lt;/strong&gt;
+  Example
+&lt;/h2&gt;&lt;!--date.2006.3.25--&gt;
+&lt;p&gt;Here is an example...&lt;/p&gt;
+</pre>
+
+        </div>
+      </div>
+   
+    </div>
+
+    <div id="footer">
+      
+      <p><span id="contact">thinker at mit dot edu</span></p>
+
+      <p><span id="compliance"><a
+      href="http://validator.w3.org/check?uri=referer">xhtml</a> <a
+      href="http://jigsaw.w3.org/css-validator/validator?uri=http://web.mit.edu/thinker/www/bauhaus.css">css</a></span></p>
+    
+    </div>
+
+  </div>
+
+</body>
+</html>

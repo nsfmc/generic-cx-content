@@ -1,0 +1,213 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+
+  <script type="text/javascript"></script>
+  <script type="text/javascript" src="style.js"></script>
+
+  <title>html part two - marcos.a.ojeda</title>
+</head>
+
+<body>
+  <div id="container">
+  
+    <div id="intro"> 
+      <h1>details</h1>
+      <div id="intro_text">
+
+        <p>In the last installment, we talked about theory. Theory theory
+        theory.</p>
+        
+        <p>This installment is focused on <strong>practice.</strong> It mainly
+        goes into the details of <em>how</em> we actually make pages.</p>
+        
+      </div>
+    </div>
+    <!-- end intro -->
+
+
+    <div id="main_content">
+    
+      <div class="subhead">
+        <h2>workspace</h2>
+        <h3>viewing</h3>
+        
+        <div class="copy">
+        
+          <p>html files are webpages, so your web browser is a key part of your
+          workspace. You view your html files by opening them in Firefox or
+          Safari or Explorer. Just find the file, wherever you saved it, and
+          open it. See what happens.</p>
+
+          <p>You can even open other kinds of files on your computer in a web
+          browser, try it! Most web browsers actually act like a minimal
+          operating system, if you hand them some kinds of files, they will
+          open them natively or suggest other programs that will open your
+          file. Kinda neat!</p>
+
+          <h3>saving</h3>
+          
+          <p>When saving your html files, you should always save them as a
+          <code>.html</code> file. Emacs or Vi will happily do this without adding any
+          additional file extensions like .txt or anything like that.</p>
+
+          <p>Because HTML doesn't need to be <em>compiled</em> like LaTeX does,
+          you can leave your file open in Emacs while you're working, but you
+          obviously have to save your file before you can see any changes.</p>
+
+        
+        </div>
+        <!-- end copy -->
+      </div>
+      <!-- end subhead-->
+    
+      <div class="subhead">
+        <h2>editing</h2>
+        <div class="copy">
+
+          <p>How you choose to edit your html files is practically irrelevant.
+          The only thing that matters is that you remain consistent. With
+          consistency, you gain the ability to edit your files easily and also
+          read them later on whenever you decide to edit them.</p>
+
+          <p>Your best bet for editing html files is a text editor like
+          <strong>emacs</strong> or <strong>vi</strong>. There are
+          <em>other</em> editors that you can use, but it's best to not make
+          things more complicated than they need to be. Try to focus on
+          simplicity. The last program you want to use is MS Word.</p>
+          
+          <h3>Editing with style</h3>
+
+          <p>You can use emacs and all those fun unixy things by opening a
+          terminal. On a mac, the terminal lives in the utilities folder within
+          your applications menu.</p>
+          
+          <p>Emacs comes with every Mac and so does Vi, but emacs is probably
+          the easiest to use. In order to get syntax highlighting working, you
+          probably want to add the following to your <code>.emacs</code>
+          file:</p>
+
+<pre>(global-font-lock-mode 1)</pre>
+
+        </div>
+        <!-- end copy -->
+      </div>
+      <!-- end subhead -->
+
+      <div class="subhead">
+        <h2>looking</h2>
+        <div class="copy">
+
+          <p>It is always helpful to look at other webpages for inspiration,
+          both code-wise and also layout wise. As of right now you have the
+          skill to make Headings and Paragraphs. The end result is something
+          like a new york times article without any images or banner ads.</p>
+          
+          <p>Even though i feel it is pedagogically unsound, i have found it
+          important in my own web design experience to immediately step away
+          from the standard font (most often Times) that appears when you
+          first start making web pages. The reason for this is primarily
+          because it makes the pages appear, even if haphazardly, more
+          professional than pages that lack that decorum.</p>
+
+          <div class="inset">
+            <div style="float:left; padding: 2.5%; width: 45%;">
+
+              <p class="tinytext" style="font-family:verdana;">This is a
+              paragraph that is set in Microsoft's <strong>Verdana.</strong>
+              When i first started doing web design, people used this font
+              liberally because it was rounder and more approachable than
+              <strong>Arial.</strong> It looks nice at small type sizes, but
+              afterwards, it looks kinda silly.</p>
+            
+            </div>
+
+            <div style="float:left; padding: 2.5%; width: 45%;">
+
+              <p class="tinytext" style="font-family: comic sans ms">This is
+              <strong>Comic Sans MS.</strong> It has the reputation, much like
+              the verizon logo, of being the most despised font of all time. It
+              is used often and liberally by people who want to 'lighten up'
+              their web pages. You can do the same if you'd like, but remember
+              its reputation.</p>
+            
+            </div>
+          </div>
+
+          <p>Those are two popular fonts, although there are others. On a mac
+          with MS Office just installed, the average user has about 170 fonts.
+          Without installing any fonts, the standard mac has about 63 fonts.
+          That's a ton of fonts!</p>
+
+          <div class="inset">
+            <div style="float:left; padding: 2.5%; width: 45%;">
+
+              <p class="tinytext" style="font-family:helvetica">This is
+              <strong>Helvetica.</strong> It is often rejected because <em>everyone uses it.</em> John Maeda said that Helvetica is like comfortable pair of jeans, which is a cute way of anthropomorphising a typeface.</p>
+              
+              <p class="tinytext" style="font-family:'helvetica neue'">
+              Macs have an extra family called <strong>Helvetica Neue</strong> which goes from regular, to <span style="font-family:'helvetica neue light'">light,</span> to <span style="font-family:'helvetica neue ultralight'">ultralight.</span></p>
+            
+            </div>
+
+            <div style="float:left; padding: 2.5%; width: 45%;">
+
+              <p class="tinytext" style="font-family:arial;">This is a
+              paragraph that is set in Microsoft's <strong>Arial,</strong> an eerie imitation of Helvetica. When bold and oblique, Arial makes a perfect
+              <i><b>Microsoft</b></i> logo.</p>
+              
+              <p  class="tinytext" style="font-family:arial;">For most websites, you can interchange Arial or Helvetica unless you want to use 'the real deal.' At larger sizes, though, Arial looks less stylized. A superbold Helvetica is used for <acronym>mbta</acronym> signage.</p>
+            
+            </div>
+          </div>
+          
+          <p>When setting type with serifs, you have a couple of options. The first is Times (which is the default webpage font for most browsers), the second is Palatino (which should be exploited for its style) and the third is Georgia.</p>
+          
+                    <div class="inset">
+            <div style="float:left; padding: 2.5%; width: 45%;">
+
+              <p class="tinytext" style="font-family:'Times New Roman';"><strong>Times New Roman</strong> has a heritage of being a newspaper font. It looks standard, professional, plain and almost fancy enough. You don't pay much attention to it, so it helps to make sure you set it nicely.</p>
+              
+              <p class="tinytext" style="font-family:'Palatino';"><strong>Palatino,</strong> on the other hand, is wider, more relaxed and elegant. It typically has less characters per line than Times, which makes its use less economical, but somewhat more decadent.</p>
+            
+            </div>
+
+            <div style="float:left; padding: 2.5%; width: 45%;">
+
+              <p class="tinytext" style="font-family: georgia">This is
+              <strong>Georgia.</strong> It was made for the screen and has text figures, numbers like 13 and 29 that line up with lowercase letters on the line. Overall, it is a little <em>chubbier</em> than Times or Palatino, but it is immensely more legible on the screen at any size.</p>
+              
+              <p class="tinytext" style="font-family: georgia">On the whole, it is bolder than either Times or Palatino, which makes it look kind of goofy if you ever print it out, but on the web, at 12pt or greater, it looks clean and refined with intelligent and contemporary stylings.</p>
+            
+            </div>
+          </div>
+          
+
+          
+        </div>
+        <!-- end copy -->
+      </div>
+      <!-- end subhead -->
+        
+    </div>
+    <!-- end main content -->
+
+    <div id="footer">
+      
+      <p><span id="contact">thinker at mit dot edu</span></p>
+
+      <p><span id="compliance"><a
+      href="http://validator.w3.org/check?uri=referer">xhtml</a> <a
+      href="http://jigsaw.w3.org/css-validator/validator?uri=http://web.mit.edu/thinker/www/bauhaus.css">css</a></span></p>
+    
+    </div>
+    <!-- end footer -->
+
+  </div>
+  <!-- end container -->
+
+</body>
+</html>

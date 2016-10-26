@@ -1,5 +1,7 @@
 title: hackney
--
+---
+idx: 110
+---
 content:
 
 For khan academy's [hack week 2014](http://hackweek.khanacademy.org) i fleshed out a simple ios application as a proof of concept for how khan academy could implement a highly focused coach and parent application. I recruited [desmond brand](https://twitter.com/dmnd_) and [zach gotsch](https://twitter.com/codeathena) to help me with api data modeling, network integration and push notification support.

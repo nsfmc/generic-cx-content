@@ -1,0 +1,71 @@
+div#intro {
+  position: absolute;
+  left: 150px;
+  width: 575px;
+}
+
+h1, h2 {
+  margin: 0px;
+}
+#intro h1 {
+  height: 195px;
+  width: 409px;
+  background-image: url(marcosojeda.gif);
+  text-indent: -5000px;
+  margin-bottom: 180px;
+}
+h2 {
+  height: 195px;
+  width: 409px;
+  margin-left: 165px;
+  text-indent: -5000px;
+}
+
+h2#introseduction{
+  background-image: url(introseduction.gif);
+}
+h2#triangle{
+  background-image: url(adbntriangle.gif);
+}
+
+h2#portrait{
+  background-image: url(aselfportrait.gif);
+}
+h2#hello{
+  background-image: url(hello.gif);
+}
+h2#readymade{
+  background-image: url(readymade.gif);
+}
+
+#intro_text{
+  position: absolute;
+  width: 256px;
+  height: 256px;
+  top: 105px;
+  left: 300px;
+  text-align: justify;
+  font-family: verdana, sans-serif;
+  font-size: 11px;
+  line-height: 16px;
+  border: 3px dotted #ccc;
+  margin: 0px; padding: 5px;
+}
+
+#intro img{
+  padding: 5px;
+  border: 3px dotted #ccc;
+  position: absolute;
+  width: 256px;
+  height: 256px;
+  top: 200px;
+  left: 15px;
+}
+
+#intro_text p{
+  margin: 0px;
+  padding-bottom: 8px;
+  text-align: justify;
+}
+
+

@@ -1,0 +1,417 @@
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, figure, footer, header, hgroup, menu, nav, section, menu,
+time, mark, audio, video {
+  margin:0;
+  padding:0;
+  border:0;
+  outline:0;
+  font-size:100%;
+  vertical-align:baseline;
+  background:transparent;
+}
+article, aside, figure, footer, header, hgroup, nav, section { display:block; }
+nav ul { list-style:none; }
+blockquote, q { quotes:none; }
+blockquote:before, blockquote:after, q:before, q:after { content:''; content:none; }
+a { margin:0; padding:0; font-size:100%; vertical-align:baseline; background:transparent; }
+ins { background-color:#ff9; color:#000; text-decoration:none; }
+mark { background-color:#ff9; color:#000; font-style:italic; font-weight:bold; }
+del { text-decoration: line-through; }
+abbr[title], dfn[title] { border-bottom:1px dotted #000; cursor:help; }
+table { border-collapse:collapse; border-spacing:0; }
+hr { display:block; height:1px; border:0; border-top:1px solid #ccc; margin:1em 0; padding:0; }
+input, select { vertical-align:middle; }
+
+
+body { font:13px sans-serif; *font-size:small; *font:x-small; line-height:1.22; }
+table { font-size:inherit; font:100%; }
+select, input, textarea { font:99% sans-serif; }
+pre, code, kbd, samp { font-family: monospace, sans-serif; }
+
+body, select, input, textarea { color:#444; }
+h1,h2,h3,h4,h5,h6 { font-weight: bold; text-rendering: optimizeLegibility; }
+html { -webkit-font-smoothing: antialiased; }
+a:hover, a:active { outline: none; }
+a, a:active, a:visited { color:#607890; }
+a:hover { color:#036; }
+ul { margin-left:30px; }
+ol { margin-left:30px; list-style-type: decimal; }
+small { font-size:85%; }
+strong, th { font-weight: bold; }
+td, td img { vertical-align:top; }
+sub { vertical-align: sub; font-size: smaller; }
+sup { vertical-align: super; font-size: smaller; }
+
+input[type="radio"] { vertical-align: text-bottom; }
+input[type="checkbox"] { vertical-align: bottom; *vertical-align: baseline; }
+.ie6 input { vertical-align: text-bottom; }
+label, input[type=button], input[type=submit], button { cursor: pointer; }
+
+::-moz-selection{ background: red; color: #fff; text-shadow: none; }
+::selection { background:red; color:#fff; text-shadow: none; }
+
+a:link { -webkit-tap-highlight-color: red; }
+
+
+html { overflow-y: scroll; }
+button {  width: auto; overflow: visible; }
+.ie7 img { -ms-interpolation-mode: bicubic; }
+
+.ir { display:block; text-indent:-999em; overflow:hidden; background-repeat: no-repeat; }
+.hidden { display:none; visibility:hidden; }
+.visuallyhidden { position:absolute !important; clip: rect(1px 1px 1px 1px); clip: rect(1px, 1px, 1px, 1px); }
+.invisible { visibility: hidden; }
+.clearfix:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
+.clearfix { display: inline-block; }
+* html .clearfix { height: 1%; }
+.clearfix { display: block; }
+
+
+  /* Primary Styles */
+
+
+  /*
+   * Author: Marcos Ojeda
+   */
+
+  @font-face {
+    font-family: 'KnuckledusterRegular';
+    src: url('../type/knuckleduster14-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  h1,h2,h3{
+    font-family:"KnuckledusterRegular";
+    font-weight:normal;
+    font-style:normal;
+    font-size:120px;
+    color:#037;
+    opacity:.2;
+    line-height:1em;
+  }
+
+  #navigation h2{
+    opacity:.7;
+    font-size:40px;
+    color:green;
+    opacity:.35;
+
+  }
+
+  #navigation h3 {
+    opacity:.7;
+    font-size:20px;
+    color:#333;
+  }
+  #navigation h3 a{
+    color:#333;
+  }
+  #navigation h3 a:hover{
+    color:black;
+  }
+
+  #navigation > li{
+    float:left;
+    margin-top:2em;
+    margin-right:60px;
+  }
+  #navigation >li + li{
+    padding-top:5em;
+  }
+
+  #workpage nav li,
+  #essaypage nav li{
+    display:inline-block;
+    font-family:"KnuckledusterRegular";
+    font-weight:normal;
+    font-style:normal;
+    opacity:.7;
+    font-size:20px;
+  }
+
+  #workpage nav li:after{
+    content:" |";
+    margin-right:1em;
+  }
+  #workpage nav li:last-child:after{
+    content:"";
+    margin-right:0;
+  }
+
+
+  .children {
+    padding:0;margin-left:0;
+    margin-top:1.7em;
+  }
+  .children li{
+    line-height:1.7em;
+    margin-bottom:1.7em;
+  }
+
+  #workpage header{
+    position:absolute;
+  }
+
+  nav{
+    position:absolute;
+    top:190px;
+    left:450px;
+  }
+
+  #workpage nav{
+    left:500px;
+    top:200px;
+  }
+  #essaypage nav{
+    position: static;
+    left: 50px;
+    top: auto;
+  }
+
+  p{
+    font-family: "Plan Grotesque Light 2", "HelveticaNeue-Light", "Helvetica Neue Light", sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-stretch: normal;
+    font-size:18px;
+    line-height:24px;
+  }
+  #main em{
+    font-family: "Plan Grotesque Light Italic 2", sans-serif;
+    font-style: italic;
+    font-weight: normal;
+    font-stretch: normal;
+  }
+  #main strong{
+    color:red;
+    text-decoration:underline;
+  }
+
+  #workpage footer{
+    right:50px;
+  }
+
+  footer{
+    position:fixed;
+    padding:20px;
+
+    bottom:0px;
+    left:50px;
+    width:300px;
+    background-color:rgba(255,255,255,.8);
+  }
+  footer p:last-child{
+    margin-bottom:0;
+  }
+
+
+  #main{
+    position:relative;
+    width:400px;
+    min-height:200px;
+    padding:40px;
+    z-index:-100;
+
+  }
+
+  #workpage #main{
+    z-index:500;
+    width:450px;
+  }
+
+  #workpage footer {
+    position: static;
+  }
+
+  #essaypage .main-content{
+    max-width: 550px;
+  }
+
+  #workpage p{
+    margin-bottom:1em;
+  }
+  #essaypage p {
+    margin-bottom: 2em;
+  }
+  #essaypage #main p {
+    line-height: 30px;
+    font-size: 20px;
+  }
+  #essaypage ol, #essaypage ul {
+    margin-top: -2em;
+    margin-bottom: 2em;
+    margin-left: 18px;
+  }
+  #essaypage li {
+    line-height: 25px;
+    font-size: 18px;
+    font-family: times;
+  }
+  #essaypage hr {
+    margin: 4em 0 5em;
+  }
+  #essaypage strong {
+    font-weight: normal;
+  }
+
+  blockquote {
+    margin: 0 1em;
+  }
+
+  blockquote p {
+    font-family: Times, serif;
+  }
+
+  blockquote strong {
+    color: #9F002D;
+  }
+
+  footer p{
+    font-size:12px;
+    line-height:16px;
+    margin-bottom:12px;
+    color:black;
+  }
+
+  #essaypage #main .footnotes p {
+    font-size: 16px;
+    line-height: 20px;
+  }
+  #essaypage img {
+    max-width: 100%;
+  }
+  #essaypage h2 {
+    font-size: 50px;
+  }
+  #essaypage h3 {
+    font-size: 30px;
+  }
+
+  #essaypage pre {
+    padding: 0;
+    margin-top: -10px;
+    margin-bottom: 30px;
+  }
+
+  #essaypage code,
+  #essaypage .highlight pre span {
+    font-family: inputmonocondensed-regular, "Input Mono Cond", "andale mono", monospace;
+    font-weight: normal;
+    font-style: normal;
+    white-space: pre;
+    font-size: 100%
+  }
+
+  .highlight .c1 {
+    color: #999;
+  }
+  .highlight .kd,
+  .highlight .kc,
+  .highlight .k{
+    color: #ef580a;
+  }
+
+  .highlight .nx {
+    color: #5599d8;
+  }
+  .highlight .s1 {
+    color: #7ebb0e;
+  }
+  .highlight .mi,
+  .highlight .mf {
+    color: #b15fb1;
+  }
+
+  #essaypage code {
+    font-size: 80%;
+    line-height: 130%;
+  }
+
+
+  #prettystuff{
+    width:900px;
+    position: relative;
+    left:151px;
+    padding-bottom:150px;
+  }
+
+  #images img{
+    margin-bottom:60px;
+    border:1px solid #ccc;
+    -moz-box-shadow: -15px 15px 0px #ccc;
+    -webkit-box-shadow: -15px 15px 0px #ccc;
+    box-shadow: -15px 15px 0px #ccc;
+    max-width:1024px;
+  }
+
+/* pure xl and smaller */
+@media screen and (max-width: 1280px) {
+  h1 { font-size: 102px;}
+}
+
+/* pure lg and smaller */
+@media screen and (max-width: 1024px) {
+  h1 { font-size: 75px;}
+  .main-content { padding: 0 17%;}
+  footer {position: relative;}
+  #essaypage nav { margin: 2em 0; text-align: center;}
+  #essaypage nav li { display: inline; margin: 0 1em; font-size: 14px; }
+
+}
+
+/* pure md and smaller (single col here) */
+@media screen and (max-width: 768px) {
+  h1 { font-size: 55px;}
+  .main-content { padding: 0 4.1666666%;}
+  footer {
+    left: auto;
+    width: auto;
+    padding: 2.5em 4.1666666%;
+  }
+  #essaypage pre code {
+    font-size: 70%;
+    font-weight: bold;
+  }
+}
+
+/* pure sm */
+@media screen and (max-width: 568px) {
+  h1 { font-size: 28px;}
+  #essaypage .main-content h2, #essaypage .main-content h3 { font-size: 24px;}
+  #essaypage pre code {
+    font-size: 52%;
+    font-weight: bold;
+  }
+}
+
+
+
+
+
+
+
+
+/*
+ * print styles
+ */
+@media print {
+  * { background: transparent !important; color: #444 !important; text-shadow: none; }
+  a, a:visited { color: #444 !important; text-decoration: underline; }
+  a:after { content: " (" attr(href) ")"; }
+  abbr:after { content: " (" attr(title) ")"; }
+  .ir a:after { content: ""; }  /* Don't show links for images */
+  pre, blockquote { border: 1px solid #999; page-break-inside: avoid; }
+  img { page-break-inside: avoid; }
+  @page { margin: 0.5cm; }
+  p, h2, h3 { orphans: 3; widows: 3; }
+  h2, h3{ page-break-after: avoid; }
+}
+
+
+
+
+/* Stacey(2.1.0). */

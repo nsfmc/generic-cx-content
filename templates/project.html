@@ -1,0 +1,26 @@
+{% extends 'main.html' %}
+{% from "macros/project-pagination.html" import render_pagination %}
+
+{% set title = this.title %}
+{% set pageclass = 'workpage' %}
+{% set images = this.attachments.images.all() %}
+
+{% block navigation %}
+  {{ render_pagination(this.get_siblings()) }}
+{% endblock %}
+
+{% block body %}
+    <div id="main">
+      {{ this.content }}
+    </div>
+{% endblock %}
+
+{% block images %}
+  {% if images %}
+    <div id="images">
+    {% for image in images|sort(reverse=True, attribute='path') %}
+    <p><img src="{{ image|url }}">
+    {% endfor %}
+    </div>
+  {% endif%}
+{% endblock %}

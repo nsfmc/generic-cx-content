@@ -1,8 +1,10 @@
 title: hum creative
--
-content: 
+---
+idx: 90
+---
+content:
 
-I developed kate harmer's humcreative.com website recently. 
+I developed kate harmer's humcreative.com website recently.
 
 The site is mostly a portfolio site, but it includes lots of small treats, like history pop/pushstate for browsers that support it, and multi-column text, css animations and all those cute buzzwords.
 

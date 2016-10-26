@@ -1,0 +1,119 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+
+ <script src="http://www.google-analytics.com/urchin.js" type="text/javascript"> </script>
+ <script type="text/javascript"> _uacct = "UA-97175-1"; urchinTracker(); </script>
+  <script type="text/javascript" src="style.js"></script>
+  <script type="text/javascript" src="toc.js"></script>
+  <script type="text/javascript" src="update.js"></script>
+
+  <title>projects - marcos.a.ojeda</title>
+</head>
+
+<body>
+  <div id="container">
+  
+    <div id="intro"> 
+      <h1>nerd!</h1>
+      <div id="intro_text">
+        
+        <p>This page currently houses little projects i work on. My email
+        address is at the bottom of the page if you would like to ask me about
+        any of them.</p>
+
+        
+      </div>
+    </div>
+
+
+    <div id="main_content">
+    
+      <div class="subhead">
+
+        <h2>contents</h2>
+        <div class="copy">
+          
+          <p>Web Browsing is easier with a table of contents available.
+          However, the problem lies in <em>making and maintaining</em> a table
+          of contents. this code remedies both problems. An example follows in
+          the next paragraph</p>
+
+          <p id="toc">toc: </p>
+
+          <p>The previous paragraph, if you have javascript enabled,
+          automagically generates a table of contents from the h2 tags along
+          the page. No work required. You may update your page and the contents
+          will update with it.</p>
+          
+          <p>You can download the javascript <a href="toc.js">here.</a> It will
+          append a table of contents to any html element whose id attribute is
+          <strong>toc.</strong></p>
+
+        </div>
+      </div>
+
+      <div class="subhead">
+
+        <h2>notes</h2>
+        
+        <div class="copy">
+
+          <p>In the textbox below, type whatever it is you'd like. After a
+          delay of four seconds, the textbox will propagate its data into a
+          list element right below the textbox.</p>
+          
+          <p>These notes do not get saved anywhere, except maybe your browser's
+          local cache. In order to use this prototype, you need
+          <strong>javascript enabled.</strong> More information follows after
+          the example.</p>
+          
+          <form action="">
+
+            <textarea id="ta" cols="35" rows="3" style="margin-left: 2em; border: solid
+            1px black" onkeyup="updateWithDelay('note_list','ta',1000)"></textarea>
+            
+            <ul id="note_list">
+            </ul>
+          </form>
+
+          <p>Once you have become comfortable making notes, you will probably
+          want to <strong>edit</strong> them. Click on any note you've made to
+          edit it. When you are finished with your edit, either Tab out of the
+          textbox or click outside of it to <em>commit</em> your changes. Try
+          it!</p>
+
+          <p>The final implementation will save all the notes you type as
+          successive <a
+          href="http://en.wikipedia.org/wiki/Revision_Control_System">rcs</a>
+          revisions of a given file. Because the notes are saved as a response
+          to your edits, you can abandon the concept of saving altogether,
+          instead focusing your energies on making new notes for yourself.</p>
+
+          <p>An initial backend version of this software used PHP because it
+          was convenient, but i am currently re-implementing the majority of
+          the code in Ruby so that i can learn the language.</p>
+        
+        </div>
+
+      </div>
+    
+    </div>
+
+    <div id="footer">
+      
+      <p><span id="contact">thinker at mit dot edu</span></p>
+
+      <p><span id="compliance"><a
+      href="http://validator.w3.org/check?uri=referer">xhtml</a> <a
+      href="http://jigsaw.w3.org/css-validator/validator?uri=http://web.mit.edu/thinker/www/bauhaus.css">css</a></span></p>
+    
+    </div>
+
+  </div>
+
+</body>
+</html>

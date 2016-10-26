@@ -1,0 +1,151 @@
+/* Site Stylesheet */
+
+/* Yahoo YUI3 CSS Reset */
+@import url(http://yui.yahooapis.com/3.1.0/build/cssreset/reset-min.css); 
+@import url(http://wf.typotheque.com/WF-009837-000604);
+
+body{
+  font-family: "Plan Grotesque";
+  font-size:10pt;
+}
+
+em{
+  font-style: italic;
+}
+p, li{
+  line-height:1.5em;
+}
+p{
+  margin-bottom:1em;
+}
+
+h1{
+  font-size:2.4em;
+  line-height:1.25em;
+  position:fixed;
+  left:-.5em;
+  top:-1.5em;
+}
+h1 img{
+  background-color:black;
+  height:auto;
+  -webkit-transition:all 01.18s ease;
+}
+.teal{ background-color:#46aea1 !important;}
+.yellow { background-color:#eee809 !important;}
+.black {background-color:#000 !important;}
+h1 img:hover{
+  background-color: #46aea1;
+}
+h2{
+  font-size:1.5em;
+  line-height:1em;
+  margin-bottom:.67em;
+}
+h3{
+  font-size:1em;
+  line-height:1.5em;
+  color:#46aea1;
+}
+a, a:link, a:visited{
+  color:#46aea1;
+  text-decoration:none;
+  border-bottom:1px solid #eee809;
+}
+a:hover{ color:#eee809; }
+a:active{ color:#46aea1; }
+
+h1 a{
+  color:none;
+  border-width:0 !important;
+}
+
+.skip{
+  display:none;
+}
+.head, h2{
+/*  border-bottom:1px solid black;*/
+  color:#46aea1;
+}
+#info{
+  position:absolute;
+  top:3em;
+  left:29em;
+  width:34em;
+}
+#info ul{
+  float:left;
+  width:10em;
+  margin-right:1em;
+}
+#info input{
+  height:1em;
+  border-width:0;
+  border-bottom:1px solid #eee809;
+}
+#content{
+  width:17em;
+  position:absolute;
+  top:3em;
+  left:62em;
+}
+#content .head{
+  margin-bottom:0;
+}
+
+#swagbox{
+  width:45em;
+  position:absolute;
+  left:10em;
+  top:13em;
+}
+
+.swag{
+  width:45em;
+  position:absolute;
+}
+.swag > h2{
+  position:absolute;
+  background-color:#eee809;
+  margin-top:1em;
+  line-height:1em;
+  width:6em;
+  height:6em;
+  padding:2em;
+  position:absolute;
+  -webkit-border-radius:10em;
+/*  opacity:.3;*/
+  left:0em;
+  top:15%;
+/*  -webkit-transition:all .3s ease;*/
+}
+
+.swag .about{
+  position:absolute;
+  left: 52em;
+  top:0;
+  width:17em;
+}
+.swag h2 strong{
+  color:black;
+}
+
+.swag .spotlight{
+  width:40em;
+  margin-left:5em;
+}
+
+#us{
+  position:absolute;
+  left:5em;
+  top:43em;
+  width:55em;
+}
+#us h2{
+  width:6.5em;
+  display:inline-block;
+}
+#us ul, #us li{
+  display:inline-block;
+  margin-right:.69em;
+}

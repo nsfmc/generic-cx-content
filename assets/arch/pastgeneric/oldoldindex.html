@@ -1,0 +1,53 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>the rendered page is its own source :: marcos.andres.ojeda</title>
+  <meta name="generator" content="TextMate http://macromates.com/">
+  <meta name="author" content="Marcos Ojeda">
+  <!-- Date: 20010-2-01 -->
+  <style type="text/css" media="screen">
+    body{font-size:76%;}
+    h1,a{
+      font-family:HelveticaNeue-Bold, "Helvetica Neue Bold", Helvetica, arial, sans-serif;
+      color:green;
+      opacity:.7;
+      width:700px;
+      font-size:100px;
+      margin-top:0;
+      text-decoration:none;
+    }
+    pre {
+      position:absolute;
+      top:0;
+    }
+  </style>
+</head><body>
+<pre></pre>
+
+  <h1>&lt;!--<a href="http://generic.cx/intro.html">Marcos Ojeda</a> designs webpages 
+    and some <a href="http://generic.cx/homework.html">other things</a>--&gt;</h1>
+  <script type="text/javascript" charset="utf-8">
+    <!--
+      var amp = String.fromCharCode(38);
+      var lt = amp+"lt;";
+      var gt = amp+"gt;";
+      var br = lt+"br /"+gt;
+      var quot = amp+"quot;";
+      var src = lt+"!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN"+quot+"\n "+
+        quot+"http://www.w3.org/TR/html4/strict.dtd"+quot+gt+"<br />\n" +
+        lt+"html lang=\"en\""+gt+"\n" +  
+        String(document.getElementsByTagName("html")[0].innerHTML)
+        .replace(RegExp("<","g"),lt).replace(/>/g,gt).replace(/\n/g,"<br />");
+      src += "<br />"+lt+"/html"+gt;
+      document.getElementsByTagName("pre")[0].innerHTML = src.
+        replace(RegExp("&"+"gt;&"+"lt;!--","g"),gt+"&"+"amp;lt;!--").
+        replace(RegExp("--&"+"gt;&"+"lt;","g"),"--&"+"amp;gt;"+lt);
+      document.getElementsByTagName("pre")[0].innerHTML += "\n"+
+        lt+"!--Marcos Ojeda designs webpages and some other things--"+gt;
+    // -->
+  </script></body>
+</html>
+<!--Marcos Ojeda designs webpages and some other things-->

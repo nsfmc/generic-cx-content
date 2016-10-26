@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+
+  <script src="http://www.google-analytics.com/urchin.js" type="text/javascript"> </script>
+  <script type="text/javascript"> _uacct = "UA-97175-1"; urchinTracker(); </script>
+
+  <script type="text/javascript">editable = ["H1","H2","H3","P","PRE","LI"]</script>
+  <script type="text/javascript" src="style.js"></script>
+  <script type="text/javascript" src="toc.js"></script>
+  <script type="text/javascript" src="newtag.js"></script>
+  <script type="text/javascript" src="make_editable.js"></script>
+  <title>marcos.a.ojeda - leading</title>
+</head>
+
+<body>
+  <div id="container">
+  
+    <div id="intro"> 
+      <h1>leading</h1><!--date.2006.06.30-->
+      <div id="intro_text">
+        <p>This page outlines the design of the <em>leading,</em> a system for creating and maintaining frequently updated and free-form xml-based documents.</p>
+        <p id="toc">toc: </p>
+      </div>
+    </div>
+
+
+    <div id="main_content">  
+      <div class="subhead">
+        <h2>overview</h2>
+        <div class="copy">
+          <p><em>Leading</em> results in easier, immediate writing, saving, and collaboration in any context.</p>
+          <p>While most web applications are designed to be read from one interface and edited from another, <em>leading</em> integrates both interfaces.</p>
+          <p> Why should <acronym>wysiwyg</acronym> editors exist separately from their published location? For example, a blog posting requires visiting an interface for creating an entry, previewing that entry, submitting it and finally viewing it on a separate page. <em>Leading</em> allows all those actions to take place within the context of the only page which ultimately matters; the one which is viewed.</p>
+          <p>And while <em>leading</em> may seem like a trivial interface, it is more than that. There is no reason why standard text editing interfaces shouldn't harness the power of basic version control. Wikis already do this, but why shouldn't everything? And why shouldn't it be easier to use?</p>
+          <p><em>Leading</em> provides transparent version control on arbitrary elements on any webpage. The greatest fault of version control is not using it often enough. <em>Leading</em> converts every save into a successive revision and goes as far as removing the save feature from the application. Every break in typing, perhaps after a few seconds or so of inactivity, indicates the termination of any train of thought. <em>Leading</em> converts these bursts of typing into revisions that are always saved, even if not published.</p>
+          <p>That is, <em>leading</em> makes writing natural and converts your webpages into digital chalkboards <em>(with transparent revision controlled state)</em> which is basically what webpages should be anyway.</p>
+        </div>
+      </div>
+      
+      <div class="subhead">
+        <h2>technicalities</h2>
+        <div class="copy">
+          <p><em>Leading</em> exists concurrently with a backend that is able to receive (via http) incremental updates to a webpage. Although it is tempting to use xmlhttprequest calls, we can probably use other methods to  both push and pull data from an external server.</p>
+          <p>If your website's design is heavily dictated by css, then this is for you. Because <em>leading</em> calls upon the <acronym>dom</acronym> method <code>window.getComputedStyle</code>, we can create an editing environment that looks exactly like the original html element it replaced, <em>irrespective of whatever style was applied to the original element.</em></p>
+        </div>
+
+      </div>
+
+      <div class="subhead">
+        <h2>interface</h2>
+        <div class="copy">
+          <p><em>Leading</em> uses pure html combined with javascript and back-end web services to enable live editing of blogs. When implemented, Leading makes discrete blocks of text editable <em>by the browser</em> without requiring a separate editing interface.</p>
+          <p><strong>Try it now</strong> (sort of). This webpage is a proof of concept for the interface only. The idea here is that every element is clickable. Click any block of text and begin editing its html. Once you click out of that element, the element is converted back to whatever it used to be, effectively locking in your edits locally.</p>
+          <p>Who wants to create new paragraphs or extra list elements? Push return while editing a block of text and create a new element right below the one you were editing and a new paragraph will appear.</p>
+        </div>
+
+      </div>
+    </div>
+
+    <div id="footer">
+      
+      <p><span id="contact">thinker at mit dot edu</span></p>
+      <p><span id="compliance"><a
+      href="http://validator.w3.org/check?uri=referer">xhtml</a> <a
+      href="http://jigsaw.w3.org/css-validator/validator?uri=http://web.mit.edu/thinker/www/bauhaus.css">css</a></span></p>
+    
+    </div>
+
+  </div>
+
+</body>
+</html>

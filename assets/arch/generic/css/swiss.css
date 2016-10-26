@@ -1,0 +1,52 @@
+body{
+  font-size: 137%;
+  font-family:"Helvetica Neue Light", "HelveticaNeue-Light", "Helvetica Neue", Helvetica, arial, sans-serif;
+  width:70%;
+  margin-left:auto;
+  margin-right:auto;
+  line-height:1em;
+}
+.copy{
+  line-height:1em;
+  float:right;
+}
+p{display:inline; }
+p:after{color:#555; font-size: .8em; content:" \b6";} /*adds the paragraph symbol at the end of each paragraph*/
+em{font-family:;}
+strong{font-weight:normal; font-family:"Helvetica LT Std", "Helvetica Neue", Helvetica, arial, sans-serif;}
+blockquote{width:80%;margin-left:auto;margin-right:auto;}
+blockquote:before{content:"\ab"; margin-left:-.45em;}
+blockquote:after{content:"\bb";margin-right:-.45em;margin-bottom:-5em;}
+h1,h2,h3,h4{
+  font-family: "Helvetica Neue UltraLight", "HelveticaNeue-UltraLight", Helvetica, arial, sans-serif;
+  text-transform: lowercase;
+  color:#555;
+  width:55%;
+  font-size:3em;
+  line-height:1em;
+  margin:0;
+  margin-bottom:.25em;
+  font-weight:normal;
+}
+h1{width:100%;color:#888;}
+#intro_text{font-size:.67em; line-height:1.5em;}
+#intro_text:before{content:"fine print:";}
+ul,ol {list-style-type: none; padding:0; margin:2em 1em;}
+li {
+  display:inline; 
+}
+li:first-child{padding-left:0;}
+li:first-child:before{content:"";}
+li:before{content:", ";}
+ul:before,ol:before{content:"(";}
+ul:after,ol:after{content:")";}
+
+
+a{text-decoration:none;}
+a:link{color:#888;}
+a:visited{color:#888;}
+a:hover{color:#ccc;}
+a:active{color:#555;}
+#stylediv ul{display:inline;}
+#footer {margin-top:2em; margin-bottom:2em;}
+#toc {display:block;}

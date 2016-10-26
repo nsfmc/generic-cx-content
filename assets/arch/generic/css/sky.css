@@ -1,0 +1,54 @@
+body{
+  background: #6083C4 url("../images/green-building.png") no-repeat fixed top left;
+  font-family: "helvetica neue light", helvetica, verdana, arial, sans-serif;
+  font-size: 76%;
+  color: #F3F3F3;
+  margin-left: 200px;
+}
+
+#container{
+  width: 37em;
+  padding-bottom: 5em;
+}
+
+h1, h2, h3, h4 {
+  margin-left: -1em;
+  font-family: "helvetica neue", helvetica, arial, sans-serif;
+  text-transform: lowercase;
+}
+
+p {
+  line-height: 1.35em;
+}
+
+pre, code {
+  font-size: 1.2em;
+}
+
+p a, li a{
+  font-weight: bold;
+  color: #CBBCBB;
+}
+
+#main_content img, .copy img, .subhead img{
+  margin-right: -200px;
+  margin-left: 3em;
+  margin-bottom: .5em;
+  float: right;
+  clear:both;
+}
+
+#footer {
+  width: 180px;
+  margin-left: 5px;
+  position: fixed;
+  bottom: 20px;
+  left: 0px;
+}
+
+#stylediv ul li {
+  display: inline;  list-style-type: none;  padding-right: 20px;}
+}
+
+p a:visited, li a:visited {color: #51506A; }
+/* p a:hover, li a:hover { } */
