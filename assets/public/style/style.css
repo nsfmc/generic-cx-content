@@ -237,6 +237,10 @@ button {  width: auto; overflow: visible; }
   #essaypage p {
     margin-bottom: 2em;
   }
+  .twitter-tweet-rendered + p {
+    margin-top: 2em;
+  }
+
   #essaypage #main p {
     line-height: 30px;
     font-size: 20px;
