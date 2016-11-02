@@ -38,23 +38,22 @@
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@nsfmc" />
 
-  {% if title -%}
-    <meta name="twitter:title" content="{{ page_title }}" />
+  {% if this.title -%}
+    <meta name="twitter:title" content="{{ this.plain_title or this.title }}" />
   {%- endif %}
-  {% if metadesc -%}
-    <meta name="twitter:description" content="{{ metadesc }}" />
+  {% if this.metadesc -%}
+    <meta name="twitter:description" content="{{ this.metadesc }}" />
   {%- endif %}
 
-  {%- set images = this.attachments.images.all() -%}
+  {% set images = this.attachments.images.all() -%}
   {%- if images -%}
     {#- FIXME(marcos): is this correct? -#}
   {%- for image in (images|sort(reverse=True))[:4] -%}
-    <meta name="twitter:image" content="{{ image.thumbnail(640)|url }}" />
+    <meta name="twitter:image" content="{{ url_to(image.thumbnail(640), absolute=True, external=True) }}" />
   {% endfor -%}
   {%- endif -%}
 
-  {#- TODO(marcos): does this need to be an absolute url? #}
-  <meta name="twitter:url" content="{{ '.'|url }}" />
+  <meta name="twitter:url" content="{{ url_to('.', external=True) }}" />
 
   {% endblock twittercard -%}
 

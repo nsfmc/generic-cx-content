@@ -1,5 +1,6 @@
 [project]
 name = generic-dot-cx
+url = https://generic.cx/
 
 [packages]
 lektor-markdown-highlighter = 0.1
