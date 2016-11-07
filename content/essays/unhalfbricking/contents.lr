@@ -1,5 +1,7 @@
 title: unhalf-bricking
 ---
+plain_title: Unhalfbricking
+---
 content:
 
 this post by ben northrop [Reflections of an "old" programmer](http://www.bennorthrop.com/Essays/2016/reflections-of-an-old-programmer.php) struck me a bit, mostly because it covers two topics: trying to understand the role of a senior level engineer and a meditation on the cycle of churn in tech.
@@ -8,8 +10,8 @@ i can't speak to the first part, even though i've been around a while, i don't k
 
 partly i feel somewhat confident in talking about my experience because
 
-* i have been thinking about ephemeral-tech-stack-churn for about 20 years, when i first encountered the seemingly endless rat race of [MCSE](https://en.wikipedia.org/wiki/Microsoft_Certified_Professional) certification. but also
-* i seem to have made peace with it to some degree.
+* i first stared into the void when i discovered the seemingly endless rat race of [MCSE](https://en.wikipedia.org/wiki/Microsoft_Certified_Professional) certification. but also
+* i seem to have made peace with tech churn's place in my life (to some degree).
 
 there are two things i can point to that changed my perspective on churn. the first was my math+cs undergrad degree, the second has been my work on the web, on and off, for the past 15 years or so.
 
@@ -25,7 +27,7 @@ The other thing which probably hurt me was my school's nearly allergic reaction 
 
 [^impsplain]: at least at my level of education, the only practical place to actually Make Things Go were either on your own time, at MITERS or in your dorm or a club or by taking on undergraduate research jobs. But even then, you would encounter the comic upturned nose to a hack and the accompanying semi-sarcastic rejoinder "what do you mean, no closed form solution!?"
 
-This fledgling caution was partly a reaction to seeing the results of bad (sometimes disastrous) theoretical implementations in classes and then reading case studies about even worse practical implementations: you develop a simple of pattern matcher for your hubris and rabbit holes you've seen other projects fall into. You decide not to try to implement `halt(f)` anytime soon.
+This fledgling caution was partly a reaction to seeing the results of bad (sometimes disastrous) theoretical implementations in classes and then reading case studies about even worse practical implementations: you develop a simple of pattern matcher for your hubris and rabbit holes you've seen other projects fall into. You decide not to try your hand at implementing `halt(f)` anytime soon.
 
 When i tell people *why* a CS education is valuable, i usually talk about this pattern matching: you develop a good spider sense for counterintuitively bad edge cases, you become highly sensitive to polynomially disastrous performance from ten thousand feet, and you have a good understanding of *why* architectures were designed the way they were simply by looking at their exposed APIs. You can absolutely learn to spot these things, to understand this behavior outside of school, but it can be easier when pattern matching is your full time job.
 
@@ -122,7 +124,7 @@ I think it would be unfair of me to discount the fact that sometimes we're put i
 * You are trying to do string formatting, but a dependency broke semver out from under you, now you manage a private npm repository and are a wizard at pinning and shrinkwrapping your app.
 * You invest 40+ hours integrating a complex and poorly crafted library in your codebase, learning its mental model only to realize it's not suitable for production use or that making it usable would require the same amount of time as having written it from the outset.
 
-These are the sorts of "orthogonal concerns" that i hear when people talk about "wasted time" or "experience that doesn't help my career" except that a good percentage of the time that experience *is your career.* And all those experiences, I believe, are valuable data-points that can (and should) trigger your spider-sense in the future when you're stuck with a broken dependency or need to assess how much it will delay a feature.
+These are the sorts of "orthogonal concerns" that i hear when people talk about "wasted time" or "experience that doesn't help my career" except that a good percentage of the time that experience *is your career.[^fossplain]* And all those experiences, I believe, are valuable data-points that can (and should) trigger your spider-sense in the future when you're stuck with a broken dependency or need to assess how much it will delay a feature.
 
 It's fair to assert that those are the kinds of pedestrian concerns you don't want to deal with in your career. Like i said, this profession is all about solving problems and eventually you either delegate them away, solve them yourself, or delevop some coping strategy for them sharing space with your day to day life. It's fine to feel grumbly about good tech that got the raw end of some deal. Lots of people write their JS as if it were lisp and a ton write it as if it were C++. Everyone takes their experiences with them on new journeys.
 
@@ -132,7 +134,7 @@ As i've gotten older, i think about how even something as "trivial" as a Javascr
 
 It's fine to love a boring stack, especially if the problems you're solving aren't changing much or if those boring parts of your stack are solving a commodity need.
 
-Finally, I reject the idea that adopting a new patois is pointless when thinking and learning about new or novel problems. Or that the problem-space has remained static since the 60s (which is reductive). Solving problems is what we do all day long, so it's confounding to hear a drumbeat of folks dismissing out of hand that today's networks and norms around ui have *completely changed* the way that we approach problems like latency, optimistic updates, partition tolerance, reconciliation, and so forth. In the past, you could make a good case that the audience for these sorts of 'niche' problems was in the tens of people, now they are part and parcel of something as boring as a shared TodoMVC app.
+In general, though, I reject the idea that adopting a new patois is pointless when thinking and learning about new or novel problems. Or that the problem-space has remained static since the 60s (which is reductive). Solving problems is what we do all day long, so it's confounding to hear a drumbeat of folks dismissing out of hand that today's networks and norms around ui have *completely changed* the way that we approach problems like latency, optimistic updates, partition tolerance, reconciliation, and so forth. In the past, you could make a good case that the audience for these sorts of 'niche' problems was in the tens of people, now they are part and parcel of something as boring as a shared TodoMVC app.
 
 ![](931446.gif)
 
@@ -144,11 +146,16 @@ This is partly why I remain optimistic about even transitional blips in our know
 
   <iframe style="width: 100%;" src="https://embed.spotify.com/?uri=spotify:track:2ZjRAKoGcm4oyyl6iikOuC" width="100%" height="80" frameborder="0" allowtransparency="true"></iframe>
 
+[^fossplain]: i made a [snide comment](https://twitter.com/nsfmc/status/795352749311291392) about this on twitter because i think most people are pretty blasé about this point: if you take on a dependency, you should be prepared to own it in some capacity (especially if this software is critical to your livelihood). the person i owe this mindset to is, unsurprisingly, craig silverstein, who got me into the habit of forking each dependency and assuming responsibility for merging (and dealing with conflicting) upstream changes.
+
+  i mention this because it's vogue to complain about some package that a developer has stopped maintaining and pin the worries (as in mailing list post from the twitter thread) on concerns like "we aren't able to commit to the main repo" or "the package has stopped receiving active maintenance." Two points here: the first problem is a non-problem especially if the community is larger than just the missing developer. Anybody looking for the package will run across the new fork and see its active development history or discover a mailing list post (or stack overflow mention) of the newer package. The second is probably the bigger issue: if there are active patches dowstream *just waiting* for a maintainer, a hostile fork is already at an advantage over the original project. But if the project is beloved by the community but is receiving no active contributions, what exactly is the problem? Further, if the project has met its stated goals, what responsibility does it have to merge any patches? As anyone that has contributed to a project knows: unsolicited work that doesn't solve an existing pain point often goes unmerged. But also, if nobody's contributing work, who's there to complain about a dying project?
+
+  Many people i think lump free/open source software into this bucket of "things i'm glad i didn't write and am glad to take advantage of" without acknowledging just how integral they are to the basic function of their product. It's fine to resent a lib or app for not being a fully fleshed out product but it's irresponsible to ignore the fact that without them, you'd be on the hook for writing that same code yourself. This the argument for [open source as critical infrastructure](https://www.fordfoundation.org/library/reports-and-studies/roads-and-bridges-the-unseen-labor-behind-our-digital-infrastructure/). When the access road needs maintenance, do you pay to have it repaved in the interim, or close up shop?
 
 ---
 date: 2006-10-25
 ---
-metadesc: what is the point of all the churn?
+metadesc: tech churn! what is the point of all the churn? will we ever be free of this fatigue?
 ---
 idx: 100
 ---
