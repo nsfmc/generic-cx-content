@@ -18,8 +18,14 @@ In may of this year, shortly before giving an [acclaimed ted talk](http://www.te
 
 > Programmers do not, and often cannot, predict what their complex programs will do. Google’s Internet services are billions of lines of code. Once these algorithms with an enormous number of moving parts are set loose, they then interact with the world, and learn and react. The consequences aren’t easily predictable.
 
+First, i want to break down two issues here:
 
-I want to focus on the google example first because when i was in college, my [system design class](http://web.mit.edu/6.033/www/) devoted a section of reading to looking at large scale systems. One of the fun ones at the time (2005) was google's mapreduce: designed both to make parallelism accessible to lowly mortals and  simultaneously show off their clever use of commodity hardware, as you can see in the [mapreduce paper's abstract](http://research.google.com/archive/mapreduce.html):
+1. One is the unintended consequences of designing an algorithm.
+1. The Second, are the unexpected consequences of performing a complex task atop a set of opaque abstractions.
+
+The two seem similar, they're definitely related, but they *are* different. I'm going to talk about the second because it's more insidious than the first. It is easier to look at an algorithm and see outright bias, it is harder though when the behavior is a side-effect of the unexamined limitations made about the underlying system.
+
+I want to focus on zeynep's google example first because when i was in college, my [system design class](http://web.mit.edu/6.033/www/) devoted a section of reading to looking at large scale systems. One of the fun ones at the time (2005) was google's mapreduce: designed both to make parallelism accessible to lowly mortals and  simultaneously show off their clever use of commodity hardware, as you can see in the [mapreduce paper's abstract](http://research.google.com/archive/mapreduce.html):
 
 > Programs written in this functional style are automatically parallelized and executed on a large cluster of **commodity machines**. The run-time system takes care of the details of partitioning the input data, scheduling the program's execution across a set of machines, **handling machine failures**, and managing the required inter-machine communication. This allows programmers without any experience with parallel and distributed systems to easily utilize the resources of a large distributed system.
 
@@ -29,7 +35,7 @@ Emphasis mine[^commoditysplain] because the whole crux is that mapreduce allows 
 
 [^commoditysplain]: although the meaning is now coded, at the time, the whole point of using the phrase "commodity machine" implied "this computer can barely gurantee an SLA" and "lol @ the lavish costs others spend for sparc/dec/ibm/etc servers running commercial bsd/vax/irix/etc." which made the abstract a sort of boastful triumph of architectural cleverness over cost and software over the unreliable nature of cheap hardware.
 
-There was a moment while we discussed the paper where we had this cute illustration, i'll do my best to explain it since it's basically a funnel: there was The Cloud™, it represented all possible data on the internet. A subsection of that cloud was the amount of the public-facing internet that google had indexed. A subsection of that cloud was the entirety of the results _google knew about_ for your given query. And finally, a subset of that cloud represented the results of your query that had survived the search job* either due to timeouts/latency/commodity hardware/solar flares/etc[^mapsplain].
+There was a moment while we discussed the paper where we had this cute illustration, i'll do my best to explain it since it's basically a funnel: there was The Cloud™, it represented all possible data on the internet. A subsection of that cloud was the amount of the public-facing internet that google had indexed. A subsection of that cloud was the entirety of the _results google knew about_ for your given query. And finally, a subset of *that* cloud represented the results of your query that had survived the search job* either due to timeouts/latency/commodity hardware/solar flares/etc[^mapsplain].
 
 [^mapsplain]: (*map-reduce was, at least then, not actively used for search, but it was a good enough proxy for the behavior of a large fault-tolerant system that favored partial output to no-output)
 
@@ -121,7 +127,13 @@ When the stakes are legitimately low, do we need transparency in how google or f
 
 I'll close this out with a thought on google glass. I still believe that google glass' failure wasn't a foregone conclusion, but it _was_ poorly socialized. There were absolutely _no norms_ around it and so it became odd to see people taking it to the extreme as users and other folks assuming the worst when going about their day. It was too many new things at once. But if you [limit the scope](http://www.theverge.com/2016/9/23/13039184/snapchat-spectacles-price-release-date-snap-inc), maybe you can have a better go at things.
 
-w/r/t services, i am not going to cop-out and say "you don't have to use it," because the choice isn't always ours when you intersect with somebody else's use of some bias-ridden service. How do we resolve being tagged in a service we're not members of? Do we pass it off on the person doing the tagging or do we enforce policies on services? What about when the result isn't just annoyance but actively harmful?
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Spectacles are going to up many people&#39;s Snapchat game, but I can&#39;t get past the power of capturing moments I never had a chance to capture <a href="https://t.co/htjmMAEn8Z">pic.twitter.com/htjmMAEn8Z</a></p>&mdash; Sean O&#39;Kane (@sokane1) <a href="https://twitter.com/sokane1/status/799643479995457538">November 18, 2016</a></blockquote>
+
+***
+
+w/r/t services, i am not going to cop-out and say "you don't have to use it," because the choice isn't always ours if we intersect with somebody else's use of some bias-ridden service. How do we resolve being tagged in a service we're not members of? Do we pass it off on the person doing the tagging or do we enforce policies on services? What about when the result isn't just annoyance but actively harmful?
+
+***
 
 For many of us that have used some form of irc/icq/aim/zephyr/jabber/etc for upwards of 20 years, the norms around slack communication feel oddly formal compared to prior systems which felt truly asynchronous (often responding to a message 12 or 24 hours later). The pitch "[slack is the email killer](https://www.youtube.com/watch?v=kJsYKhEV6o0&feature=youtu.be&t=110)" subconsciously migrates social expectations from email (attentiveness, timely replies) to the norms of irc or im (not all messages need an `ACK`). That's also under-selling the issue, but it's definitely part of it. Do workplaces that caveat 'important things need to be emailed' experience the same level of slack-anxiety? most workplaces eventually establish norms around communication, but it feels like slack gets left out, which has caused its own set of problems.
 
@@ -129,9 +141,9 @@ For many of us that have used some form of irc/icq/aim/zephyr/jabber/etc for upw
 
 i talk about norms because when we go to a restaurant, _we know_(or have learned) why our server is upselling us. When our friends tell us to skip the bar, _we understand_ the reason behind the diversion. We have built up norms around these sorts of social situations: servers want to sell specials and perform well (and depending on the establishment, pad out their tip), our friends may no longer be drinking, or maybe their throat hurts from shouting at last night's bar or whatever.
 
-But what are the societal norms around the apps we use? Well, we've been around long enough now to see at least one and a half dot-com busts and we've been witnessing the effect of companies who put off monetization for easily five to ten years now (or end their [incredible journeys](https://ourincrediblejourney.tumblr.com) as the result of [selling their company](https://twitter.com/rus/status/791681274339622913) to somebody else). Still, each time we act offended when we discover that these free apps are also working to earn their investors and employees a buck. Next time it will be different, though.
+So what of the societal norms around the apps we use? We've been around long enough now to see at least one and a half dot-com busts and we've been witnessing the effect of companies who put off monetization for easily five to ten years now (or end their [incredible journeys](https://ourincrediblejourney.tumblr.com) as the result of [selling their company](https://twitter.com/rus/status/791681274339622913) to somebody else). Still, each time we act offended when we discover that these free apps are also working to earn their investors and employees a buck. *Next time* it will be different, though.
 
-As a field, we designers spend a lot of time talking about how to design with empathy and grace. but i suspect the problem is partly that people expect apps to behave like utilities, deterministic and steely-eyed in their execution, and are discovering there's something strange about our landlord or our electric company talking to (and empathizing with) us like our best friend and then shaking us down for extra money when the conversation takes a turn.
+As a field, we designers spend a lot of time talking about how to design with empathy and grace. Still, i suspect the problem is mostly that people expect apps to behave like utilities, deterministic and honest in their focused execution. Now, we're discovering there's something strange about our landlord or our electric company talking to (and empathizing with) us like our best friend and then shaking us down for extra money when the conversation takes a turn.
 
 <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">latest <a href="https://twitter.com/magic">@magic</a> growth hack starts by acting like an old friend, ends by asking to &quot;hop on a call for 10 minutes&quot; 😒😬😡 <a href="https://t.co/PyQedn5yeh">pic.twitter.com/PyQedn5yeh</a></p>&mdash; Michael Grinich (@grinich) <a href="https://twitter.com/grinich/status/755132086210617345">July 18, 2016</a></blockquote>
 
