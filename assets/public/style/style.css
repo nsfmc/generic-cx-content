@@ -250,7 +250,8 @@ button {  width: auto; overflow: visible; }
     margin-bottom: 2em;
     margin-left: 18px;
   }
-  #essaypage li {
+  #essaypage li,
+  #essaypage li p {
     line-height: 25px;
     font-size: 18px;
     font-family: times;

@@ -1,0 +1,85 @@
+title: UI Libraries
+---
+date: 2016-11-12
+---
+idx: 110
+---
+metadesc: learning from component librariers
+---
+plain_title: UI Libraries
+---
+content:
+
+As web applications have grown in complexity, the market for ui libraries has also increased. There is seemingly no shortage of them: [material](http://www.material-ui.com), [elemental](http://elemental-ui.com), [mdl](https://react-mdl.github.io/react-mdl/), [belle](http://nikgraf.github.io/belle/), [react bootstrap](https://react-bootstrap.github.io), [grommet](https://grommet.github.io), [kendo](http://www.telerik.com/kendo-ui), and the list goes on.
+
+Despite those all being battle tested and useful, I have never found the occasion to use them and in my experience, many organizations end up building their own libraries, often organically, as each component's need arises.
+
+But what is the point of these libraries?
+
+* to leverage an existing framework to simplify complex ui (i.e.: jQuery UI &rarr; `$`)
+* generally speaking, to reduce boilerplate
+* to enable internal branding consistency across a series of internal tools[^bootorigin].
+* to simplify the task of re-theming
+* to reduce the time to build a page with complex components
+
+There are less charitable reasons, most of them are tied to human motivations:
+
+* the most charitable is also the occam's razor of the bunch: to share a series of actively used and re-used components. Individual developers releasing a library are probably in this camp.
+* the most cynical view is that these libraries are marketing & publicity tool to increase developer/team mindshare via a public open-sourcing of a series of high visibility and day-to-day useful libraries
+* more tragically, that these are a 'bone', useless infrastructure projects open-sourced by fat-walleted companies to retain (or appease) acquired talent.
+
+Although i agree that those are occasionally legitimate _reasons_ (and often under-explored by eager library consumers), i won't dwell on them because it's orthogonal to the point of this piece which is
+
+> Why do we spend so much time on calcified implementations and less on interfaces?
+
+## interfaces
+
+There is something kind of magical about html. On the one hand it's very loose, but on the other hand, it has lots of default behavior built in for elements that adopt certain protocols (in html, these are called [DOM Interfaces](https://www.w3.org/TR/html5/dom.html#element-dfn-dom)).
+
+For instance, let's look at the anchor tag, or `<a />`
+
+```html
+<p>learn all <a>about anchors</a></p>
+```
+
+yes, i see you rolling your eyes, but the neat thing is that this anchor (totally valid, btw) has its behavior defined in the html spec depending on whether or not it sets an `href=""` attribute.
+
+> If the `a` element has an `href` attribute, then it represents a hyperlink (a hypertext anchor) labeled by its contents.
+>
+>If the `a` element has no `href` attribute, then the element represents a placeholder for where a link might otherwise have been placed, if it had been relevant, consisting of just the element's contents.
+
+and further, the spec gives heads ups about which attributes are useless with or without an accompaniying `href`.
+
+Ok, so you're still rolling your eyes, but what i'm trying to think about here is that this is a pretty well defined interface and easy to both implement in practice and adopt in other contexts (even before we get to its scripting interface (which is defined as follows)
+
+```IDL
+interface HTMLAnchorElement : HTMLElement {
+           attribute DOMString target;
+           attribute DOMString download;
+
+           attribute DOMString rel;
+           attribute DOMString rev;
+  readonly attribute DOMTokenList relList;
+           attribute DOMString hreflang;
+           attribute DOMString type;
+
+           attribute DOMString text;
+};
+HTMLAnchorElement implements URLUtils;
+```
+
+. Howso?
+
+Take react router's `<Link />` component
+
+```html
+// String location descriptor.
+<Link to="/hello">
+  Hello
+</Link>
+```
+
+
+[^bootorigin]: cf. [mark otto's oral history of bootstrap](http://markdotto.com/2012/01/17/bootstrap-in-a-list-apart-342/)
+---
+_discoverable: no
