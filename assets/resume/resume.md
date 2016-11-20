@@ -26,9 +26,15 @@ Marcos has taught web design professionally and has assisted in the instruction 
 ## Employment
 
 ### SpacedOut Labs
-#### Senior Software Engineer *clientside/serverside development, react* 2015-present
+#### Senior Software Engineer *client/serverside development, react* 2015-present
 
-Clientside React development using flux (and later, hybrid redux-esque architecture), es6 (w/ babel 5 and 6) flowtype and isomorphic webapp development using both scss and css modules. Side projects, internal [slack bot](//github.com/Spaced-Out/pizzabot) to track new server deploys.
+Currently developing [Sense](https://sensehq.co/), an enterprise engagement platform for the staffing industry. Responsible for both client/serveride React/Flask Restful development using Flux (and currently, hybrid redux-esque architecture), es2015 (w/ babel 5, migrated to 6) Flow and isomorphic webapp development using Webpack, React Router, and Css Modules (previously scss). Developed clientside and Continuous Integration test harnesses using Flow, Jest and React Storybook.
+
+Related, open source projects during app development:
+
+* internal [slack bot](//github.com/Spaced-Out/pizzabot) to track new server deploys
+* organization-specific [react-flavored fork of Prosemirror](https://github.com/Spaced-Out/markdown-editor).
+* Developed codemods to [progressively](https://gist.github.com/nsfmc/8a54414a06a325a04bbe) [migrate](https://gist.github.com/nsfmc/8a54414a06a325a04bbe) a large javascript codebase using jscodeshift.
 
 ### Khan Academy
 #### Designer *web/ios design, frontend+backend dev* 2011–2015
