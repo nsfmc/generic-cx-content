@@ -1,0 +1,49 @@
+title: forms
+---
+content:
+
+Recently i had a sort of realization about html forms that i thought i might share here. [Here it is](https://en.wikipedia.org/wiki/Robustness_principle):
+
+> Be conservative in what you do, be liberal in what you accept from others
+
+haha, fooled ya! but actually, that *was* my realization and i want to explain *why*.
+
+### when should i care?
+
+Here are a few ways to deal with form input:
+
+* *on the webpage*
+  1. constantly validate the form data on keypresses, focus, blur, etc
+  1. validate `onSubmit`, basically right before sending to the server
+* *on the server*
+  1. validate on the server and force the webpage to show the errors
+  1. validate on somebody's desk when they receive the fax your form produced
+
+and although this list isn't exhaustive, these are arranged from Nicest to Least Nice because when buying a music festival ticket, the first option is the one that ensures you only press submit when the form is in a good state and the last two briefly gives the illusion that you're going to hear some music in a few months only to break your heart and give away your spot in the virtual queue.
+
+The growing belief is that if you're making a form these days, you opt for validating as soon as possible to minimize the number of possible errors that happen while the form data is being processed.
+
+However, there are a few reasons the first two options are often considered problematic:
+
+1. you need to write `onChange` handlers for all your inputs
+1. if you're not careful, you run the risk of *assuming* data hitting your api is well formatted
+1. which, if you are careful, you now share your form validation logic on both the client and server (often in two separate languages)
+
+Part of what's so deceptive about the way we deal with forms is that we often assume that, much like their paper counterparts, they have two significant states: submitted / not submitted. But their reality is much more complicated (which often explains why designing good forms is so difficult)
+
+### states
+
+
+
+---
+date: 2017-02-04
+---
+idx: 120
+---
+metadesc: what is time?
+---
+plain_title: forms
+---
+_discoverable: no
+---
+_hidden: no

@@ -235,7 +235,7 @@ button {  width: auto; overflow: visible; }
     margin-bottom:1em;
   }
   #essaypage p {
-    margin-bottom: 2em;
+    margin: 1.5em 0;
   }
   .twitter-tweet-rendered + p {
     margin-top: 2em;
@@ -246,8 +246,6 @@ button {  width: auto; overflow: visible; }
     font-size: 20px;
   }
   #essaypage ol, #essaypage ul {
-    margin-top: -2em;
-    margin-bottom: 2em;
     margin-left: 18px;
   }
   #essaypage li,
@@ -261,6 +259,7 @@ button {  width: auto; overflow: visible; }
   }
   #essaypage strong {
     font-weight: normal;
+    color: #9F002D;
   }
 
   blockquote {
@@ -298,12 +297,30 @@ button {  width: auto; overflow: visible; }
 
   #essaypage pre {
     padding: 0;
-    margin-top: -10px;
-    margin-bottom: 30px;
+    margin-bottom: 0px;
+  }
+
+  #essaypage .highlight pre {
+    background: #fbfbfb;
+    padding: 24px 14px;
+    margin-left: -14px;
+    margin-right: -14px;
+  }
+
+  #essaypage .codeHeading {
+    font-family: inputmonocondensed-regular, "Input Mono Cond", "andale mono", monospace;
+    background: #f0f0f0;
+    color: #9F002D;
+    display: block;
+    padding: 7px 14px;
+    margin-left: -14px;
+    margin-right: -14px;
+    margin-bottom: 0px;
+    font-size: 12px;
   }
 
   #essaypage code,
-  #essaypage .highlight pre span {
+  #essaypage .highlight pre {
     font-family: inputmonocondensed-regular, "Input Mono Cond", "andale mono", monospace;
     font-weight: normal;
     font-style: normal;
@@ -329,6 +346,13 @@ button {  width: auto; overflow: visible; }
   .highlight .mi,
   .highlight .mf {
     color: #b15fb1;
+  }
+
+  .highlight .gi {
+    color: #5dbf00;
+  }
+  .highlight .gd {
+    color: #d23561;
   }
 
   #essaypage code {

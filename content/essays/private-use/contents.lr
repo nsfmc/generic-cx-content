@@ -12,7 +12,7 @@ this isn't an essay, it's more like a journal. i'm putting things in here that i
 
 > the Private Use Areas are three ranges of code points (U+E000–U+F8FF in the BMP, and planes 15 and 16)
 
--- [Private Use Area (unicode)](puawiki)
+-- <a href="http://en.wikipedia.org/wiki/Private_Use_(Unicode)">Private Use Area (unicode)</a>
 
 I did the math and realized that's 137,469 possible glyphs. That's a lot of glyph.
 
@@ -131,5 +131,3 @@ this is super-basic, but you could extend this however you like, presumably by h
 
 in case it's not obvious, it's quite common to work with the pua, the good folks at [SIL](http://scripts.sil.org/cms/scripts/page.php?cat_id=UnicodePUA) document their use of it (mostly so others can understand how they've assigned ideographs and symbols).
 
-
-[puawiki]: http://en.wikipedia.org/wiki/Private_Use_(Unicode)

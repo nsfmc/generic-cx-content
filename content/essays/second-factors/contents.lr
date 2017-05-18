@@ -1,0 +1,81 @@
+title: second factors
+---
+content:
+
+If 2016's revelations of email hacking made you wonder if you couldn't be *doing more*, they certainly made *me* wonder if i was being too cavalier about my own security.
+
+The thing that often gets overlooked in most security explainers, from my perspective, is that **everyone's problems are different**. There was a time where i thought that writing passwords down in a notebook was dangerous but it really depends on your [threat model](https://en.wikipedia.org/wiki/Threat_model). Is that notebook kept somewhere reasonably safe (maybe in a physical safe), then it's *probably* not a terrible idea provided you don't forget the combo to the safe (and provided others don't have access to it).
+
+But what sorts of security problems do any of us have? Let's consider some examples:
+
+### coffee shops
+
+If you go to and work from coffee shops, you have to contend with:
+
+* insecure public wifi
+* somebody trying to unlock your laptop
+* strangers shoulder-surfing your login passwords
+* strangers learning your 6-digit phone unlock password/swipe pattern
+
+Most of us discount these issues because none of them by themselves might be casatrophic (what use is your phone's password *without your phone?*) and because an attack involving them would involve serious escalation: somebody you see every day at coffee is probably not going to be taking your laptop or stealing your phone. And for truly random theft, we generally believe our thief *probably* hasn't been shoulder-surfing our passwords, rendering a stolen phone or laptop *mostly* useless.
+
+And importantly, like i said earlier *everyone has different concerns*. If you share your computer with somebody else, your concerns are different
+
+### Roommates
+
+First of all, with roommates you probably want to restrict the number of your things your computer can access when you're not around (assuming you trust your roommates not to *steal your computer*. If you live alone at home, you are probably not concerned with locking your screen when you get up to go to the bathroom. But say you do have roommates, who do you need to worry about?
+
+* roommates using your computer
+* roommates' friends (also using your computer)
+* your apartment being left unlocked, broken into (because of any of the above)
+* your router getting hacked and snooping your local network traffic
+* maybe more likely: your roommate running wireshark
+* password snooping/keylogging while checking your email on their computer crawling with malware
+
+Look, i'm not really all that paranoid, but sort of like how you get into the habit of checking your blind spot periodically, i would consider myself appropriately cautious. My own threat model is not robust against me being robbed (please don't rob me) or being forced to give up my secrets while being bludgeoned with a [rubber hose](https://en.wikipedia.org/wiki/Rubber-hose_cryptanalysis).
+
+And in my case, i find my roommates trustworthy (except my dog) and i find myself most worried about remote attackers, which matches the threat model in [google's fido/u2f paper](http://research.google.com/pubs/pub45409.html).
+
+## easy fixes
+
+The most common prescription for all these problems is to turn on some kind of Multi-Factor Authentication, typically via a code that is texted to you or a time-based code that an app on your phone generates. The current thinking is that this thwarts the lion's share of attackers.
+
+And so i turned on 2fa a few years back because nowadays almost everyone supports it and i had been pretty happy with it overall. It was sort of annoying, but the benefits (as i saw them) outweighed any inconvenience (and, to boot, my phone was as a very capable totp generator).
+
+### what is a second factor?
+
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr"><a href="https://twitter.com/Pinboard">@Pinboard</a> 5. Someone that you used to know.</p>&mdash; Mark Dennehy (@MarkDennehy) <a href="https://twitter.com/MarkDennehy/status/822077486993391616">January 19, 2017</a></blockquote>
+
+The case for totp-based 2fa is that sms can be easily spoofed but i hear you already rolling your eyes: *only the very determined or state-sponsored attackers are going to intercept your sms* except...
+
+If you use a mac and are signed into Messages.app, your computer may be configured to receive sms messages at the same times as your phone:
+
+![](http://dl.dropboxusercontent.com/u/406291/Screenshots/Jv7C.png)
+
+So consider the following set of events:
+
+1. You trust your roommate
+1. You step into the shower and take your phone in with you, leave it on the counter, lock the door.
+1. Your roommate opens your laptop
+1. Your roommate starts an imessage conversation with a few people
+1. Your roommate looks at Messages.app
+1. Your roommate
+
+## the case for u2f
+
+[Universal Second Factor](https://fidoalliance.org) is a second factor mechanism similar to the codes you get from google authenticator (totp).
+
+When i think about the sorts of threats i am most concerned with, i typically worry about purely remote ones This means people phishing me, social engineering phone calls, maybe having my traffic being compromised by a botnet-controlled router at a coffee shop, and definitely any time i'm using the wifi at an airbnb.
+
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+---
+date: 2017-01-16
+---
+idx: 120
+---
+metadesc: ok, so you're committed to 2fa, totp, u2f, now what?
+---
+plain_title: second factors
+---
+_discoverable: no

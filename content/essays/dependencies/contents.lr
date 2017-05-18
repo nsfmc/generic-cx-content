@@ -1,0 +1,358 @@
+title: depend-encies
+---
+metadesc: how do you express data dependencies?
+---
+plain_title: dependencies
+---
+content:
+
+I've been playing with firebase recently. Firebase is a fun system, it's like hosted couchdb but without the views and like appengine but with more batteries included. Its api is interesting because one of its big selling points is its realtime database.
+
+For a todomvc-like application, this is the sort of thing your write:
+
+<p class="codeHeading">firebase crud events</p>
+
+```javascript
+firebase.database.ref(`todos/${uid}`).on('child_added', snapshot => {
+  // add new child todo snapshot to your local ui
+}).on('child_deleted', snapshot => {
+  // delete snapshot in your local ui
+}).on('child_changed', snapshot => {
+  // update your local version of todo with new snapshot
+})
+```
+
+here, the data at `todos/${uid}` contains a list of todo items, when one is added, a `child_added` event is fired on the database ref and a callback is invoked with the new item. when one is deleted, the `child_deleted` event is triggered and when one changes, `child_changed` is triggered so you can update it locally. This is a pretty solid set of events and you can probably see how you might integrate it into a redux-ey webapp.
+
+at first glance, you might do something like this:
+
+<p class="codeHeading">using componentDidMount</p>
+
+```js
+import React from 'react';
+import {connect} from 'react-redux';
+import firebase from 'firebase'
+
+import * as todoActions from './todo-actions';
+
+class TodoList extends React.Component {
+  dbRef = null;
+
+  render() {
+    return <ul>
+      { this.props.todos.map(
+        todo => <li key={todo.id}>{todo.text}</li>
+      );}
+    </ul>
+  };
+
+  componentDidMount() {
+    this.dbRef = firebase.database.ref(`todos/${this.props.uid}`);
+
+    this.dbRef.on('child_added', snapshot => {
+        todoActions.addTodo(snapshot.val(), snapshot.key)
+      }).on('child_deleted', snapshot => {
+        todoActions.deleteTodo(snapshot.val(), snapshot.key)
+      }).on('child_changed', snapshot => {
+        todoActions.updateTodo(snapshot.val(), snapshot.key)
+      });
+  };
+
+  componentWillUnmount() {
+    this.dbRef.off();
+  }
+}
+
+const mapStateToProps = state => {
+  uid: state.user.uid,
+  todos: state.todos, // populated by todoActions
+};
+
+export default connect(
+  mapStateToProps,
+  todoActions
+)(TodoList);
+```
+
+here `todoActions` are standard [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete)-y redux actions. it's not even important what they actually look like because they are pretty boring in the grand scheme of things.
+
+What is interesting is the `componentDidMount` call in the component. This is the standard approach that the react docs suggest for dealing with external xhr dependencies and firebase fits the bill here.
+
+### firebase and redux
+
+What sets firebase apart from other systems (and even stock rest+redux) is that the firebase client manages local data even dealing with synchronizing it to the remote server. That is, when you "change data on firebase" the client code optimistically syncs your changes locally on the client and immediately calls `child_added`, `child_changed`, or whatever.
+
+As a _user_ of firebase, you are totally insulated from this, however, because the firebase client library takes care to always emit the correct events to your appropriate database ref regardless of your connection status, it's only up to you to determine if you want to make your users aware of long-running queries.
+
+This is pretty neat, but also..._why even use redux_ when i have this nifty clientside api at my disposal? And you wouldn't be alone in asking this question because there are two somewhat competing libraries trying to bridge this gap—[react-redux-firebase](http://react-redux-firebase.com/) and [redux-react-firebase](https://github.com/tiberiuc/redux-react-firebase).
+
+Both use the model of redux's `connect` [higher order component](https://facebook.github.io/react/docs/higher-order-components.html) approach to provide firebase data to feed data to a component like so:
+
+<p class="codeHeading">react-redux-firebase example code</p>
+
+```js
+import React from 'react';
+import {firebaseConnect, dataToJS} from 'react-redux-firebase';
+import flow from 'lodash/flow';
+
+class TodoList extends React.Component {
+  render() {
+    return <ul>
+      { this.props.todos.map(
+        todo => <li key={todo.id}>{todo.text}</li>
+      );}
+    </ul>
+  };
+}
+
+export default flow([
+  firebaseConnect(({user}) => ['todos/${user.uid}']),
+
+  connect(({firebase}, {user}) => {
+    todos: dataToJs(firebase, `todos/${user.uid}`)
+  })
+])(TodoList)
+```
+
+in both `react-redux-firebase` and `redux-react-firebase`, the component mounts and firebaseConnect takes care of synchronizing the firebase state with redux, as a result, your firebase data is never really part of your redux store even though it is accessible to your components via `connect`.
+
+And this is a pretty conceptually sane implementation, but, on some level, it is a bit weird that we're hijacking react-redux's `connect` this way given that firebase in this case is essentially a parallel redux store with its own thing going on.
+
+### soooo, why redux?
+
+A big selling point of firebase is its moderately low-latency subscription-based datastore with robust client libraries supporting flaky network states. I read those words and all I can think is *"exactly **what** benefit does redux provide?*
+
+Stepping back, most apis are *not* subscription-based and most do not include a clientside api that is capable of managing offline application state (ignoring time-travel, elm, etc this is arguably the point of having a client store like redux). But in a firebase app, you can *always* `.push()` new data to some database ref and you will always see immediate `child_added` events,
+
+So what is redux buying you? I think the biggest out-of-the-box benefit from redux is buying into the conceptual wins of using the [Actor Model](https://en.wikipedia.org/wiki/Actor_model) which is basically enforcing rigorous value-boundaries and abstractions for your services. When you're all-in on the Redux Life you could stop using redux proper and still gain benefits from message-passing in your application.
+
+redux also allows you to abstract your backend service until it actually exists—by creating well-structured semantics for clientside data mutations, you can largely insulate yourself from your database unti it either exists or until you migrate to some other platform, service or data model. this is the most compelling reason to stick with redux in spite of the many cool benefits firebase offers.
+
+## composed depend-encies
+
+At work, we use [redial](https://www.npmjs.com/package/redial) to deal with our data dependencies. Redial has some other structure, but the idea is that you define some dependencies to execute either synchronously or asynchronously.
+
+Redial is really well suited to satisfying a one-time data dependency although you can trigger events arbitrarily with it or you can just use it to initiate a dependency lifecycle. For instance:
+
+<p class="codeHeading">using redial with redux-thunk</p>
+
+```js
+import React from 'react';
+import firebase from 'firebase';
+import {provideHooks} from 'redial';
+import * as todoActions from './todo-actions';
+
+// a thunk
+const getAndSubscribeToTodos = uid => dispatch => {
+  const path = `todos/${uid}`;
+  const dbRef = firebase.database.ref(path);
+
+  dbRef.on('child_added', snapshot => {
+      dispatch(todoActions.addTodo(snapshot.val(), snapshot.key))
+    }).on('child_deleted', snapshot => {
+      dispatch(todoActions.deleteTodo(snapshot.val(), snapshot.key))
+    }).on('child_changed', snapshot => {
+      dispatch(todoActions.updateTodo(snapshot.val(), snapshot.key))
+    });
+
+  return new Promise((resolve, reject) => {
+    dbRef.once('value', snapshot => {
+      resolve(dispatch(todoActions.getAll(snapshot.val())))
+    }, err => {
+      reject(err)
+    });
+  });
+}
+...
+return flow([
+  provideHooks({
+    fetch: ({dispatch, params: {uid}}) => {
+      return dispatch(getAndSubscribeToTodos(uid));
+    }
+  })
+])(TodoList)
+```
+
+
+In the case of redial, the hidden benefit is that you can have easyish serverside rendering because you can block rendering on the `fetch` hook. That is a legit necessity, but it's still somewhat complex given that firebase is meant to asynchronously populate and update your client with data from their datastore.
+
+But, i mean, whatever—this works too, and it would be reasonable (you could terminate a subscription with a `componentWillUnmount` somewhere). But when i look at this and the prior approach using react-redux-firebase, i realize that both of them do it by *enhancing this component so that a data dependency is directly bound to it.*
+
+And why not, right? This is [exactly the approach](https://facebook.github.io/react/docs/higher-order-components.html#use-hocs-for-cross-cutting-concerns) the redux docs suggest for dealing with a subscription. As with redial, this sort of makes sense when you attach high-level dependencies _to a route_ in your application, but as applications grow larger, you more often want to colocate data dependencies with components that need them.
+
+this is basically the rationale behind graphql via apollo/relay, the way they manage data dependencies is by allowing arbitrary child nodes to define their dependencies and then combining the collected graphql queries into a single query that is accessible to components via a method very similar to `react-redux`'s `connect` HOC.
+
+but while that architecture is thoroughly awesome, it got me thinking: what other things asynchronously update your client datastore? How do we treat them and model their behavior?
+
+### Inputs
+
+In a webform, we model form inputs as a set of disconnected inputs to our application loosely bound together by a `<form />` element or by a parent component's `state`. In the case of a redux app, form data is usually managed by the application state because most inputs are [_controlled_](https://facebook.github.io/react/docs/forms.html#controlled-components)
+
+So what defines an input? Values come in, trigger `onChange` events and you accept their data into your application's state (even if temporarily).
+
+So why not model a firebase subscription as an input?
+
+<p class="codeHeading">&lt;FirebaseInput /&gt;</p>
+
+```js
+import React from 'react';
+import {connect} from 'react-redux';
+import FirebaseInput from './firebase-data';
+
+import {addTodo, removeTodo, changeTodo} from './todo-actions';
+
+
+class TodoList extends React.Component {
+  render() {
+    const {uid, todos} = this.props;
+
+    return <ul>
+      <FirebaseInput path={`/todos/${uid}`}
+        onChildAdded={itemAdded}
+        onChildRemoved={itemRemoved}
+        onChildChanged={itemChanged}
+      />
+
+      { todos.map(
+        todo => <li key={todo.id}>{todo.text}</li>
+      );}
+    </ul>
+  };
+}
+
+const mapStateToProps = state => {
+  uid: state.user.uid,
+  todos: state.todos,
+}
+
+const mapDispatchToProps = dispatch => {
+  itemAdded: snap => dispatch(addTodo(snap.key, snap.val())),
+  itemRemoved: snap => dispatch(removeTodo(snap.key)),
+  itemChanged: snap => dispatch(changeTodo(snap.key, snap.val())),
+}
+
+export default connect(
+  mapStateToProps, mapDispatchToProps
+)(TodoList)
+```
+
+At first glance, this plays _much_ more nicely with standard redux: my store only knows about actions + values (not firebase) and I can implement this core clientside data modeling _before_ i add-in firebase by manually dispatching these actions locally.
+
+But also, in stock redux fashion, my component code's knowledge of firebase is limited to two spots.
+
+* `<FirebaseInput />` knows about a path in the firebase store (which, there is sort of no avoiding this component knowing about firebase).
+* `mapDispatchToProps` knows about [`DataSnapshot`](https://firebase.google.com/docs/reference/node/firebase.database.DataSnapshot) and it's arguable whether or not this is a problem, it feels nicely isolated to me.
+
+We could refactor this further using the standard redux container pattern, isolating the
+
+<p class="codeHeading">&lt;TodoContainer /&gt;</p>
+
+```js
+import React from 'react';
+import {connect} from 'react-redux';
+import FirebaseInput from './firebase-data';
+
+import {addTodo, removeTodo, changeTodo} from './todo-actions';
+
+
+class TodoContainer extends React.Component {
+  render() {
+    const {uid, todos} = this.props;
+    const {itemAdded, itemRemoved, itemChanged} = this.props;
+
+    return <div>
+      <FirebaseInput path={/todos/${uid}}
+        onChildAdded={itemAdded} onChildRemoved={itemRemoved}
+        onChildChanged={itemChanged}
+      />
+
+      <TodoList todos={todos} />
+    </div>
+  };
+}
+
+const mapStateToProps = state => {
+  uid: state.user.uid,
+  todos: state.todos,
+}
+
+const mapDispatchToProps = dispatch => {
+  itemAdded: snap => dispatch(addTodo(snap.key, snap.val())),
+  itemRemoved: snap => dispatch(removeTodo(snap.key)),
+  itemChanged: snap => dispatch(changeTodo(snap.key, snap.val())),
+}
+
+export default connect(
+  mapStateToProps, mapDispatchToProps
+)(TodoContainer)
+```
+
+<p class="codeHeading">&lt;TodoList /&gt;</p>
+
+```js
+import React from 'react';
+
+class TodoList extends React.Component {
+  render() {
+    const {todos} = this.props;
+
+    return <div>
+      <ul>
+        { todos.map(
+          todo => <li key={todo.id}>{todo.text}</li>
+        );}
+      </ul>
+    </div>
+  };
+}
+```
+
+in both cases though, the `<TodoList />` component is receiving `connect`ed data: that is, although the data flow appears to be coming from the `<FirebaseInput />` it is always being routed to the redux store in the same way that a form input's data is promoted globally.
+
+### abstracting the database ref
+
+So far, we've ignored the firebase `dbref` concept entirely, but it's the preferred handle to push changes remotely to firebase. So how do we expose the ref to components and handlers that need access to it in order to update the firebase database?
+
+React already provides an analog for this in its own [callback ref](https://facebook.github.io/react/docs/refs-and-the-dom.html) implementation. Roughly, the idea is that you defne a local class variable and you attach a callback ref function to tho element you want to get a handle on. So let's adapt the idea
+
+
+<p class="codeHeading">using a firebase ref</p>
+
+```diff
+ class TodoContainer {
++  todoRef = null;
+
+   render() {
+     const {uid, todos} = this.props;
+     const {itemAdded, itemRemoved, itemChanged} = this.props;
+
+     return <div>
+       <FirebaseInput path={/todos/${uid}}
+         onChildAdded={itemAdded} onChildRemoved={itemRemoved}
+         onChildChanged={itemChanged}
++        dbRef={ref => this.todoRef = ref}
+       />
+
+-      <TodoList todos={todos} />
++      <TodoList todos={todos} handleDone={this.toggleDone} />
+     </div>
+   };
+
++  toggleDone = id => {
++    if (this.todoRef) {
++      const status = this.todoRef.child(`${id}/done`).val();
++      this.todoRef.child(`${id}/done`).set(!status);
++    }
++  }
+ }
+```
+
+In standard react [container/presentation](http://redux.js.org/docs/basics/UsageWithReact.html#presentational-and-container-components) fashion, this passes handlers through props that use standard firebase semantics but isolated from the actual implementation of firebase by letting the container manage the ref but hide it from the child component.
+
+`handleDone` can start as a method that simply dispatches a redux action but can later be upgraded to be a function that updates firebase.
+
+## drawbacks
+
+I think a better mental-model for modeling firebase in a client application ends up being closer to relay or apollo, but both of those are involved in terms of setup. It's not terriblby difficult to imagine firebase adding a graphql adapter to their datastore in much the same way that graphcool or others do.
+---
+_discoverable: no
