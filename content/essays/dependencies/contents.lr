@@ -42,7 +42,7 @@ class TodoList extends React.Component {
     return <ul>
       { this.props.todos.map(
         todo => <li key={todo.id}>{todo.text}</li>
-      );}
+      ) }
     </ul>
   };
 
@@ -100,7 +100,7 @@ class TodoList extends React.Component {
     return <ul>
       { this.props.todos.map(
         todo => <li key={todo.id}>{todo.text}</li>
-      );}
+      ) }
     </ul>
   };
 }
@@ -215,7 +215,7 @@ class TodoList extends React.Component {
 
       { todos.map(
         todo => <li key={todo.id}>{todo.text}</li>
-      );}
+      ) }
     </ul>
   };
 }
@@ -300,7 +300,7 @@ class TodoList extends React.Component {
       <ul>
         { todos.map(
           todo => <li key={todo.id}>{todo.text}</li>
-        );}
+        ) }
       </ul>
     </div>
   };
@@ -349,10 +349,25 @@ React already provides an analog for this in its own [callback ref](https://face
 
 In standard react [container/presentation](http://redux.js.org/docs/basics/UsageWithReact.html#presentational-and-container-components) fashion, this passes handlers through props that use standard firebase semantics but isolated from the actual implementation of firebase by letting the container manage the ref but hide it from the child component.
 
-`handleDone` can start as a method that simply dispatches a redux action but can later be upgraded to be a function that updates firebase.
+`handleDone` can start as a method that initially dispatches a redux action but can later be upgraded to be a function that directly updates firebase. Because the data `<TodoList />` uses still comes from the same location in redux, the cost of migrating data from locally-stored to firebase-managed is pretty minimal.
 
 ## drawbacks
 
-I think a better mental-model for modeling firebase in a client application ends up being closer to relay or apollo, but both of those are involved in terms of setup. It's not terriblby difficult to imagine firebase adding a graphql adapter to their datastore in much the same way that graphcool or others do.
+I think a better mental-model for modeling complex firebase applications in a client application ends up being closer to relay or apollo. And while it's not terribly difficult to imagine firebase adding a graphql adapter to their datastore in much the same way that graphcool or others do, for simple applications this adds a ton of both conceptual and infrastructure-related overhead that you probably don't really need or want to to deal with when getting started with plain out-of-the-box firebase.
+
+Another drawback to this approach is that you need to be aware of duplicated dependencies. Without a mechanism to aggregate firebase subscriptions, it's easy to create multiple FirebaseData inputs in your application that duplicate work or perhaps even clobber each other's data in competing callbacks.
+
+Still, for small applications, modeling asynchronous network data as a plain react component like an `<input />` adds a low-cost approach to inject external network dependencies along with a simple migration path from locally-managed data to externally managed data.
+
 ---
-_discoverable: no
+_discoverable: yes
+---
+_hidden: no
+---
+date: 2017-05-16
+---
+localmetaphoto: OwTl.png
+---
+metaphotoalt: an image of a firebase dependency as a plain react component with callbacks
+---
+idx: 110
