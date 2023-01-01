@@ -48,7 +48,7 @@
   {% set images = this.attachments.images.all() -%}
   {%- if images -%}
     {#- FIXME(marcos): is this correct? -#}
-  {%- for image in (images|sort(reverse=True))[:4] -%}
+  {%- for image in (images|sort(reverse=True, attribute='path'))[:4] -%}
     <meta name="twitter:image" content="{{ url_to(image.thumbnail(640), absolute=True, external=True) }}" />
   {% endfor -%}
   {%- endif -%}
@@ -106,9 +106,19 @@
 
     {% block footer %}
     <footer>
-      <p>Marcos Ojeda is a designer living in San&nbsp;Diego,&nbsp;CA, married to <a href="http://www.katericke.com/">kate ricke</a> and previously employed at <a href="http://www.khanacademy.org/">khan academy</a>. You may email him at <a href="mailto:marcos@generic.cx">marcos@generic.cx</a> or you may call him at 619&nbsp;721&nbsp;3606.</p>
+      <p>Marcos Ojeda lives in San&nbsp;Diego,&nbsp;CA, married to <a href="http://www.katericke.com/">kate ricke</a>, once employed at <a href="http://www.khanacademy.org/">khan academy</a> and previously at risd and mit. You may email him at <a href="mailto:marcos@generic.cx">marcos@generic.cx</a> or you may call him at 619&nbsp;721&nbsp;3606.</p>
 
-      <p>c.f. <a href="http://twitter.com/nsfmc/">twitter</a> <a href="http://flickr.com/photos/subliminal">flickr</a> <a href="http://nsfmc.tumblr.com/">tumblr</a> <a href="http://last.fm/user/nsfmc">last.fm</a> <a href="http://del.icio.us/nsfmc/">delicious</a> <a href="http://ffffound.com/home/nsfmc/found/">ffffound</a> <a href="http://news.ycombinator.com/user?id=nsfmc">hn</a> <a href="pgp.html">pgp</a></p>
+      <p>c.f. 
+        <a rel="me" href="https://turbotime.turboteam.xyz/nsfmc">@nsfmc@turboteam.xyz</a> 
+        and at <a rel="me" href="https://mastodon.social/@nsfmc">mastodon.social</a>
+        (previously <strike><a href="http://twitter.com/nsfmc/">twitter</a></strike>)
+        <a href="http://flickr.com/photos/subliminal">flickr</a> 
+        <a href="http://nsfmc.tumblr.com/">tumblr</a> 
+        <a href="http://last.fm/user/nsfmc">last.fm</a> 
+        <strike><a href="http://del.icio.us/nsfmc/">delicious</a></strike> 
+        <strike><a href="http://ffffound.com/home/nsfmc/found/">ffffound</a></strike> 
+        <a href="http://news.ycombinator.com/user?id=nsfmc">hn</a> 
+        <strike><a href="pgp.html">pgp</a></strike></p>
 
     </footer>
     {% endblock footer %}

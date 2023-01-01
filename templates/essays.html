@@ -17,7 +17,7 @@
 {% block images %}
   {% if images %}
     <div id="images">
-    {% for image in images %}
+    {% for image in this.attachment.images|sort(reverse=True, attribute='path') %}
     <p><img src="{{ image|url }}">
     {% endfor %}
     </div>
