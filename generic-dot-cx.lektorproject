@@ -4,8 +4,9 @@ url = https://generic.cx/
 
 [packages]
 lektor-markdown-highlighter = 0.1
+lektor-atom = 0.4.0
 
 [servers.abilify]
 name = abilify
 default = yes
-target = rsync://root@generic.cx/var/www/abilify
+target = rsync://snack.generic.cx/var/www/abilify

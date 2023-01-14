@@ -2,6 +2,10 @@
 
 {% set title = this.title %}
 
+{% block headextras %}
+  <link rel="alternate" title="generic dot cx" href="{{ '/feed/atom'|url }}" type="application/atom+xml"  />
+{% endblock %}
+
 {% block navigation %}
   <ul id="navigation">
   {% for path in ['/recently', '/the-past', 'essays'] %}
